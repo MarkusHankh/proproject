@@ -12,6 +12,5 @@
 	var userArray:Array = ArrayUtil.toArray(gridTeamNeu.dataProvider);
 	gridAttributeNeu;
 	//Alert.show(userArray[0]);
-	threepv_service.test.send(userArray);
 	//threepv_service.newProject.send();
 }
