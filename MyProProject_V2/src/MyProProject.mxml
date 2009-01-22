@@ -72,9 +72,9 @@
 				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200"/>
 				<mx:Canvas id="diagramContent" x="4" y="42" width="870" height="463">
 					<mx:Canvas id="diagramWrapper" x="35" y="6" width="820" height="430">
-						<mx:Label id="lblYAchse" text="Y-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF" x="10" y="-1"/>
+						<mx:Label id="lblYAchse" text="Y-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF" x="10" y="0"/>
 						<myShapes:Diagram id="dia" xmlns:myShapes="actionScript.portfolios.diagramm.*" borderThickness="0" borderColor="#000000" borderStyle="solid" cornerRadius="2"/>
-						<mx:Label id="lblXAchse" x="767" y="409" text="X-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF"/>
+						<mx:Label id="lblXAchse" x="710" y="409" text="X-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF"/>
 					</mx:Canvas>
 				</mx:Canvas>
 				<mx:Canvas id="listContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
@@ -173,7 +173,7 @@
 				<mx:Label id="lblBenutzerNeu" x="147" y="10" text="Neue Benutzer anlegen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('benutzerNeuContent')"/>
 				<mx:Canvas id="alleBenutzerContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
 					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
-						<mx:DataGrid id="gridShowAllUsers" dataProvider="{dpUser}" width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#222222" color="#999999">
+						<mx:DataGrid id="gridShowAllUsers" dataProvider="{dpUser}" width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#1a1a1a" color="#999999">
 							<mx:columns>
 								<mx:DataGridColumn headerText="BenutzerID" dataField="0"/>
 								<mx:DataGridColumn headerText="Vorname" dataField="1"/>

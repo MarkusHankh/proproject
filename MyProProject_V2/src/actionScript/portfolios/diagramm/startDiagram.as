@@ -1,16 +1,6 @@
-import actionScript.portfolios.diagramm.SimpleInfoData;
-import actionScript.portfolios.diagramm.InfoShape;
-import actionScript.portfolios.diagramm.ItemContainer;
-import mx.rpc.events.ResultEvent;
-import mx.rpc.events.FaultEvent;
-import mx.controls.Alert;
-import mx.containers.Panel;
-import mx.controls.TextInput;
-import mx.containers.FormItem;
-import mx.containers.Accordion;
+import actionScript.portfolios.diagramm.*;
+
 import mx.states.*;
-import mx.controls.Button;
-import actionScript.portfolios.diagramm.*
 
 var interval;
 function doInit() {
@@ -19,22 +9,33 @@ function doInit() {
 var item1:ItemContainer;
 var item2:ItemContainer;
 var item3:ItemContainer;
+var item4:ItemContainer;
 function addSampleCharts(){
 	clearInterval(interval);
 	item1 = new ItemContainer(0,30,130,70,30,35);
 	item2 = new ItemContainer(0,20,290,320,70,90);
 	item3 = new ItemContainer(1,20,390,320,70,90);
+	item4 = new ItemContainer(1,30,310,220,90,30);
 	item1.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 	item1.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
 	item1.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 	item1.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
 	item2.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 	item2.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
+	item2.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
+	item2.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
 	item3.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 	item3.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
+	item3.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
+	item3.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
+	item4.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
+	item4.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
+	item4.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
+	item4.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
 	dia.addChild(item3);
 	dia.addChild(item1);
 	dia.addChild(item2);
+	dia.addChild(item4);
 }
 
 var interval4drag;
