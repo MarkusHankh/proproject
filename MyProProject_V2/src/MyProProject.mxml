@@ -12,6 +12,7 @@
 		<mx:method name="getMyPortfolios" result="getMyPortfoliosResult(event);"/>
 		<mx:method name="newProject" result="newProjectResult(event);"/>
 		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
+		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Benutzerverwaltung">
@@ -75,7 +76,18 @@
 					</mx:Canvas>
 				</mx:Canvas>
 				<mx:Canvas id="listContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
-					<mx:Text text="Hallo Liste"/>
+					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
+						<mx:DataGrid id="gridlistContent" dataProvider="{dpMyProjects}" width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#cccccc" rollOverColor="#bbbbbb">
+								<mx:columns>
+									<mx:DataGridColumn headerText="Projekt Name" dataField="1"/>
+									<mx:DataGridColumn headerText="Beschreibung" dataField="12"/>
+									<mx:DataGridColumn headerText="Projekt Start" dataField="2"/>
+									<mx:DataGridColumn headerText="Projekt Ende" dataField="3"/>
+									<mx:DataGridColumn headerText="Attribute"/>
+									<mx:DataGridColumn headerText="Optionen"/>
+								</mx:columns>
+						</mx:DataGrid>
+					</mx:HBox>
 				</mx:Canvas>
 				<mx:Canvas id="projektNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ihrem Portfolio neue Projekte hinzufügen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
