@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="870" height="463">
+	<mx:Label x="257.5" y="69" text="Vorname:" fontSize="12" fontFamily="Arial" id="lblVornameNeu"/>
+	<mx:Label x="257.5" y="98" text="Nachname: " fontSize="12" fontFamily="Arial" id="lblNachnameNeu"/>
+	<mx:Label x="257.5" y="127" text="Benutzername: " fontFamily="Arial" fontSize="12" id="lblBenutzernameNeu"/>
+	<mx:Label x="257.5" y="156" text="E-Mail Adresse: " fontSize="12" fontFamily="Arial" id="lblEmailNeu"/>
+	<mx:Label x="257.5" y="185" text="Passwort: " fontSize="12" fontFamily="Arial" id="lblPasswortNeu"/>
+	<mx:Label x="257.5" y="214" text="Passwort wiederholen: " fontSize="12" fontFamily="Arial" id="lblPasswort2Neu"/>
+	<mx:TextInput x="452.5" y="69" id="vornameNeu"/>
+	<mx:TextInput x="452.5" y="98" id="nachnameNeu"/>
+	<mx:TextInput x="452.5" y="127" id="benutzernameNeu"/>
+	<mx:TextInput x="452.5" y="156" id="emailNeu"/>
+	<mx:TextInput x="452.5" y="185" id="passwortNeu" displayAsPassword="true"/>
+	<mx:TextInput x="452.5" y="214" id="passwort2Neu" displayAsPassword="true"/>
+	<mx:Button x="257.5" y="282" label="Benutzer speichern!" id="btnBenutzerSpeichern"/>
+	<mx:Button x="452.5" y="282" label="Felder zurücksetzen"/>
+	
+</mx:Canvas>
