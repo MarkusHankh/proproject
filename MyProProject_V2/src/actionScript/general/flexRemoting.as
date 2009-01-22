@@ -24,6 +24,11 @@ public function getUserResult(event:ResultEvent):void{
 	dpUser = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
 
+public function addUserResult(event:ResultEvent):void{
+	threepv_service.getUser.send(1);
+	changeContent('alleBenutzerContent');
+}
+
 public function getMyPortfoliosResult(event:ResultEvent):void{
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
 	var length:int = event.result.length;
