@@ -13,6 +13,8 @@
 		<mx:method name="getMyPortfolios" result="getMyPortfoliosResult(event);"/>
 		<mx:method name="newProject" result="newProjectResult(event);"/>
 		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
+		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
+		<mx:method name="addUser" result="addUserResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Benutzerverwaltung">
