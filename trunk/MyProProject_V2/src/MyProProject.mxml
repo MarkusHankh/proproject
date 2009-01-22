@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:mp="components.*" layout="horizontal" paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#808492, #808492]" creationComplete="doInit(); init()">
+	<mx:Script source="actionScript/general/sessionHandling.as"/>
+	<mx:Script source="actionScript/general/navigation.as"/>
+	<mx:Script source="actionScript/general/creationComplete.as"/>
+	<mx:Script source="actionScript/general/flexRemoting.as"/>
+	<mx:Script source="actionScript/portfolios/diagramm/startDiagram.as"/>
+	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
+	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
+	<mx:RemoteObject id="threepv_service" source="3pv_service.fassade" destination="threepv">
+		<mx:method name="getUser" result="getUserResult(event);"/>
+		<mx:method name="getMyPortfolios" result="getMyPortfoliosResult(event);"/>
+		<mx:method name="newProject" result="newProjectResult(event);"/>
+		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
+	</mx:RemoteObject>
+	<mx:states>
+		<mx:State name="Benutzerverwaltung">
+			<mx:SetProperty target="{PortfolioView}" name="height" value="0%"/>
+			<mx:SetProperty target="{PortfolioView}" name="width" value="0%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="height" value="0%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="width" value="0%"/>
+			<mx:SetProperty target="{HilfeView}" name="height" value="0%"/>
+			<mx:SetProperty target="{HilfeView}" name="width" value="0%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="height" value="100%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="100%"/>
+		</mx:State>
+		<mx:State name="Einstellungen">
+			<mx:SetProperty target="{PortfolioView}" name="height" value="0%"/>
+			<mx:SetProperty target="{PortfolioView}" name="width" value="0%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="height" value="100%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="width" value="100%"/>
+			<mx:SetProperty target="{HilfeView}" name="height" value="0%"/>
+			<mx:SetProperty target="{HilfeView}" name="width" value="0%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="height" value="0%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="0%"/>
+		</mx:State>
+		<mx:State name="Hilfe">
+			<mx:SetProperty target="{PortfolioView}" name="height" value="0%"/>
+			<mx:SetProperty target="{PortfolioView}" name="width" value="0%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="height" value="0%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="width" value="0%"/>
+			<mx:SetProperty target="{HilfeView}" name="height" value="100%"/>
+			<mx:SetProperty target="{HilfeView}" name="width" value="100%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="height" value="0%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="0%"/>
+		</mx:State>
+	</mx:states>
+	<mx:Style>
+		Label
+		{
+			color: #999999;
+		}
+	</mx:Style>
+	<mx:Canvas id="FullApplication" backgroundImage="images/bg_raster.jpg" height="590" width="1000">
+		<mx:Canvas id="Navigation">
+			<mx:LinkButton id="lbPortfolios" x="254" y="19" label="Portfolios" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState=''"/>
+			<mx:LinkButton id="lbBenutzerverwaltung" x="386.5" y="19" label="Benutzerverwaltung" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Benutzerverwaltung'"/>
+			<mx:LinkButton id="lbEinstellungen" x="598" y="19" label="Einstellungen" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Einstellungen'"/>
+			<mx:LinkButton id="lbHilfe" x="767" y="19" label="Hilfe" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Hilfe'"/>
+			<mx:LinkButton id="lbLogout" x="865" y="19" label="LogOut" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#ff0000" themeColor="#FF0000" alpha="1.0" click="userLogout('TODO_USER_SESSION')"/>
+		</mx:Canvas>
+		<mx:Canvas id="ApplikationBody" x="60" y="56" width="876" height="509">
+			<mx:Canvas id="PortfolioView" height="100%" width="100%">
+				<mx:Label id="lblDiagramm" x="0" y="10" text="Diagramm" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('diagramContent')"/>
+				<mx:Label id="lblListe" x="87" y="10" text="Liste" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('listContent')"/>
+				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent')"/>
+				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>
+				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent')"/>
+				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200"/>
+				<mx:Canvas id="diagramContent" x="4" y="42" width="870" height="463">
+					<mx:Canvas id="diagramWrapper" x="35" y="6" width="820" height="430">
+						<mx:Label id="lblYAchse" text="Y-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF" x="10" y="-1"/>
+						<myShapes:Diagram id="dia" xmlns:myShapes="actionScript.portfolios.diagramm.*" borderThickness="0" borderColor="#000000" borderStyle="solid" cornerRadius="2"/>
+						<mx:Label id="lblXAchse" x="767" y="409" text="X-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF"/>
+					</mx:Canvas>
+				</mx:Canvas>
+				<mx:Canvas id="listContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+					<mx:Text text="Hallo Liste"/>
+				</mx:Canvas>
+				<mx:Canvas id="projektNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+					<mx:Label text="Hier können Sie ihrem Portfolio neue Projekte hinzufügen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
+					<mx:HBox y="30">
+						<mx:Canvas width="400" height="400" alpha="1.0">
+							<mx:Label id="lblProjektnameNeu" x="10" y="12" text="Projektname"/>
+							<mx:Label id="lblBeschreibungNeu" x="10" y="36" text="Beschreibung"/>
+							<mx:Label id="lblStartdatumNeu" x="10" y="170" text="Startdatum"/>
+							<mx:Label id="lblEnddatumNeu" x="10" y="200" text="Enddatum"/>
+							<mx:Label id="lblFormNeu" x="10" y="230" text="Form"/>
+							<mx:Label id="lblFormgroesseNeu" x="10" y="268" text="Größe der Form"/>
+							<mx:Label id="lblFuellfarbeNeu" x="10" y="308" text="Füllfarbe"/>
+							<mx:Label id="lblRingfarbeInnenNeu" x="10" y="343" text="Ringfarbe innen"/>
+							<mx:Label id="lblRingfarbeAussenNeu" x="10" y="373" text="Ringfarbe außen"/>
+							<mx:TextInput id="projektnameNeu" x="137" y="8" backgroundColor="#FFFFFF" width="209"/>
+							<mx:TextArea x="137" y="35" height="125" width="209" id="beschreibungNeu"/>
+							<mx:DateField x="137" y="168" width="209" height="20" id="startdatumNeu" formatString="YYYY-MM-DD"/>
+							<mx:DateField x="137" y="198" width="209" height="20" id="enddatumNeu" formatString="YYYY-MM-DD"/>
+							<mx:ComboBox x="137" y="228" width="209" id="formNeu">
+								<mx:dataProvider>
+									<mx:Array>
+										<mx:Object label="Kreis"/>
+										<mx:Object label="Dreieck"/>
+										<mx:Object label="Viereck"/>
+									</mx:Array>
+								</mx:dataProvider>
+							</mx:ComboBox>
+							<mx:ComboBox x="137" y="266" width="209" id="formgroesseNeu">
+								<mx:dataProvider>
+									<mx:Array>
+										<mx:Object label="Klein"/>
+										<mx:Object label="Mittel"/>
+										<mx:Object label="Groß"/>
+									</mx:Array>
+								</mx:dataProvider>
+							</mx:ComboBox>
+							<mx:ColorPicker x="137" y="304" width="209" id="fuellfarbeNeu"/>
+							<mx:ColorPicker x="137" y="339" width="209" id="ringfarbeInnenNeu"/>
+							<mx:ColorPicker x="137" y="369" width="209" id="ringfarbeAussenNeu"/>
+						</mx:Canvas>
+						<mx:Canvas width="400" height="400">
+							<mx:Label x="10" y="10" text="Position im Diagramm" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
+							<mx:Label x="10" y="39" text="X-Achse"/>
+							<mx:Label x="10" y="65" text="Y-Achse"/>
+							<mx:HSlider x="120" y="45" width="270" id="xAchseNeu" allowTrackClick="true"/>
+							<mx:HSlider x="120" y="71" width="270" id="yAchseNeu" allowTrackClick="true"/>
+							<mx:Label x="10" y="91" text="Portfoliospezifische Attribute" fontWeight="bold" fontSize="12" fontFamily="Arial"/>
+							<mx:DataGrid dataProvider="{dpPortfolioAttributes}" x="10" y="120" width="380" height="108" id="gridAttributeNeu" editable="true">
+								<mx:columns>
+									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="false"/>
+									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
+									<mx:DataGridColumn headerText="Wert" dataField="col3" editable="true"/>
+								</mx:columns>
+							</mx:DataGrid>
+							<mx:Label x="10" y="236" text="Projektmitglieder" fontSize="12" fontWeight="bold" fontFamily="Arial"/>
+							<mx:DataGrid id="gridTeamNeu" x="10" y="265" width="165" height="125" dragEnabled="true" dropEnabled="true" dragMoveEnabled="true" dragDrop="dragDropHandler(event)">
+								<mx:columns>
+									<mx:DataGridColumn headerText="Benutzer" dataField="1"/>
+								</mx:columns>
+							</mx:DataGrid>
+							<mx:Label x="225" y="236" text="Verfügbar" fontSize="12" fontWeight="bold" fontFamily="Arial"/>
+							<mx:DataGrid id="gridAllUsers" dataProvider="{dpUser}" x="225" y="265" width="165" height="125" dragEnabled="true" dropEnabled="true" dragMoveEnabled="true">
+								<mx:columns>
+									<mx:DataGridColumn headerText="Benutzer" dataField="1"/>
+								</mx:columns>
+							</mx:DataGrid>
+						</mx:Canvas>
+					</mx:HBox>
+					<mx:Button label="Projekt speichern" y="430" x="418" click="prepareProjectExport()"/>
+					<mx:Button label="Felder zurücksetzen" y="430" x="560"/>
+				</mx:Canvas>
+				<mx:Canvas id="portfolioNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+					<mx:Text text="Hallo Neues Portfolio"/>
+				</mx:Canvas>
+				<mx:Canvas id="portfolioBearbeitenContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+					<mx:Text text="Hallo Portfolio Bearbeiten"/>
+				</mx:Canvas>
+			</mx:Canvas>
+			<mx:Canvas id="BenutzerverwaltungView" height="0%" width="0%">
+				<mx:Label id="lblAlleBenutzer" x="0" y="10" text="Alle Benutzer anzeigen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('alleBenutzerContent')"/>
+				<mx:Label id="lblBenutzerNeu" x="147" y="10" text="Neue Benutzer anlegen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('benutzerNeuContent')"/>
+				<mx:Canvas id="alleBenutzerContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
+					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
+						<mx:DataGrid width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#cccccc" rollOverColor="#bbbbbb">
+							<mx:columns>
+								<mx:DataGridColumn headerText="BenutzerID" dataField="0"/>
+								<mx:DataGridColumn headerText="Vorname" dataField="1"/>
+								<mx:DataGridColumn headerText="Nachname" dataField="2"/>
+								<mx:DataGridColumn headerText="E-Mail" dataField="3"/>
+								<mx:DataGridColumn headerText="Benutzergruppe" dataField="4"/>
+								<mx:DataGridColumn headerText="Optionen"/>
+							</mx:columns>
+						</mx:DataGrid>
+					</mx:HBox>
+				</mx:Canvas>
+				<mx:Canvas id="benutzerNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+				</mx:Canvas>
+			</mx:Canvas>
+			<mx:Canvas id="EinstellungenView" height="0%" width="0%">
+				<mx:Label id="lblEinstellungAllgemein" x="0" y="10" text="Allgemeine Einstellungen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('einstellungContent')"/>
+				<mx:Label id="lblLogoUpload" x="167" y="10" text="Logo Upload" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('logoUploadContent')"/>
+				<mx:Canvas id="einstellungContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
+				</mx:Canvas>
+				<mx:Canvas id="logoUploadContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+				</mx:Canvas>
+			</mx:Canvas>
+			<mx:Canvas id="HilfeView" height="0%" width="0%">
+				<mx:Label id="lblHilfePP" x="0" y="10" text="Portfolio &amp; Projek" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('hilfePPContent')"/>
+				<mx:Label id="lblHilfeBV" x="147" y="10" text="Benutzerverwaltung" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('hilfeBVContent')"/>
+				<mx:Label id="lblHilfeVideo" x="310" y="10" text="Video Tutorials" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('hilfeVideoContent')"/>
+				<mx:Canvas id="hilfePPContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
+				</mx:Canvas>
+				<mx:Canvas id="hilfeBVContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
+				</mx:Canvas>
+				<mx:Canvas id="hilfeVideoContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
+				</mx:Canvas>
+			</mx:Canvas>
+		</mx:Canvas>
+	</mx:Canvas>
+</mx:Application>
