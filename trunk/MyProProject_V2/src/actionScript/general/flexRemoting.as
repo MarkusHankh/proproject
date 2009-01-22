@@ -15,6 +15,10 @@ private var dpPortfolio:ArrayCollection;
 [Bindable]
 private var dpPortfolioAttributes:ArrayCollection;
 
+[Bindable]
+private var dpMyProjects:ArrayCollection;
+
+
 //Result Events - FlexRemoting
 public function getUserResult(event:ResultEvent):void{
 	dpUser = new ArrayCollection(ArrayUtil.toArray(event.result));
@@ -35,4 +39,9 @@ public function getAttributesResult(event:ResultEvent):void{
 
 public function newProjectResult(event:ResultEvent):void{
 	
+}
+
+public function getMyProjectsResult(event:ResultEvent):void
+{
+	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
