@@ -221,6 +221,37 @@
 				</mx:Canvas>
 				<mx:Canvas id="portfolioNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ein weiteres Portfolio erstellen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
+					<mx:HBox y="30">
+						<mx:Canvas width="400" height="400">
+							<mx:Label x="10" y="12" text="Portfolioname:" id="lblPortfolionameNeu"/>
+							<mx:Label x="10" y="41" text="Beschreibung:" id="lblPortfolioBeschreibungNeu"/>
+							<mx:Label x="10" y="175" text="Name X-Achse:" id="lblNameXAchseNeu"/>
+							<mx:Label x="10" y="205" text="Name Y-Achse:" id="lblNameYAchseNeu"/>
+							<mx:Label x="10" y="252" text="Kleinster X-Wert:" id="lblKleinsterXWertNeu"/>
+							<mx:Label x="8" y="282" text="Größter X-Wert:" id="lblGroessterXWertNeu"/>
+							<mx:Label x="10" y="312" text="Kleinster Y-Wert:" id="lblKleinsterYWertNeu"/>
+							<mx:Label x="10" y="342" text="Größter Y-Wert:" id="lblGroessterYWertNeu"/>
+							<mx:TextInput x="155" y="10" width="210" id="portfolionameNeu"/>
+							<mx:TextArea x="155" y="40" height="125" width="210" id="portfolioBeschreibungNeu"/>
+							<mx:TextInput x="155" y="173" width="210" id="nameXAchseNeu"/>
+							<mx:TextInput x="155" y="203" width="210" id="nameYAchseNeu"/>
+							<mx:NumericStepper x="155" y="250" width="210" id="kleinsterXWertNeu"/>
+							<mx:NumericStepper x="155" y="280" width="210" id="groessterXWertNeu"/>
+							<mx:NumericStepper x="155" y="310" width="210" id="kleinsterYWertNeu"/>
+							<mx:NumericStepper x="155" y="340" width="210" id="groessterYWertNeu"/>
+						</mx:Canvas>
+						<mx:Canvas width="400" height="400">
+							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
+							<mx:AdvancedDataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" editable="true">
+								<mx:columns>
+									<mx:AdvancedDataGridColumn headerText="Attribut" dataField="1" editable="true"/>
+									<mx:AdvancedDataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
+								</mx:columns>
+							</mx:AdvancedDataGrid>
+							<mx:Button x="29" y="340" label="Portfolio speichern!" width="148" id="btnPortfolioSpeichern"/>
+							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort"/>
+						</mx:Canvas>
+					</mx:HBox>
 				</mx:Canvas>
 				<mx:Canvas id="portfolioBearbeitenContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Text text="Hallo Portfolio Bearbeiten"/>
