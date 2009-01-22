@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:mp="components.*" layout="horizontal" paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#808492, #808492]" creationComplete="doInit(); init()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:mp="components.*" layout="horizontal" paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#808492, #808492]">
 	<mx:Script source="actionScript/general/sessionHandling.as"/>
 	<mx:Script source="actionScript/general/navigation.as"/>
 	<mx:Script source="actionScript/general/creationComplete.as"/>
@@ -9,6 +9,7 @@
 	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
 	<mx:Script source="actionScript/userAdministration/userAdministration.as"/>
 	<mx:RemoteObject id="threepv_service" source="3pv_service.fassade" destination="threepv">
+		<mx:method name="userLogin" result="userLoginResult(event);"/>
 		<mx:method name="getUser" result="getUserResult(event);"/>
 		<mx:method name="getMyPortfolios" result="getMyPortfoliosResult(event);"/>
 		<mx:method name="newProject" result="newProjectResult(event);"/>
@@ -17,7 +18,23 @@
 		<mx:method name="addUser" result="addUserResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
+		<mx:State name="Portfolios">
+			<mx:SetProperty target="{Navigation}" name="visible" value="true"/>
+			<mx:SetProperty target="{LoginView}" name="height" value="0%"/>
+			<mx:SetProperty target="{LoginView}" name="width" value="0%"/>
+			<mx:SetProperty target="{PortfolioView}" name="height" value="100%"/>
+			<mx:SetProperty target="{PortfolioView}" name="width" value="100%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="height" value="0%"/>
+			<mx:SetProperty target="{EinstellungenView}" name="width" value="0%"/>
+			<mx:SetProperty target="{HilfeView}" name="height" value="0%"/>
+			<mx:SetProperty target="{HilfeView}" name="width" value="0%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="height" value="0%"/>
+			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="0%"/>
+		</mx:State>
 		<mx:State name="Benutzerverwaltung">
+			<mx:SetProperty target="{Navigation}" name="visible" value="true"/>
+			<mx:SetProperty target="{LoginView}" name="height" value="0%"/>
+			<mx:SetProperty target="{LoginView}" name="width" value="0%"/>
 			<mx:SetProperty target="{PortfolioView}" name="height" value="0%"/>
 			<mx:SetProperty target="{PortfolioView}" name="width" value="0%"/>
 			<mx:SetProperty target="{EinstellungenView}" name="height" value="0%"/>
@@ -28,6 +45,9 @@
 			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="100%"/>
 		</mx:State>
 		<mx:State name="Einstellungen">
+			<mx:SetProperty target="{Navigation}" name="visible" value="true"/>
+			<mx:SetProperty target="{LoginView}" name="height" value="0%"/>
+			<mx:SetProperty target="{LoginView}" name="width" value="0%"/>
 			<mx:SetProperty target="{PortfolioView}" name="height" value="0%"/>
 			<mx:SetProperty target="{PortfolioView}" name="width" value="0%"/>
 			<mx:SetProperty target="{EinstellungenView}" name="height" value="100%"/>
@@ -38,6 +58,9 @@
 			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="0%"/>
 		</mx:State>
 		<mx:State name="Hilfe">
+			<mx:SetProperty target="{Navigation}" name="visible" value="true"/>
+			<mx:SetProperty target="{LoginView}" name="height" value="0%"/>
+			<mx:SetProperty target="{LoginView}" name="width" value="0%"/>
 			<mx:SetProperty target="{PortfolioView}" name="height" value="0%"/>
 			<mx:SetProperty target="{PortfolioView}" name="width" value="0%"/>
 			<mx:SetProperty target="{EinstellungenView}" name="height" value="0%"/>
@@ -55,15 +78,49 @@
 		}
 	</mx:Style>
 	<mx:Canvas id="FullApplication" backgroundImage="images/bg_raster.jpg" height="590" width="1000">
-		<mx:Canvas id="Navigation">
-			<mx:LinkButton id="lbPortfolios" x="254" y="19" label="Portfolios" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState=''"/>
+		<mx:Canvas id="Navigation" visible="false">
+			<mx:LinkButton id="lbPortfolios" x="254" y="19" label="Portfolios" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Portfolios'"/>
 			<mx:LinkButton id="lbBenutzerverwaltung" x="386.5" y="19" label="Benutzerverwaltung" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Benutzerverwaltung'"/>
 			<mx:LinkButton id="lbEinstellungen" x="598" y="19" label="Einstellungen" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Einstellungen'"/>
 			<mx:LinkButton id="lbHilfe" x="767" y="19" label="Hilfe" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Hilfe'"/>
 			<mx:LinkButton id="lbLogout" x="865" y="19" label="LogOut" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#ff0000" themeColor="#FF0000" alpha="1.0" click="userLogout('TODO_USER_SESSION')"/>
 		</mx:Canvas>
 		<mx:Canvas id="ApplikationBody" x="60" y="56" width="876" height="509">
-			<mx:Canvas id="PortfolioView" height="100%" width="100%">
+			<mx:Canvas id="LoginView" height="100%" width="100%">
+				<mx:Canvas id="LoginContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
+					<mx:Panel x="51" y="76" width="350" height="244" layout="absolute" title="User-Login" id="loginPanel" color="#00FF00">
+						<mx:Label x="10" y="10" text="Geben Sie hier ihre Benutzerdaten ein!" fontWeight="bold"/>
+						<mx:Label x="10" y="67" text="Benutzername: " fontWeight="bold" fontFamily="Arial" fontSize="14" color="#000000"/>
+						<mx:Label x="10" y="106" text="Passwort:" color="#000000" fontWeight="bold" fontSize="15" fontFamily="Arial"/>
+						<mx:TextInput x="133" y="68" width="187" id="benutzernameLogin" color="#000000"/>
+						<mx:TextInput x="133" y="108" width="187" displayAsPassword="true" id="passwortLogin" color="#000000"/>
+						<mx:Button x="133" y="160" label="Login" color="#000000" width="84" id="btnLogin" click="userLogin(benutzernameLogin.text, passwortLogin.text)"/>
+						<mx:Button x="225" y="160" label="Abbrechen" color="#000000" width="95" id="btnAbbruchLogin" click="userLoginAbort()"/>
+						<mx:Label id="loginFehler" x="10" y="36" text="" color="#FF0000" fontWeight="bold"/>
+					</mx:Panel>
+					<mx:Panel x="462" y="76" width="350" height="321" layout="absolute" title="Register" id="registerPanel" color="#FF0000">
+						<mx:Label x="10" y="10" text="Erstellen Sie sich hier einen neuen Account!" fontWeight="bold"/>
+						<mx:Label x="10" y="36" text="Organisation:" color="#000000"/>
+						<mx:Label x="10" y="62" text="Vorname: " color="#000000"/>
+						<mx:Label x="10" y="88" text="Nachname:" color="#000000"/>
+						<mx:Label x="10" y="114" text="Benutzername:" color="#000000"/>
+						<mx:Label x="10" y="140" text="E-Mail:" color="#000000"/>
+						<mx:Label x="10" y="166" text="Passwort:" color="#000000"/>
+						<mx:TextInput x="142" y="34" width="178" id="organisationRegister" color="#000000"/>
+						<mx:TextInput x="142" y="60" width="178" id="vornameRegister" color="#000000"/>
+						<mx:TextInput x="142" y="86" width="178" id="nachnameRegister" color="#000000"/>
+						<mx:TextInput x="142" y="112" width="178" id="benutzernameRegister" color="#000000"/>
+						<mx:TextInput x="142" y="138" width="178" id="emailRegister" color="#000000"/>
+						<mx:TextInput x="142" y="164" width="178" id="passwortRegister" displayAsPassword="true" color="#000000"/>
+						<mx:TextInput x="142" y="194" width="178" id="passwort2Register" displayAsPassword="true" color="#000000"/>
+						<mx:Label x="10" y="196" text="Passwort wiederholen:" color="#000000"/>
+						<mx:Button x="12" y="244" label="Account erstellen" color="#000000" id="btnRegister"/>
+						<mx:Button x="167" y="244" label="Felder zurücksetzen" width="153" color="#000000" id="btnAbbruchRegister"/>
+					</mx:Panel>
+					<mx:Label x="55" y="22" text="ProProject Portfolio Viewer || Loggen Sie sich ein oder registrieren Sie sich!" fontFamily="Arial" fontWeight="bold" fontSize="21"/>
+				</mx:Canvas>
+			</mx:Canvas>
+			<mx:Canvas id="PortfolioView" height="0%" width="0%">
 				<mx:Label id="lblDiagramm" x="0" y="10" text="Diagramm" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('diagramContent')"/>
 				<mx:Label id="lblListe" x="87" y="10" text="Liste" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('listContent')"/>
 				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent')"/>
