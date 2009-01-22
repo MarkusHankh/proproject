@@ -32,3 +32,19 @@ public function createUserAccount(vorname:String, nachname:String, benutzername:
 		}
 	}
 }
+
+public function clearNewUserFields():void{
+	vornameNeu.text = '';
+	nachnameNeu.text = '';
+	benutzernameNeu.text = '';
+	emailNeu.text = '';
+	passwortNeu.text = '';
+	passwort2Neu.text = '';
+	lblVornameNeu.setStyle('color', '#cccccc');
+	lblNachnameNeu.setStyle('color', '#cccccc');
+	lblBenutzernameNeu.setStyle('color', '#cccccc');
+	lblEmailNeu.setStyle('color', '#cccccc');
+	lblPasswortNeu.setStyle('color', '#cccccc');
+	lblPasswort2Neu.setStyle('color', '#cccccc');
+	
+}
