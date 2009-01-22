@@ -1,4 +1,5 @@
 import flash.net.SharedObject;
+import flash.net.URLRequest;
 
 public function userLogin(user:String, passwort:String):void{
 	if(user != '' && passwort != ''){
@@ -17,7 +18,9 @@ public function userLoginAbort():void{
 public function userLogout():void{
 	var session:SharedObject = SharedObject.getLocal("3PvSession");
 	session.clear();
-	this.currentState = '';
+	dia.removeAllChildren();
+	var myUrl:URLRequest = new URLRequest('MyProProject.html');
+    navigateToURL(myUrl, '_parent');
 }
 
 public function register(organisation:String, vorname:String, nachname:String, benutzername:String, email:String, passwort:String, passwort2:String):void{
