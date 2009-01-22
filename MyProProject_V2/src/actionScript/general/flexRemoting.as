@@ -1,3 +1,5 @@
+import flash.net.SharedObject;
+
 import mx.collections.ArrayCollection;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
@@ -18,8 +20,32 @@ private var dpPortfolioAttributes:ArrayCollection;
 [Bindable]
 private var dpMyProjects:ArrayCollection;
 
+[Bindable]
+private var dpUserSession:ArrayCollection;
+
 
 //Result Events - FlexRemoting
+public function userLoginResult(event:ResultEvent):void{
+	if(event.result){
+		var session:SharedObject = SharedObject.getLocal("3PvSession");
+		dpUserSession = new ArrayCollection(ArrayUtil.toArray(event.result));
+		session.data.userID = dpUserSession[0][0];
+		session.data.userPrename = dpUserSession[0][1];
+		session.data.userLastname = dpUserSession[0][2]
+		session.data.userMail = dpUserSession[0][3];
+		session.data.userGroup = dpUserSession[0][4];
+		session.data.userCompany = dpUserSession[0][5];
+		session.data.userLogin = dpUserSession[0][6];
+		session.data.userPass = dpUserSession[0][7];
+		session.flush();
+		doInit();
+		init();
+		this.currentState = 'Portfolios';
+	}else{
+		loginFehler.text = 'Ihre Angaben waren fehlerhaft!';
+	}
+}
+
 public function getUserResult(event:ResultEvent):void{
 	dpUser = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
