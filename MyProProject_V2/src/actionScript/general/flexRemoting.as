@@ -1,6 +1,7 @@
 import flash.net.SharedObject;
 
 import mx.collections.ArrayCollection;
+import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
 
@@ -25,6 +26,17 @@ private var dpUserSession:ArrayCollection;
 
 
 //Result Events - FlexRemoting
+public function registerResult(event:ResultEvent):void{
+	if(event.result){
+		var user:String = event.result[0];
+		var pass:String = event.result[1];
+		threepv_service.userLogin.send(user, pass);
+	}else{
+		Alert.show('Registrierung konnte nicht durchgeführt werden!');
+	}
+	
+}
+
 public function userLoginResult(event:ResultEvent):void{
 	if(event.result){
 		var session:SharedObject = SharedObject.getLocal("3PvSession");
@@ -40,6 +52,9 @@ public function userLoginResult(event:ResultEvent):void{
 		session.flush();
 		doInit();
 		init();
+		benutzernameLogin.text = '';
+		passwortLogin.text = '';
+		changeContent('diagramContent');
 		this.currentState = 'Portfolios';
 	}else{
 		loginFehler.text = 'Ihre Angaben waren fehlerhaft!';
@@ -58,12 +73,20 @@ public function addUserResult(event:ResultEvent):void{
 public function getMyPortfoliosResult(event:ResultEvent):void{
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
 	var length:int = event.result.length;
-	dpPortfolioSelector = new ArrayCollection();
-	for(var i:int = 0; i < length; i++){
-		dpPortfolioSelector.addItem(event.result[i][1]);
+	if(length > 0){
+		dpPortfolioSelector = new ArrayCollection();
+		for(var i:int = 0; i < length; i++){
+			dpPortfolioSelector.addItem(event.result[i][1]);
+		}
+		lblYAchse.text = dpPortfolio[0][6];
+		lblXAchse.text = dpPortfolio[0][7];
+	}else{
+		dpPortfolioSelector = new ArrayCollection();
+		dpPortfolioSelector.addItem('Keine Portfolios vorhanden...');
+		lblYAchse.text = 'Y-Achse';
+		lblXAchse.text = 'X-Achse';
 	}
-	lblYAchse.text = dpPortfolio[0][6];
-	lblXAchse.text = dpPortfolio[0][7];
+	
 }
 
 public function getAttributesResult(event:ResultEvent):void{
@@ -74,7 +97,6 @@ public function newProjectResult(event:ResultEvent):void{
 	
 }
 
-public function getMyProjectsResult(event:ResultEvent):void
-{
+public function getMyProjectsResult(event:ResultEvent):void{
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
