@@ -16,6 +16,7 @@
 		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
 		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
 		<mx:method name="addUser" result="addUserResult(event);"/>
+		<mx:method name="register" result="registerResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Portfolios">
@@ -83,7 +84,7 @@
 			<mx:LinkButton id="lbBenutzerverwaltung" x="386.5" y="19" label="Benutzerverwaltung" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Benutzerverwaltung'"/>
 			<mx:LinkButton id="lbEinstellungen" x="598" y="19" label="Einstellungen" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Einstellungen'"/>
 			<mx:LinkButton id="lbHilfe" x="767" y="19" label="Hilfe" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Hilfe'"/>
-			<mx:LinkButton id="lbLogout" x="865" y="19" label="LogOut" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#ff0000" themeColor="#FF0000" alpha="1.0" click="userLogout('TODO_USER_SESSION')"/>
+			<mx:LinkButton id="lbLogout" x="865" y="19" label="LogOut" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#ff0000" themeColor="#FF0000" alpha="1.0" click="userLogout()"/>
 		</mx:Canvas>
 		<mx:Canvas id="ApplikationBody" x="60" y="56" width="876" height="509">
 			<mx:Canvas id="LoginView" height="100%" width="100%">
@@ -100,12 +101,13 @@
 					</mx:Panel>
 					<mx:Panel x="462" y="76" width="350" height="321" layout="absolute" title="Register" id="registerPanel" color="#FF0000">
 						<mx:Label x="10" y="10" text="Erstellen Sie sich hier einen neuen Account!" fontWeight="bold"/>
-						<mx:Label x="10" y="36" text="Organisation:" color="#000000"/>
-						<mx:Label x="10" y="62" text="Vorname: " color="#000000"/>
-						<mx:Label x="10" y="88" text="Nachname:" color="#000000"/>
-						<mx:Label x="10" y="114" text="Benutzername:" color="#000000"/>
-						<mx:Label x="10" y="140" text="E-Mail:" color="#000000"/>
-						<mx:Label x="10" y="166" text="Passwort:" color="#000000"/>
+						<mx:Label x="10" y="36" text="Organisation:" color="#000000" id="lblOrganisationRegister"/>
+						<mx:Label x="10" y="62" text="Vorname: " color="#000000" id="lblVornameRegister"/>
+						<mx:Label x="10" y="88" text="Nachname:" color="#000000" id="lblNachnameRegister"/>
+						<mx:Label x="10" y="114" text="Benutzername:" color="#000000" id="lblBenutzernameRegister"/>
+						<mx:Label x="10" y="140" text="E-Mail:" color="#000000" id="lblEmailRegister"/>
+						<mx:Label x="10" y="166" text="Passwort:" color="#000000" id="lblPasswortRegister"/>
+						<mx:Label x="10" y="196" text="Passwort wiederholen:" color="#000000" id="lblPasswort2Register"/>
 						<mx:TextInput x="142" y="34" width="178" id="organisationRegister" color="#000000"/>
 						<mx:TextInput x="142" y="60" width="178" id="vornameRegister" color="#000000"/>
 						<mx:TextInput x="142" y="86" width="178" id="nachnameRegister" color="#000000"/>
@@ -113,8 +115,7 @@
 						<mx:TextInput x="142" y="138" width="178" id="emailRegister" color="#000000"/>
 						<mx:TextInput x="142" y="164" width="178" id="passwortRegister" displayAsPassword="true" color="#000000"/>
 						<mx:TextInput x="142" y="194" width="178" id="passwort2Register" displayAsPassword="true" color="#000000"/>
-						<mx:Label x="10" y="196" text="Passwort wiederholen:" color="#000000"/>
-						<mx:Button x="12" y="244" label="Account erstellen" color="#000000" id="btnRegister"/>
+						<mx:Button x="12" y="244" label="Account erstellen" color="#000000" id="btnRegister" click="register(organisationRegister.text, vornameRegister.text, nachnameRegister.text, benutzernameRegister.text, emailRegister.text, passwortRegister.text, passwort2Register.text)"/>
 						<mx:Button x="167" y="244" label="Felder zurücksetzen" width="153" color="#000000" id="btnAbbruchRegister"/>
 					</mx:Panel>
 					<mx:Label x="55" y="22" text="ProProject Portfolio Viewer || Loggen Sie sich ein oder registrieren Sie sich!" fontFamily="Arial" fontWeight="bold" fontSize="21"/>
