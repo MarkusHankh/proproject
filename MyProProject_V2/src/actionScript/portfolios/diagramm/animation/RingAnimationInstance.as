@@ -23,7 +23,7 @@ package actionScript.portfolios.diagramm.animation
 
         // Override onTweenUpdate() method.
         override public function onTweenUpdate(val:Object):void {
-        	trace(val);
+        	//trace(val);
             target.reFill(val);
         }
   
