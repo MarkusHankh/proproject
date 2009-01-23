@@ -48,3 +48,11 @@ public function clearNewUserFields():void{
 	lblPasswort2Neu.setStyle('color', '#cccccc');
 	
 }
+
+public function deleteUser(userID:String):void{
+	
+}
+
+public function editUser():void{
+	
+}
