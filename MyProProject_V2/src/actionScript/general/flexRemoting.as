@@ -101,7 +101,7 @@ public function getMyPortfoliosResult(event:ResultEvent):void{
 		{
 		for (var i:int=0; i<dpPortfolioSelector.length; i++)
 		{
-			if (dpPortfolio[i][1]==portfolioName)
+			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
 			{
 				portfolioID=dpPortfolio[i][0];
 			}
