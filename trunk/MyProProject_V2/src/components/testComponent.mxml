@@ -7,6 +7,6 @@
 		</mx:columns>
 	</mx:DataGrid>
 	<mx:Button x="29" y="361" label="Portfolio speichern!" width="148" id="btnPortfolioSpeichern"/>
-	<mx:Button x="217" y="361" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort"/>
+	<mx:Button x="217" y="361" width="25" id="btnPortfolioNeuAbort" icon="@Embed(source='images/delete.png')"/>
 	<mx:NumericStepper x="29" y="411" minimum="0" maximum="100000"/>
 </mx:Canvas>
