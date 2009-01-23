@@ -76,6 +76,10 @@ public function getMyPortfoliosResult(event:ResultEvent):void{
 	
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
 	arrayAldi = new ArrayCollection(ArrayUtil.toArray(event.result));
+	
+	getMyAldiResult(arrayAldi);
+	
+	
 	var length:int = event.result.length;
 	if(length > 0){
 		dpPortfolioSelector = new ArrayCollection();
@@ -101,7 +105,14 @@ public function newProjectResult(event:ResultEvent):void{
 	
 }
 
-public function getMyProjectsResult(event:ResultEvent):void{
+public function getMyProjectsResult(event:ResultEvent):void
+{
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
+}
+
+public function getMyAldiResult(array:ArrayCollection):ArrayCollection{
+	var test:ArrayCollection = array;
+	Alert.show(array.toString());
+	return test;
 }
 
