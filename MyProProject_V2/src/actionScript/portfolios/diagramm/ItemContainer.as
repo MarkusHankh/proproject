@@ -40,10 +40,10 @@ package actionScript.portfolios.diagramm
 			ring.reFill(progress);
 		}
 		public function getXValue():String {
-			return formatter.format((x/600)*100);
+			return formatter.format((x/820)*100);
 		}
 		public function getYValue():String {
-			return formatter.format(Math.abs(((y/400)*100)-100));
+			return formatter.format(Math.abs(((y/430)*100)-100));
 		}
 		
 	}
