@@ -46,7 +46,7 @@ package actionScript.portfolios.diagramm
 		public function addInfo(info:SimpleInfoData) {
 			infos.push(info);
 			info.x = x1+40;
-			trace(index);
+			//trace(index);
 			index++;
 			if(index == 1){
 					info.y = y1+60;	
