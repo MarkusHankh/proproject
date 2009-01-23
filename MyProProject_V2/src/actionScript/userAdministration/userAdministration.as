@@ -53,6 +53,6 @@ public function deleteUser(userID:String):void{
 	
 }
 
-public function editUser():void{
+public function editUser(userID:String):void{
 	
 }
