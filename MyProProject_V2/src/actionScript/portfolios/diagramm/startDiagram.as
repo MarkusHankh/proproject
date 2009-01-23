@@ -1,5 +1,5 @@
 import actionScript.portfolios.diagramm.*;
-
+import actionScript.portfolios.*;
 import mx.states.*;
 
 var interval;
