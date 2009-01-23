@@ -115,7 +115,7 @@ public function getMyPortfoliosResult(event:ResultEvent):void{
 		threepv_service.getMyProjects.send(portfolioID);
 		
 		//TODO: schleife, die bei jedem durchlauf die projektattribute in ein array speichert
-		threepv_service.getProjectAttributes(dpMyProjects[0][0]);
+		//threepv_service.getProjectAttributes(dpMyProjects[0][0]);
 }
 
 public function getAttributesResult(event:ResultEvent):void{
