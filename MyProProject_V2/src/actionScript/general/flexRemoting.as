@@ -24,6 +24,8 @@ private var dpMyProjects:ArrayCollection;
 [Bindable]
 private var dpUserSession:ArrayCollection;
 
+[Bindable]
+private var arrayAldi:ArrayCollection;
 
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
@@ -71,7 +73,9 @@ public function addUserResult(event:ResultEvent):void{
 }
 
 public function getMyPortfoliosResult(event:ResultEvent):void{
+	
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
+	arrayAldi = new ArrayCollection(ArrayUtil.toArray(event.result));
 	var length:int = event.result.length;
 	if(length > 0){
 		dpPortfolioSelector = new ArrayCollection();
@@ -100,3 +104,4 @@ public function newProjectResult(event:ResultEvent):void{
 public function getMyProjectsResult(event:ResultEvent):void{
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
+
