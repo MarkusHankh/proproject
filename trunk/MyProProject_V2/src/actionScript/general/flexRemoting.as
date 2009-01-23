@@ -75,9 +75,9 @@ public function addUserResult(event:ResultEvent):void{
 public function getMyPortfoliosResult(event:ResultEvent):void{
 	
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
-	arrayAldi = new ArrayCollection(ArrayUtil.toArray(event.result));
+	//arrayAldi = new ArrayCollection(ArrayUtil.toArray(event.result));
 	
-	getMyAldiResult(arrayAldi);
+	//getMyAldiResult(arrayAldi);
 	
 	
 	var length:int = event.result.length;
@@ -95,6 +95,27 @@ public function getMyPortfoliosResult(event:ResultEvent):void{
 		lblXAchse.text = 'X-Achse';
 	}
 	
+	var portfolioName:String = portfolioSelector.text;
+		var portfolioID:int;
+		if (dpPortfolio!=null)
+		{
+		for (var i:int=0; i<dpPortfolioSelector.length; i++)
+		{
+			if (dpPortfolio[i][1]==portfolioName)
+			{
+				portfolioID=dpPortfolio[i][0];
+			}
+		}
+		}
+		else
+		{
+			Alert.show("dpPortfolio ist null!");
+		}
+		threepv_service.getAttributes.send(portfolioID);
+		threepv_service.getMyProjects.send(portfolioID);
+		
+		//TODO: schleife, die bei jedem durchlauf die projektattribute in ein array speichert
+		threepv_service.getProjectAttributes(dpMyProjects[0][0]);
 }
 
 public function getAttributesResult(event:ResultEvent):void{
@@ -109,10 +130,10 @@ public function getMyProjectsResult(event:ResultEvent):void
 {
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
-
+/*
 public function getMyAldiResult(array:ArrayCollection):ArrayCollection{
 	var test:ArrayCollection = array;
 	Alert.show(array.toString());
 	return test;
 }
-
+*/
