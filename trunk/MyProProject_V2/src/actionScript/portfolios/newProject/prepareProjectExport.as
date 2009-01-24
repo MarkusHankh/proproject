@@ -10,7 +10,7 @@
 	}
 	var projektLeader:int = 1;
 	var userArray:Array = ArrayUtil.toArray(gridTeamNeu.dataProvider);
-	gridAttributeNeu;
-	//Alert.show(userArray[0]);
+	var attributArray:Array = ArrayUtil.toArray(gridAttributeNeu.dataProvider);
+	Alert.show(attributArray.toString());
 	//threepv_service.newProject.send();
 }
