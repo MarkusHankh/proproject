@@ -2,6 +2,7 @@ import flash.net.SharedObject;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
+import mx.messaging.management.Attribute;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
 
@@ -128,6 +129,7 @@ public function newProjectResult(event:ResultEvent):void{
 	changeContent('listContent');
 	var portfolioName:String = portfolioSelector.text;
 	var portfolioID:int;
+	var projektid:String = String(event.result);
 	if (dpPortfolio!=null)
 	{
 		for (var i:int=0; i<dpPortfolioSelector.length; i++)
@@ -142,13 +144,15 @@ public function newProjectResult(event:ResultEvent):void{
 	{
 		Alert.show("dpPortfolio ist null!");
 	}
-	var projektid:String = String(event.result);
+
 	for(var i:int = 0; i < gridTeamNeu.dataProvider.length; i++){
 		threepv_service.setBenutzerProjekt.send(gridTeamNeu.dataProvider[i][0], projektid);
 	}
 	//Eigenschaft 0 für String nicht gefunden Zeile 151
 	for(var i:int = 0; i < gridAttributeNeu.dataProvider.length; i++){
-		threepv_service.setProjectAttributes.send(projektid, gridAttributeNeu.dataProvider[i][0], gridAttributeNeu.dataProvider[i][5]);
+		var attributid:String = gridAttributeNeu.dataProvider[i][0];
+		var attributwert:String = gridAttributeNeu.dataProvider[i][5];
+		threepv_service.setProjectAttributes.send(projektid, attributid, attributwert);
 	}
 	
 	threepv_service.getAttributes.send(portfolioID);

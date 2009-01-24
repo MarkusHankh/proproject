@@ -23,6 +23,6 @@
 	}
 	
 	var projektLeader:int = session.data.userID;
-	//Alert.show(gridAttributeNeu.dataProvider[0][5]);
+	//Alert.show(gridTeamNeu.dataProvider[0][0]);
 	threepv_service.newProject.send(projektLeader, portfolioId, projektnameNeu.text, startdatumNeu.text, enddatumNeu.text, formNeu.text, formGroesseInt, xAchseNeu.value, yAchseNeu.value, fuellfarbeNeu.selectedColor.toString(16), rahmenfarbeNeu.selectedColor.toString(16), beschreibungNeu.text, ringfarbeInnenNeu.selectedColor.toString(16), ringfarbeAussenNeu.selectedColor.toString(16));
 }
