@@ -223,12 +223,14 @@
 							<mx:Label x="10" y="236" text="Projektmitglieder" fontSize="12" fontWeight="bold" fontFamily="Arial"/>
 							<mx:DataGrid id="gridTeamNeu" x="10" y="265" width="165" height="125" dragEnabled="true" dropEnabled="true" dragMoveEnabled="true" dragDrop="dragDropHandler(event)">
 								<mx:columns>
+									<mx:DataGridColumn headerText="BenutzerID" dataField="0" visible="false"/>
 									<mx:DataGridColumn headerText="Benutzer" dataField="1"/>
 								</mx:columns>
 							</mx:DataGrid>
 							<mx:Label x="225" y="236" text="Verfügbar" fontSize="12" fontWeight="bold" fontFamily="Arial"/>
 							<mx:DataGrid id="gridAllUsers" dataProvider="{dpUser}" x="225" y="265" width="165" height="125" dragEnabled="true" dropEnabled="true" dragMoveEnabled="true">
 								<mx:columns>
+									<mx:DataGridColumn headerText="BenutzerID" dataField="0" visible="false"/>
 									<mx:DataGridColumn headerText="Benutzer" dataField="1"/>
 								</mx:columns>
 							</mx:DataGrid>
