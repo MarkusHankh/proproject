@@ -175,7 +175,8 @@
 							<mx:Label id="lblFuellfarbeNeu" x="10" y="308" text="Füllfarbe"/>
 							<mx:Label id="lblRingfarbeInnenNeu" x="10" y="343" text="Ringfarbe innen"/>
 							<mx:Label id="lblRingfarbeAussenNeu" x="10" y="373" text="Ringfarbe außen"/>
-							<mx:TextInput id="projektnameNeu" x="137" y="8" backgroundColor="#FFFFFF" width="209"/>
+							<mx:TextInput id="projektnameNeu" x="137" y="8" backgroundColor="#FFFFFF" width="209"
+								text="{gridAttributeNeu.selectedItems[1].col3}"/>
 							<mx:TextArea x="137" y="35" height="125" width="209" id="beschreibungNeu"/>
 							<mx:DateField x="137" y="168" width="209" height="20" id="startdatumNeu" formatString="YYYY-MM-DD"/>
 							<mx:DateField x="137" y="198" width="209" height="20" id="enddatumNeu" formatString="YYYY-MM-DD"/>
@@ -230,7 +231,7 @@
 						</mx:Canvas>
 					</mx:HBox>
 					<mx:Button label="Projekt speichern" y="430" x="418" click="prepareProjectExport()"/>
-					<mx:Button label="Felder zurücksetzen" y="430" x="560"/>
+					<mx:Button label="Felder zurücksetzen" y="430" x="560" click="saveGridAttribute()"/>
 				</mx:Canvas>
 				<mx:Canvas id="portfolioNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ein weiteres Portfolio erstellen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
