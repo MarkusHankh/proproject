@@ -1,5 +1,6 @@
 
 	import mx.controls.Alert;
+	
 	public function prepareProjectExport():void{
 	var portfolioId:int;
 	var portfolioName:String = portfolioSelector.text;
@@ -14,3 +15,15 @@
 	Alert.show(attributArray.toString());
 	//threepv_service.newProject.send();
 }
+
+	public function saveGridAttribute():void{
+		var value:Array = [];
+		
+		for(var i:int = 0; i < gridAttributeNeu.rowCount; i++){
+			gridAttributeNeu.selectedIndex = i;
+			value.push(gridAttributeNeu.selectedItem.col3);
+			Alert.show(value[i].toString());
+		}
+	}
+
+
