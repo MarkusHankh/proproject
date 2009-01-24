@@ -19,6 +19,9 @@
 		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
 		<mx:method name="addUser" result="addUserResult(event);"/>
 		<mx:method name="register" result="registerResult(event);"/>
+		<mx:method name="setBenutzerProjekt"/>
+		<mx:method name="setProjectAttributes"/>
+		<mx:method name="test" result="testResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Portfolios">
@@ -168,19 +171,19 @@
 						<mx:Canvas width="400" height="400" alpha="1.0">
 							<mx:Label id="lblProjektnameNeu" x="10" y="12" text="Projektname"/>
 							<mx:Label id="lblBeschreibungNeu" x="10" y="36" text="Beschreibung"/>
-							<mx:Label id="lblStartdatumNeu" x="10" y="170" text="Startdatum"/>
-							<mx:Label id="lblEnddatumNeu" x="10" y="200" text="Enddatum"/>
-							<mx:Label id="lblFormNeu" x="10" y="230" text="Form"/>
-							<mx:Label id="lblFormgroesseNeu" x="10" y="268" text="Größe der Form"/>
-							<mx:Label id="lblFuellfarbeNeu" x="10" y="308" text="Füllfarbe"/>
-							<mx:Label id="lblRingfarbeInnenNeu" x="10" y="343" text="Ringfarbe innen"/>
+							<mx:Label id="lblStartdatumNeu" x="10" y="150" text="Startdatum"/>
+							<mx:Label id="lblEnddatumNeu" x="10" y="180" text="Enddatum"/>
+							<mx:Label id="lblFormNeu" x="10" y="210" text="Form"/>
+							<mx:Label id="lblFormgroesseNeu" x="10" y="248" text="Größe der Form"/>
+							<mx:Label id="lblFuellfarbeNeu" x="10" y="288" text="Füllfarbe"/>
+							<mx:Label id="lblRahmenfarbeNeu" x="10" y="328" text="Rahmenfarbe"/>
+							<mx:Label id="lblRingfarbeInnenNeu" x="10" y="353" text="Ringfarbe innen"/>
 							<mx:Label id="lblRingfarbeAussenNeu" x="10" y="373" text="Ringfarbe außen"/>
-							<mx:TextInput id="projektnameNeu" x="137" y="8" backgroundColor="#FFFFFF" width="209"
-								text="{gridAttributeNeu.selectedItems[1].col3}"/>
-							<mx:TextArea x="137" y="35" height="125" width="209" id="beschreibungNeu"/>
-							<mx:DateField x="137" y="168" width="209" height="20" id="startdatumNeu" formatString="YYYY-MM-DD"/>
-							<mx:DateField x="137" y="198" width="209" height="20" id="enddatumNeu" formatString="YYYY-MM-DD"/>
-							<mx:ComboBox x="137" y="228" width="209" id="formNeu">
+							<mx:TextInput id="projektnameNeu" x="137" y="8" backgroundColor="#FFFFFF" width="209"/>
+							<mx:TextArea x="137" y="35" height="90" width="209" id="beschreibungNeu"/>
+							<mx:DateField x="137" y="133" width="209" height="20" id="startdatumNeu" formatString="YYYY-MM-DD"/>
+							<mx:DateField x="137" y="163" width="209" height="20" id="enddatumNeu" formatString="YYYY-MM-DD"/>
+							<mx:ComboBox x="137" y="193" width="209" id="formNeu">
 								<mx:dataProvider>
 									<mx:Array>
 										<mx:Object label="Kreis"/>
@@ -189,7 +192,7 @@
 									</mx:Array>
 								</mx:dataProvider>
 							</mx:ComboBox>
-							<mx:ComboBox x="137" y="266" width="209" id="formgroesseNeu">
+							<mx:ComboBox x="137" y="231" width="209" id="formgroesseNeu">
 								<mx:dataProvider>
 									<mx:Array>
 										<mx:Object label="Klein"/>
@@ -198,9 +201,10 @@
 									</mx:Array>
 								</mx:dataProvider>
 							</mx:ComboBox>
-							<mx:ColorPicker x="137" y="304" width="209" id="fuellfarbeNeu"/>
-							<mx:ColorPicker x="137" y="339" width="209" id="ringfarbeInnenNeu"/>
-							<mx:ColorPicker x="137" y="369" width="209" id="ringfarbeAussenNeu"/>
+							<mx:ColorPicker x="137" y="269" width="209" id="fuellfarbeNeu"/>
+							<mx:ColorPicker x="137" y="299" width="209" id="rahmenfarbeNeu"/>
+							<mx:ColorPicker x="137" y="334" width="209" id="ringfarbeInnenNeu"/>
+							<mx:ColorPicker x="137" y="364" width="209" id="ringfarbeAussenNeu"/>
 						</mx:Canvas>
 						<mx:Canvas width="400" height="400">
 							<mx:Label x="10" y="10" text="Position im Diagramm" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
@@ -231,7 +235,7 @@
 						</mx:Canvas>
 					</mx:HBox>
 					<mx:Button label="Projekt speichern" y="430" x="418" click="prepareProjectExport()"/>
-					<mx:Button label="Felder zurücksetzen" y="430" x="560" click="saveGridAttribute()"/>
+					<mx:Button label="Felder zurücksetzen" y="430" x="560"/>
 				</mx:Canvas>
 				<mx:Canvas id="portfolioNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ein weiteres Portfolio erstellen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
@@ -268,7 +272,38 @@
 					</mx:HBox>
 				</mx:Canvas>
 				<mx:Canvas id="portfolioBearbeitenContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
-					<mx:Text text="Hallo Portfolio Bearbeiten"/>
+					<mx:Label text="Hier können Sie ein bestehendes Portfolio bearbeiten!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
+					<mx:HBox y="30">
+						<mx:Canvas width="400" height="400">
+							<mx:Label x="10" y="12" text="Portfolioname:" id="lblPortfolionameEdit"/>
+							<mx:Label x="10" y="41" text="Beschreibung:" id="lblPortfolioBeschreibungEdit"/>
+							<mx:Label x="10" y="175" text="Name X-Achse:" id="lblNameXAchseEdit"/>
+							<mx:Label x="10" y="205" text="Name Y-Achse:" id="lblNameYAchseEdit"/>
+							<mx:Label x="10" y="252" text="Kleinster X-Wert:" id="lblKleinsterXWertEdit"/>
+							<mx:Label x="8" y="282" text="Größter X-Wert:" id="lblGroessterXWertEdit"/>
+							<mx:Label x="10" y="312" text="Kleinster Y-Wert:" id="lblKleinsterYWertEdit"/>
+							<mx:Label x="10" y="342" text="Größter Y-Wert:" id="lblGroessterYWertEdit"/>
+							<mx:TextInput x="155" y="10" width="210" id="portfolionameEdit"/>
+							<mx:TextArea x="155" y="40" height="125" width="210" id="portfolioBeschreibungEdit"/>
+							<mx:TextInput x="155" y="173" width="210" id="nameXAchseEdit"/>
+							<mx:TextInput x="155" y="203" width="210" id="nameYAchseEdit"/>
+							<mx:NumericStepper x="155" y="250" width="210" id="kleinsterXWertEdit"/>
+							<mx:NumericStepper x="155" y="280" width="210" id="groessterXWertEdit"/>
+							<mx:NumericStepper x="155" y="310" width="210" id="kleinsterYWertEdit"/>
+							<mx:NumericStepper x="155" y="340" width="210" id="groessterYWertEdit"/>
+						</mx:Canvas>
+						<mx:Canvas width="400" height="400">
+							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
+							<mx:AdvancedDataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeEdit" editable="true">
+								<mx:columns>
+									<mx:AdvancedDataGridColumn headerText="Attribut" dataField="1" editable="true"/>
+									<mx:AdvancedDataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
+								</mx:columns>
+							</mx:AdvancedDataGrid>
+							<mx:Button x="29" y="340" label="Portfolio ändern!" width="148" id="btnPortfolioEdit"/>
+							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort"/>
+						</mx:Canvas>
+					</mx:HBox>
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="BenutzerverwaltungView" height="0%" width="0%">

@@ -9,21 +9,20 @@
 			portfolioId = dpPortfolio[i][0];
 		}
 	}
-	var projektLeader:int = 1;
-	var userArray:Array = ArrayUtil.toArray(gridTeamNeu.dataProvider);
-	var attributArray:Array = ArrayUtil.toArray(gridAttributeNeu.dataProvider);
-	Alert.show(attributArray.toString());
-	//threepv_service.newProject.send();
-}
-
-	public function saveGridAttribute():void{
-		var value:Array = [];
-		
-		for(var i:int = 0; i < gridAttributeNeu.rowCount; i++){
-			gridAttributeNeu.selectedIndex = i;
-			value.push(gridAttributeNeu.selectedItem.col3);
-			Alert.show(value[i].toString());
-		}
+	var formGroesseInt:int;
+	switch(formgroesseNeu.text){
+		case 'Klein':
+			formGroesseInt = 1;
+			break;
+		case 'Mittel':
+			formGroesseInt = 2;
+			break;
+		case 'Groß':
+			formGroesseInt = 3;
+			break;
 	}
-
-
+	
+	var projektLeader:int = session.data.userID;
+	//Alert.show(gridAttributeNeu.dataProvider[0][5]);
+	threepv_service.newProject.send(projektLeader, portfolioId, projektnameNeu.text, startdatumNeu.text, enddatumNeu.text, formNeu.text, formGroesseInt, xAchseNeu.value, yAchseNeu.value, fuellfarbeNeu.selectedColor.toString(16), rahmenfarbeNeu.selectedColor.toString(16), beschreibungNeu.text, ringfarbeInnenNeu.selectedColor.toString(16), ringfarbeAussenNeu.selectedColor.toString(16));
+}
