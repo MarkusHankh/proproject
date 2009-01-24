@@ -1,4 +1,6 @@
-public function createUserAccount(vorname:String, nachname:String, benutzername:String, email:String, passwort:String, passwort2:String):void{
+
+	import mx.controls.Alert;
+	public function createUserAccount(vorname:String, nachname:String, benutzername:String, email:String, passwort:String, passwort2:String):void{
 	if(vorname != '' && nachname != '' && benutzername != '' && email != '' && passwort != '' && passwort2 != '' && passwort == passwort2){
 		var companyID:String = '1';
 		threepv_service.addUser.send(vorname, nachname, benutzername, email, passwort, companyID);
@@ -49,10 +51,12 @@ public function clearNewUserFields():void{
 	
 }
 
-public function deleteUser(userID:String):void{
-	
+public function deleteUser():void{
+	threepv_service.deleteUser.send(gridShowAllUsers.selectedItem[0]);
+	threepv_service.getUser.send(session.data.userCompany);
+	changeContent('alleBenutzerContent');
 }
 
-public function editUser(userID:String):void{
+public function editUser():void{
 	
 }
