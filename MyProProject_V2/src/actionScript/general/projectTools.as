@@ -16,7 +16,7 @@ public function refreshAll(portfolio:String):void{
 			Alert.show("dpPortfolio ist null!");
 		}
 		threepv_service.getAttributes.send(portfolioID);
-		threepv_service.getMyProjects.send(portfolioID);
+		threepv_service.getMyProjects.send(session.data.userID, portfolioID);
 		//TODO Diagramm neu laden
 		dia.removeAllChildren();
 }
