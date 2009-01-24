@@ -210,8 +210,8 @@
 							<mx:Label x="10" y="10" text="Position im Diagramm" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
 							<mx:Label x="10" y="39" text="X-Achse"/>
 							<mx:Label x="10" y="65" text="Y-Achse"/>
-							<mx:HSlider x="120" y="45" width="270" id="xAchseNeu" allowTrackClick="true"/>
-							<mx:HSlider x="120" y="71" width="270" id="yAchseNeu" allowTrackClick="true"/>
+							<mx:HSlider x="120" y="45" width="270" id="xAchseNeu" allowTrackClick="true" minimum="0" maximum="100" snapInterval="1"/>
+							<mx:HSlider x="120" y="71" width="270" id="yAchseNeu" allowTrackClick="true" minimum="0" maximum="100" snapInterval="1"/>
 							<mx:Label x="10" y="91" text="Portfoliospezifische Attribute" fontWeight="bold" fontSize="12" fontFamily="Arial"/>
 							<mx:DataGrid dataProvider="{dpPortfolioAttributes}" x="10" y="120" width="380" height="108" id="gridAttributeNeu" editable="true">
 								<mx:columns>
@@ -253,10 +253,10 @@
 							<mx:TextArea x="155" y="40" height="125" width="210" id="portfolioBeschreibungNeu"/>
 							<mx:TextInput x="155" y="173" width="210" id="nameXAchseNeu"/>
 							<mx:TextInput x="155" y="203" width="210" id="nameYAchseNeu"/>
-							<mx:NumericStepper x="155" y="250" width="210" id="kleinsterXWertNeu"/>
-							<mx:NumericStepper x="155" y="280" width="210" id="groessterXWertNeu"/>
-							<mx:NumericStepper x="155" y="310" width="210" id="kleinsterYWertNeu"/>
-							<mx:NumericStepper x="155" y="340" width="210" id="groessterYWertNeu"/>
+							<mx:NumericStepper x="155" y="250" width="210" id="kleinsterXWertNeu" minimum="0" maximum="9999999"/>
+							<mx:NumericStepper x="155" y="280" width="210" id="groessterXWertNeu"  minimum="0" maximum="9999999"/>
+							<mx:NumericStepper x="155" y="310" width="210" id="kleinsterYWertNeu"  minimum="0" maximum="9999999"/>
+							<mx:NumericStepper x="155" y="340" width="210" id="groessterYWertNeu"  minimum="0" maximum="9999999"/>
 						</mx:Canvas>
 						<mx:Canvas width="400" height="400">
 							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
