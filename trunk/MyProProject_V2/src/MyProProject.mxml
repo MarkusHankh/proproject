@@ -21,6 +21,7 @@
 		<mx:method name="register" result="registerResult(event);"/>
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
+		<mx:method name="deleteProject"/>
 		<mx:method name="test" result="testResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
@@ -93,6 +94,9 @@
 		</mx:Canvas>
 		<mx:Canvas id="ApplikationBody" x="60" y="56" width="876" height="509">
 			<mx:Canvas id="LoginView" height="100%" width="100%">
+			<!--
+			Login Seite
+			-->
 				<mx:Canvas id="LoginContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
 					<mx:Panel x="51" y="76" width="350" height="244" layout="absolute" title="User-Login" id="loginPanel" color="#00FF00">
 						<mx:Label x="10" y="10" text="Geben Sie hier ihre Benutzerdaten ein!" fontWeight="bold"/>
@@ -133,6 +137,9 @@
 				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>
 				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent')"/>
 				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" change="refreshAll(portfolioSelector.text)"/>
+				<!--
+				Diagrammansicht
+				-->
 				<mx:Canvas id="diagramContent" x="4" y="42" width="870" height="463">
 					<mx:Canvas id="diagramWrapper" x="35" y="6" width="820" height="430">
 						<mx:Label id="lblYAchse" text="Y-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF" x="10" y="0"/>
@@ -140,6 +147,9 @@
 						<mx:Label id="lblXAchse" x="710" y="409" text="X-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF"/>
 					</mx:Canvas>
 				</mx:Canvas>
+				<!--
+				Listenansicht
+				-->
 				<mx:Canvas id="listContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
 						<mx:AdvancedDataGrid id="gridProjectListView" dataProvider="{dpMyProjects}" width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#222222" color="#999999">
@@ -148,7 +158,18 @@
 								<mx:AdvancedDataGridColumn headerText="Beschreibung" dataField="12"/>
 								<mx:AdvancedDataGridColumn headerText="Start" dataField="2"/>
 								<mx:AdvancedDataGridColumn headerText="Ende" dataField="3"/>
-								<mx:AdvancedDataGridColumn headerText="Attribute"/>
+								<mx:AdvancedDataGridColumn headerText="Attribute">
+									 <mx:itemRenderer>
+						                  <mx:Component>
+						                    <mx:Canvas>
+						                    	 <mx:Tree id="attributeTree"
+										               dataProvider="myProProject.dpPortfolioAttributes"
+										               showRoot="false"
+										               labelField="@label"/>
+						                    </mx:Canvas>
+						                  </mx:Component>
+						                </mx:itemRenderer>
+								</mx:AdvancedDataGridColumn>
 								<mx:AdvancedDataGridColumn headerText="Optionen">
 									<mx:itemRenderer>
 										<mx:Component>
@@ -165,6 +186,9 @@
 						</mx:AdvancedDataGrid>
 					</mx:HBox>
 				</mx:Canvas>
+				<!--
+				Neues Projekt erstellen
+				-->
 				<mx:Canvas id="projektNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ihrem Portfolio neue Projekte hinzufügen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:HBox y="30">
@@ -239,6 +263,9 @@
 					<mx:Button label="Projekt speichern" y="430" x="418" click="prepareProjectExport()"/>
 					<mx:Button label="Felder zurücksetzen" y="430" x="560"/>
 				</mx:Canvas>
+				<!--
+				Neues Portfolio erstellen
+				-->
 				<mx:Canvas id="portfolioNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ein weiteres Portfolio erstellen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:HBox y="30">
@@ -273,6 +300,9 @@
 						</mx:Canvas>
 					</mx:HBox>
 				</mx:Canvas>
+				<!--
+				Portfolio bearbeiten
+				-->
 				<mx:Canvas id="portfolioBearbeitenContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie ein bestehendes Portfolio bearbeiten!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:HBox y="30">
@@ -311,6 +341,9 @@
 			<mx:Canvas id="BenutzerverwaltungView" height="0%" width="0%">
 				<mx:Label id="lblAlleBenutzer" x="0" y="10" text="Alle Benutzer anzeigen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('alleBenutzerContent')"/>
 				<mx:Label id="lblBenutzerNeu" x="147" y="10" text="Neue Benutzer anlegen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('benutzerNeuContent')"/>
+				<!--
+				Alle Benutzer anzeigen
+				-->
 				<mx:Canvas id="alleBenutzerContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
 					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
 						<mx:DataGrid id="gridShowAllUsers" dataProvider="{dpUser}" width="100%" height="100%" backgroundAlpha="0.05" rollOverEffect="none" borderStyle="none" headerColors="#222222" color="#999999">
@@ -336,6 +369,9 @@
 						</mx:DataGrid>
 					</mx:HBox>
 				</mx:Canvas>
+				<!--
+				Neuen Benutzer erstellen
+				-->
 				<mx:Canvas id="benutzerNeuContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Hier können Sie neue Benutzer anlegen, bearbeiten und löschen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:Label x="27.5" y="61" text="Vorname:" fontSize="12" fontFamily="Arial" id="lblVornameNeu"/>

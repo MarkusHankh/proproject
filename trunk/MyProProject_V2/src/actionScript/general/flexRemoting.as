@@ -1,10 +1,11 @@
 import flash.net.SharedObject;
+import flash.xml.XMLDocument;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
-import mx.messaging.management.Attribute;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
+import mx.utils.XMLUtil;
 
 [Bindable]
 public var session:SharedObject = SharedObject.getLocal("3PvSession");
@@ -21,6 +22,9 @@ private var dpPortfolio:ArrayCollection;
 
 [Bindable]
 private var dpPortfolioAttributes:ArrayCollection;
+
+[Bindable]
+public var dpProjectAttributes:XMLDocument;
 
 [Bindable]
 private var dpMyProjects:ArrayCollection;
@@ -111,13 +115,11 @@ public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 		Alert.show("dpPortfolio ist null!");
 	}
 	threepv_service.getAttributes.send(portfolioID);
-	threepv_service.getMyProjects.send(portfolioID);
+	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
 	
 	setAttrb(dpPortfolio);
 	
 	return dpPortfolio;
-	//TODO: schleife, die bei jedem durchlauf die projektattribute in ein array speichert
-	//threepv_service.getProjectAttributes(dpMyProjects[0][0]);
 }
 
 public function getAttributesResult(event:ResultEvent):void{
@@ -150,21 +152,41 @@ public function newProjectResult(event:ResultEvent):void{
 	}
 	//Eigenschaft 0 für String nicht gefunden Zeile 151
 	for(var i:int = 0; i < gridAttributeNeu.dataProvider.length; i++){
-		var attributid:String = gridAttributeNeu.dataProvider[i][0];
+		var attributid:int = gridAttributeNeu.dataProvider[i][0].valueOf();
 		var attributwert:String = gridAttributeNeu.dataProvider[i][5];
 		threepv_service.setProjectAttributes.send(projektid, attributid, attributwert);
 	}
 	
 	threepv_service.getAttributes.send(portfolioID);
-	threepv_service.getMyProjects.send(portfolioID);
-	
+	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
+	changeContent('listContent');
 	setAttrb(dpPortfolio);
-	threepv_service.getMyProjects.send(portfolioID);
 }
 
 public function getMyProjectsResult(event:ResultEvent):void
 {
-	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
+	var temp:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
+	//Alert.show(temp.length.toString());
+	for(var i:int = 0; i < temp.length; i++){
+		for(var j:int = 0; j < 14; j++){
+			dpMyProjects.addItem(temp[i][j]);
+		}
+	}
+	var tempXml:String = '<root>';
+	tempXml += '<node label="Attribute">';
+	tempXml += '<node label="Standard">';
+	for(var i:int = 0; i < temp[14][0].length; i++){
+		tempXml += '<node label="'+temp[14][0][i]+'" />';
+	}
+	tempXml += '</node>';
+	tempXml += '<node label="Spezial">';
+	for(var i:int = 0; i < temp[15]; i++){
+		tempXml += '<node label="'+temp[15][i][1]+' = '+temp[15][i][2]+'" />';
+	}
+	tempXml += '</node>';
+	tempXml += '</node>';
+	tempXml += '</root>';
+	dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
 }
 
 public function testResult(event:ResultEvent):void{
