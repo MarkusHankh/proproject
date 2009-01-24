@@ -72,7 +72,7 @@ public function addUserResult(event:ResultEvent):void{
 	changeContent('alleBenutzerContent');
 }
 
-public function getMyPortfoliosResult(event:ResultEvent):void{
+public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 	
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
 	//arrayAldi = new ArrayCollection(ArrayUtil.toArray(event.result));
@@ -114,6 +114,9 @@ public function getMyPortfoliosResult(event:ResultEvent):void{
 		threepv_service.getAttributes.send(portfolioID);
 		threepv_service.getMyProjects.send(portfolioID);
 		
+		setAttrb(dpPortfolio);
+		
+		return dpPortfolio;
 		//TODO: schleife, die bei jedem durchlauf die projektattribute in ein array speichert
 		//threepv_service.getProjectAttributes(dpMyProjects[0][0]);
 }
