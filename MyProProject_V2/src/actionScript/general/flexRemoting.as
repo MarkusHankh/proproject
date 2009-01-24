@@ -5,6 +5,8 @@ import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
 
+public var session:SharedObject = SharedObject.getLocal("3PvSession");
+
 //Variablen vom Backend
 [Bindable]
 private var dpUser:ArrayCollection;
@@ -41,7 +43,6 @@ public function registerResult(event:ResultEvent):void{
 
 public function userLoginResult(event:ResultEvent):void{
 	if(event.result){
-		var session:SharedObject = SharedObject.getLocal("3PvSession");
 		dpUserSession = new ArrayCollection(ArrayUtil.toArray(event.result));
 		session.data.userID = dpUserSession[0][0];
 		session.data.userPrename = dpUserSession[0][1];
@@ -68,17 +69,13 @@ public function getUserResult(event:ResultEvent):void{
 }
 
 public function addUserResult(event:ResultEvent):void{
-	threepv_service.getUser.send(1);
+	threepv_service.getUser.send(session.data.userCompany);
 	changeContent('alleBenutzerContent');
 }
 
 public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 	
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
-	//arrayAldi = new ArrayCollection(ArrayUtil.toArray(event.result));
-	
-	//getMyAldiResult(arrayAldi);
-	
 	
 	var length:int = event.result.length;
 	if(length > 0){
@@ -123,6 +120,7 @@ public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 
 public function getAttributesResult(event:ResultEvent):void{
 	dpPortfolioAttributes = new ArrayCollection(ArrayUtil.toArray(event.result));
+	dpPortfolioAttributes.addItem('');
 }
 
 public function newProjectResult(event:ResultEvent):void{
@@ -133,10 +131,3 @@ public function getMyProjectsResult(event:ResultEvent):void
 {
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
-/*
-public function getMyAldiResult(array:ArrayCollection):ArrayCollection{
-	var test:ArrayCollection = array;
-	Alert.show(array.toString());
-	return test;
-}
-*/

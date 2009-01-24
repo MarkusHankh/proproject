@@ -1,15 +1,15 @@
-public function newProject(projectid:String)
+public function newProject(projectid:String):void
 {
 			
 }
 		
-public function editProject(projectid:String)
+public function editProject():void
 {
 			
 			
 }
 		
-public function deleteProject(projectid:String)
+public function deleteProject():void
 {
 			
 }
