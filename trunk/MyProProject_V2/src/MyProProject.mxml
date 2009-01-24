@@ -287,8 +287,8 @@
 										<mx:Component>
 											<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
 												<mx:Canvas>
-													<mx:Button width="17" height="17" icon="@Embed(source='images/delete.png')" click="outerDocument.deleteUser('3')"/>
-													<mx:Button x="20" width="17" height="17" icon="@Embed(source='images/edit.png')" click="outerDocument.editUser('3')"/>
+													<mx:Button width="17" height="17" icon="@Embed(source='images/delete.png')" click="outerDocument.deleteUser()"/>
+													<mx:Button x="20" width="17" height="17" icon="@Embed(source='images/edit.png')" click="outerDocument.editUser()"/>
 												</mx:Canvas>
 											</mx:Box>
 										</mx:Component>
