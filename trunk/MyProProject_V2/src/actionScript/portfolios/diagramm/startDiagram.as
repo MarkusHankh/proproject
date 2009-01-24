@@ -1,11 +1,62 @@
-import actionScript.portfolios.diagramm.*;
 import actionScript.portfolios.*;
+import actionScript.portfolios.diagramm.*;
+
+import mx.collections.ArrayCollection;
+import mx.rpc.AbstractOperation;
+import mx.rpc.AsyncToken;
 import mx.states.*;
 
 var interval;
+var token:AsyncToken
+var pros:ArrayCollection = new ArrayCollection();
 function doInit() {
-	interval = setInterval(addSampleCharts,2000);
+	interval = setInterval(addCharts,2000);
+	var session:SharedObject = SharedObject.getLocal("3PvSession");
+	var ao:AbstractOperation = threepv_service.getOperation("getMyPortfolios");
+	token  = ao.send(1);
+	addCharts();
 }
+
+function addCharts():void {
+	clearInterval(interval);
+	if(dpPortfolio != null && dpPortfolio.length > 0) {
+		for(var i = 0; i< dpPortfolio.length; i++){
+			trace(i);
+		}
+	}
+	
+}
+
+function setAttrb(attr:ArrayCollection):void {
+	//trace("attr "+dpPortfolio.length+"-"+attr);
+	
+	//TODO: Bitte folgende Attribute in der DB hizufügen
+	// Prozetntsatz für die Erfüllung der Ringe
+	// Form als int
+	//... 
+	
+	if(dpPortfolio != null && dpPortfolio.length > 0) {
+		for(var i = 0; i< dpPortfolio.length; i++){
+			trace(i);
+			var temp:ItemContainer = new ItemContainer();
+			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
+			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
+			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
+			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
+			pros.addItem(temp);
+			dia.addChild(temp);
+		}
+	}
+}
+
+
+function shiftOntoTheDia(){
+	for(var i = 0; i< pros.length; i++){
+		
+	}
+}
+
+
 var item1:ItemContainer;
 var item2:ItemContainer;
 var item3:ItemContainer;
