@@ -166,6 +166,7 @@ public function newProjectResult(event:ResultEvent):void{
 public function getMyProjectsResult(event:ResultEvent):void
 {
 	var temp:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
+	dpMyProjects = new ArrayCollection();
 	//Alert.show(temp.length.toString());
 	for(var i:int = 0; i < temp.length; i++){
 		for(var j:int = 0; j < 14; j++){
@@ -175,13 +176,17 @@ public function getMyProjectsResult(event:ResultEvent):void
 	var tempXml:String = '<root>';
 	tempXml += '<node label="Attribute">';
 	tempXml += '<node label="Standard">';
-	for(var i:int = 0; i < temp[14][0].length; i++){
-		tempXml += '<node label="'+temp[14][0][i]+'" />';
+	for(var i:int = 0; i < temp.length; i++){
+		for(var j:int = 0; j < temp[i][14][0].length; j++){
+			tempXml += '<node label="'+temp[i][14][0][j]+'" />';
+		}
 	}
 	tempXml += '</node>';
 	tempXml += '<node label="Spezial">';
-	for(var i:int = 0; i < temp[15]; i++){
-		tempXml += '<node label="'+temp[15][i][1]+' = '+temp[15][i][2]+'" />';
+	for(var i:int = 0; i < temp.length; i++){
+		for(var j:int = 0; j < temp[i][15][0]; j++){
+			tempXml += '<node label="'+temp[i][15][j][1]+' = '+temp[i][15][j][2]+'" />';
+		}
 	}
 	tempXml += '</node>';
 	tempXml += '</node>';
