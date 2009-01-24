@@ -5,6 +5,7 @@ import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
 
+[Bindable]
 public var session:SharedObject = SharedObject.getLocal("3PvSession");
 
 //Variablen vom Backend
@@ -93,29 +94,29 @@ public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 	}
 	
 	var portfolioName:String = portfolioSelector.text;
-		var portfolioID:int;
-		if (dpPortfolio!=null)
+	var portfolioID:int;
+	if (dpPortfolio!=null)
+	{
+	for (var i:int=0; i<dpPortfolioSelector.length; i++)
+	{
+		if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
 		{
-		for (var i:int=0; i<dpPortfolioSelector.length; i++)
-		{
-			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
-			{
-				portfolioID=dpPortfolio[i][0];
-			}
+			portfolioID=dpPortfolio[i][0];
 		}
-		}
-		else
-		{
-			Alert.show("dpPortfolio ist null!");
-		}
-		threepv_service.getAttributes.send(portfolioID);
-		threepv_service.getMyProjects.send(portfolioID);
-		
-		setAttrb(dpPortfolio);
-		
-		return dpPortfolio;
-		//TODO: schleife, die bei jedem durchlauf die projektattribute in ein array speichert
-		//threepv_service.getProjectAttributes(dpMyProjects[0][0]);
+	}
+	}
+	else
+	{
+		Alert.show("dpPortfolio ist null!");
+	}
+	threepv_service.getAttributes.send(portfolioID);
+	threepv_service.getMyProjects.send(portfolioID);
+	
+	setAttrb(dpPortfolio);
+	
+	return dpPortfolio;
+	//TODO: schleife, die bei jedem durchlauf die projektattribute in ein array speichert
+	//threepv_service.getProjectAttributes(dpMyProjects[0][0]);
 }
 
 public function getAttributesResult(event:ResultEvent):void{
@@ -124,10 +125,44 @@ public function getAttributesResult(event:ResultEvent):void{
 }
 
 public function newProjectResult(event:ResultEvent):void{
+	changeContent('listContent');
+	var portfolioName:String = portfolioSelector.text;
+	var portfolioID:int;
+	if (dpPortfolio!=null)
+	{
+		for (var i:int=0; i<dpPortfolioSelector.length; i++)
+		{
+			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
+			{
+				portfolioID=dpPortfolio[i][0];
+			}
+		}
+	}
+	else
+	{
+		Alert.show("dpPortfolio ist null!");
+	}
+	var projektid:String = String(event.result);
+	for(var i:int = 0; i < gridTeamNeu.dataProvider.length; i++){
+		threepv_service.setBenutzerProjekt.send(gridTeamNeu.dataProvider[i][0], projektid);
+	}
+	//Eigenschaft 0 für String nicht gefunden Zeile 151
+	for(var i:int = 0; i < gridAttributeNeu.dataProvider.length; i++){
+		threepv_service.setProjectAttributes.send(projektid, gridAttributeNeu.dataProvider[i][0], gridAttributeNeu.dataProvider[i][5]);
+	}
 	
+	threepv_service.getAttributes.send(portfolioID);
+	threepv_service.getMyProjects.send(portfolioID);
+	
+	setAttrb(dpPortfolio);
+	threepv_service.getMyProjects.send(portfolioID);
 }
 
 public function getMyProjectsResult(event:ResultEvent):void
 {
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
+}
+
+public function testResult(event:ResultEvent):void{
+	Alert.show(event.result.toString());
 }
