@@ -192,6 +192,7 @@ public function getMyProjectsResult(event:ResultEvent):void
 	tempXml += '</node>';
 	tempXml += '</root>';
 	dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
+	projectAttributes(temp);
 }
 
 public function testResult(event:ResultEvent):void{
