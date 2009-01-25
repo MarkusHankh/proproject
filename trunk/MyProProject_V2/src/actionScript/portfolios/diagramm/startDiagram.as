@@ -2,6 +2,7 @@ import actionScript.portfolios.*;
 import actionScript.portfolios.diagramm.*;
 
 import mx.collections.ArrayCollection;
+import mx.controls.Alert;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.states.*;
@@ -25,6 +26,10 @@ function addCharts():void {
 		}
 	}
 	
+}
+
+function projectAttributes(attr:ArrayCollection):void{
+	Alert.show(attr.toString());
 }
 
 function setAttrb(attr:ArrayCollection):void {
