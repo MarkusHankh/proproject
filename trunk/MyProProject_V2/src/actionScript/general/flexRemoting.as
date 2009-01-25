@@ -195,6 +195,6 @@ public function getMyProjectsResult(event:ResultEvent):void
 	projectAttributes(temp);
 }
 
-public function testResult(event:ResultEvent):void{
-	Alert.show(event.result.toString());
-}
+//public function testResult(event:ResultEvent):void{
+//	Alert.show(event.result.toString());
+//}

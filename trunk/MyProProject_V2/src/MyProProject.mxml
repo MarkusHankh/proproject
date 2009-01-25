@@ -22,7 +22,6 @@
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
 		<mx:method name="deleteProject"/>
-		<mx:method name="test" result="testResult(event);"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Portfolios">
