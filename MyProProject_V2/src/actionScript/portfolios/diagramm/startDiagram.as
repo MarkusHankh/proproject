@@ -25,11 +25,10 @@ function addCharts():void {
 			trace(i);
 		}
 	}
-	
 }
 
 function projectAttributes(attr:ArrayCollection):void{
-	Alert.show(attr.toString());
+	//Alert.show(attr.toString());
 }
 
 function setAttrb(attr:ArrayCollection):void {
