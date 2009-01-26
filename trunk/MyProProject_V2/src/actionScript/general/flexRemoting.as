@@ -1,5 +1,4 @@
 import flash.net.SharedObject;
-import flash.xml.XMLDocument;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
@@ -24,16 +23,19 @@ private var dpPortfolio:ArrayCollection;
 private var dpPortfolioAttributes:ArrayCollection;
 
 [Bindable]
-public var dpProjectAttributes:XMLDocument;
+private var dpMyProjects:ArrayCollection;
 
 [Bindable]
-private var dpMyProjects:ArrayCollection;
+private var dpMyAttribute:ArrayCollection;
 
 [Bindable]
 private var dpUserSession:ArrayCollection;
 
 [Bindable]
 private var dpDefaultAttributeVisualisations:ArrayCollection;
+
+[Bindable]
+private var dgSpezifischeAttribute:ArrayCollection;
 
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
@@ -167,18 +169,28 @@ public function getMyProjectsResult(event:ResultEvent):void
 {
 	var temp:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
 	dpMyProjects = new ArrayCollection();
+	dpMyAttribute = new ArrayCollection();
 	//Alert.show(temp.length.toString());
 	for(var i:int = 0; i < temp.length; i++){
 		for(var j:int = 0; j < 14; j++){
-			dpMyProjects.addItem(temp[i][j]);
+			dpMyProjects.addItem(temp[i][j]);	
 		}
+		
 	}
+	
+	
 	var tempXml:String = '<root>';
 	tempXml += '<node label="Attribute">';
 	tempXml += '<node label="Standard">';
 	for(var i:int = 0; i < temp.length; i++){
 		for(var j:int = 0; j < temp[i][14][0].length; j++){
 			tempXml += '<node label="'+temp[i][14][0][j]+'" />';
+			if(j % 2 > 0){
+				dpMyAttribute.addItemAt("Wert", temp[i][14][0][j]);
+			}else{
+				dpMyAttribute.addItemAt("Allgemein", temp[i][14][0][j]);
+			}
+			
 		}
 	}
 	tempXml += '</node>';
@@ -186,12 +198,14 @@ public function getMyProjectsResult(event:ResultEvent):void
 	for(var i:int = 0; i < temp.length; i++){
 		for(var j:int = 0; j < temp[i][15][0]; j++){
 			tempXml += '<node label="'+temp[i][15][j][1]+' = '+temp[i][15][j][2]+'" />';
+			dpMyAttribute.addItemAt("Spezifisch", temp[i][j][1]);
+			dpMyAttribute.addItemAt("Wert", temp[i][j][2]);
 		}
 	}
 	tempXml += '</node>';
 	tempXml += '</node>';
 	tempXml += '</root>';
-	dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
+	//dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
 	projectAttributes(temp);
 }
 
