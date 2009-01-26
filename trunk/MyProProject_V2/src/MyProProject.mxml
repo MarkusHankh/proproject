@@ -5,6 +5,7 @@
 	<mx:Script source="actionScript/general/projectTools.as"/>
 	<mx:Script source="actionScript/general/creationComplete.as"/>
 	<mx:Script source="actionScript/general/flexRemoting.as"/>
+	<mx:Script source="actionScript/general/portfolioTools.as"/>
 	<mx:Script source="actionScript/portfolios/diagramm/startDiagram.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
@@ -152,14 +153,33 @@
 				-->
 				<mx:Canvas id="listContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
-						<mx:AdvancedDataGrid id="gridProjectListView" dataProvider="{dpMyProjects}" width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#222222" color="#999999">
+						<mx:AdvancedDataGrid id="gridProjectListView"  width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#222222" color="#999999">
+							<mx:dataProvider>
+								<mx:GroupingCollection id="gc" source="{dpMyAttribute}">
+									<mx:Grouping>
+										<mx:GroupingField name="Projektname" />
+										<mx:GroupingField name="Allgemein"/>
+										<mx:GroupingField name="Spezifisch"/>
+									</mx:Grouping>
+								</mx:GroupingCollection>
+							</mx:dataProvider>
+							
 							<mx:columns>
 								<mx:AdvancedDataGridColumn headerText="Projektname" dataField="1"/>
 								<mx:AdvancedDataGridColumn headerText="Beschreibung" dataField="12"/>
 								<mx:AdvancedDataGridColumn headerText="Start" dataField="2"/>
 								<mx:AdvancedDataGridColumn headerText="Ende" dataField="3"/>
-								<mx:AdvancedDataGridColumn headerText="Attribute">
-									 <mx:itemRenderer>
+								<mx:AdvancedDataGridColumn headerText="Visualisiert" dataField="14"/>
+								<!--<mx:AdvancedDataGridColumn headerText="Groesse" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="Rahmenfarbe" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="RingfarbeInnen" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="RingfarbeAussen" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="PositionX" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="PositionY" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="Beschreibung" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="VisualisiertSpezifisch" dataField="15">
+								<mx:AdvancedDataGridColumn headerText="Wert" dataField="15">-->
+									<!-- <mx:itemRenderer>
 						                  <mx:Component>
 						                    <mx:Canvas>
 						                    	 <mx:Tree id="attributeTree"
@@ -168,8 +188,10 @@
 										               labelField="@label"/>
 						                    </mx:Canvas>
 						                  </mx:Component>
-						                </mx:itemRenderer>
-								</mx:AdvancedDataGridColumn>
+						                </mx:itemRenderer>-->
+		
+								<!--</mx:AdvancedDataGridColumn> -->
+							
 								<mx:AdvancedDataGridColumn headerText="Optionen">
 									<mx:itemRenderer>
 										<mx:Component>
@@ -183,6 +205,24 @@
 									</mx:itemRenderer>
 								</mx:AdvancedDataGridColumn>
 							</mx:columns>
+							
+						<!--	<mx:AdvancedDataGrid id="adg1" designViewDataType="tree" height="100%" width="100%" initialize="gc.refresh()">
+							<mx:dataProvider>
+								<mx:GroupingCollection id="gc" source="{adgArray}">
+									<mx:Grouping>
+										<mx:GroupingField name="Portfolio" />
+										<mx:GroupingField name="Typ"/>
+									</mx:Grouping>
+								</mx:GroupingCollection>
+							</mx:dataProvider>
+							<mx:columns>
+								<mx:AdvancedDataGridColumn headerText="Attribut" dataField="Attribut"/>
+								<mx:AdvancedDataGridColumn headerText="Visualisiert" dataField="Visualisiert"/>
+								<mx:AdvancedDataGridColumn headerText="Wert" dataField="Wert"/>
+							</mx:columns>
+						</mx:AdvancedDataGrid>
+</mx:Application>-->
+							
 						</mx:AdvancedDataGrid>
 					</mx:HBox>
 				</mx:Canvas>
@@ -289,13 +329,30 @@
 						</mx:Canvas>
 						<mx:Canvas width="400" height="400">
 							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
-							<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" allowMultipleSelection="true" editable="true" enabled="true">
+							<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" editable="true"
+								itemEditBeginning="checkEdit(event)" dataProvider="{dgSpezifischeAttribute}" itemEditEnd="editEnd(event)" enabled="true">
 								<mx:columns>
 									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="true"/>
-									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="true" />
+									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="true">
+										<mx:itemEditor>
+											<mx:Component>
+												<mx:ComboBox editable="true">
+      												<mx:dataProvider>
+      													<mx:String>Groesse</mx:String>
+      													<mx:String>Farbe</mx:String>
+      													<mx:String>Umrandung</mx:String>
+      													<mx:String>Tooltip</mx:String>
+      													<mx:String>Ring aussen</mx:String>
+      													<mx:String>Ring innen</mx:String>
+      												</mx:dataProvider>
+      											</mx:ComboBox>
+											</mx:Component>
+										</mx:itemEditor>
+									</mx:DataGridColumn>
 								</mx:columns>
 							</mx:DataGrid>
-							<mx:Button x="29" y="340" label="Portfolio speichern" width="148" id="btnPortfolioSpeichern"/>
+							
+							<mx:Button x="29" y="340" label="Portfolio speichern!" width="148" id="btnPortfolioSpeichern"/>
 							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort"/>
 						</mx:Canvas>
 					</mx:HBox>
