@@ -19,6 +19,7 @@
 		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
 		<mx:method name="addUser" result="addUserResult(event);"/>
 		<mx:method name="register" result="registerResult(event);"/>
+		<mx:method name="getDefaultAttributesVisualisations" result="getDefaultAttributesVisualisationsResult(event);"/>
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
 		<mx:method name="deleteProject"/>
@@ -153,7 +154,7 @@
 					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
 						<mx:AdvancedDataGrid id="gridProjectListView" dataProvider="{dpMyProjects}" width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#222222" color="#999999">
 							<mx:columns>
-								<mx:AdvancedDataGridColumn headerText="Projekt Name" dataField="1"/>
+								<mx:AdvancedDataGridColumn headerText="Projektname" dataField="1"/>
 								<mx:AdvancedDataGridColumn headerText="Beschreibung" dataField="12"/>
 								<mx:AdvancedDataGridColumn headerText="Start" dataField="2"/>
 								<mx:AdvancedDataGridColumn headerText="Ende" dataField="3"/>
@@ -288,13 +289,13 @@
 						</mx:Canvas>
 						<mx:Canvas width="400" height="400">
 							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
-							<mx:AdvancedDataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" editable="true">
+							<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" allowMultipleSelection="true" editable="true" enabled="true">
 								<mx:columns>
-									<mx:AdvancedDataGridColumn headerText="Attribut" dataField="1" editable="true"/>
-									<mx:AdvancedDataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
+									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="true"/>
+									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="true" />
 								</mx:columns>
-							</mx:AdvancedDataGrid>
-							<mx:Button x="29" y="340" label="Portfolio speichern!" width="148" id="btnPortfolioSpeichern"/>
+							</mx:DataGrid>
+							<mx:Button x="29" y="340" label="Portfolio speichern" width="148" id="btnPortfolioSpeichern"/>
 							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort"/>
 						</mx:Canvas>
 					</mx:HBox>

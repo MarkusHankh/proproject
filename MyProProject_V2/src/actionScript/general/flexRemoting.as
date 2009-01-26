@@ -33,7 +33,7 @@ private var dpMyProjects:ArrayCollection;
 private var dpUserSession:ArrayCollection;
 
 [Bindable]
-private var arrayAldi:ArrayCollection;
+private var dpDefaultAttributeVisualisations:ArrayCollection;
 
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
@@ -193,6 +193,11 @@ public function getMyProjectsResult(event:ResultEvent):void
 	tempXml += '</root>';
 	dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
 	projectAttributes(temp);
+}
+
+public function getDefaultAttributesVisualisationsResult(event:ResultEvent):void
+{
+	dpDefaultAttributeVisualisations = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
 
 //public function testResult(event:ResultEvent):void{
