@@ -7,6 +7,7 @@
 		threepv_service.getMyPortfolios.send(session.data.userID);
 		threepv_service.getUser.send(session.data.userCompany);
 		threepv_service.getDefaultAttributesVisualisations();
+		initGridAttribut();
 	}else{
 		Alert.show('Fehler beim erstellen der Session!');
 	}
