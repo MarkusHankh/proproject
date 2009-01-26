@@ -14,7 +14,7 @@ package actionScript.portfolios.diagramm
 		{
 			
 			this.width = 200;
-			graphics.lineStyle(2,0xff000f);
+			graphics.lineStyle(2,0x0066ff);
 			graphics.beginFill(0xb7babc);
 			graphics.drawRoundRect(x+30,y+30,150,200,20,20);
 			graphics.endFill();	
