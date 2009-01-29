@@ -25,4 +25,16 @@
 	var projektLeader:int = session.data.userID;
 	//Alert.show(gridTeamNeu.dataProvider[0][0]);
 	threepv_service.newProject.send(projektLeader, portfolioId, projektnameNeu.text, startdatumNeu.text, enddatumNeu.text, formNeu.text, formGroesseInt, xAchseNeu.value, yAchseNeu.value, fuellfarbeNeu.selectedColor.toString(16), rahmenfarbeNeu.selectedColor.toString(16), beschreibungNeu.text, ringfarbeInnenNeu.selectedColor.toString(16), ringfarbeAussenNeu.selectedColor.toString(16));
+	projektnameNeu.text="";
+	startdatumNeu.text="";
+	enddatumNeu.text="";
+	formNeu.text="Kreis";
+	formgroesseNeu.text="Klein";
+	xAchseNeu.value=0.00;
+	yAchseNeu.value=0.00;
+	beschreibungNeu.text="";
+	//fuellfarbeNeu.;
+	//rahmenfarbeNeu.;
+	//ringfarbeInnenNeu.;
+	//ringfarbeAussenNeu.;
 }
