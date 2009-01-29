@@ -57,6 +57,20 @@ public function deleteUser():void{
 	changeContent('alleBenutzerContent');
 }
 
-public function editUser():void{
+public function editUser(vorname:String, nachname:String, benutzername:String, email:String, passwort:String, passwort2:String):void{
+	if(vorname != '' && nachname != '' && benutzername != '' && email != '' && passwort != '' && passwort2 != '' && passwort == passwort2){
+		threepv_service.editUser.send(gridShowAllUsers.selectedItem[0].toString(), vorname, nachname, email, benutzername, passwort);
+	}else{
+		Alert.show('Sie haben die Pflichtfelder nicht korrekt ausgefüllt');
+	}
 	
+}
+
+public function setBenutzerEditFields():void{
+	vornameEdit.text = gridShowAllUsers.selectedItem[1].toString();
+	nachnameEdit.text = gridShowAllUsers.selectedItem[2].toString();
+	benutzernameEdit.text = gridShowAllUsers.selectedItem[6].toString();
+	emailEdit.text = gridShowAllUsers.selectedItem[3].toString();
+	passwortEdit.text = '';
+	passwort2Edit.text = '';
 }

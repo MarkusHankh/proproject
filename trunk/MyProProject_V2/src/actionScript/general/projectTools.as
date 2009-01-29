@@ -8,6 +8,8 @@ public function refreshAll(portfolio:String):void{
 				if (dpPortfolio[i][1]==portfolio)
 				{
 					portfolioID=dpPortfolio[i][0];
+					lblYAchse.text = dpPortfolio[i][6];
+					lblXAchse.text = dpPortfolio[i][7];
 				}
 			}
 		}

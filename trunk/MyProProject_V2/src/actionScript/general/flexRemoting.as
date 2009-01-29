@@ -2,7 +2,6 @@ import flash.net.SharedObject;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
-import mx.messaging.management.Attribute;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
 
@@ -12,6 +11,9 @@ public var session:SharedObject = SharedObject.getLocal("3PvSession");
 //Variablen vom Backend
 [Bindable]
 private var dpUser:ArrayCollection;
+
+[Bindable]
+private var dpUserProject:ArrayCollection;
 
 [Bindable]
 private var dpPortfolioSelector:ArrayCollection;
@@ -36,6 +38,9 @@ private var dpDefaultAttributeVisualisations:ArrayCollection;
 
 [Bindable]
 private var dgSpezifischeAttribute:ArrayCollection;
+
+[Bindable]
+private var dgSpezifischeAttributeZwei:ArrayCollection;
 
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
@@ -74,11 +79,23 @@ public function userLoginResult(event:ResultEvent):void{
 
 public function getUserResult(event:ResultEvent):void{
 	dpUser = new ArrayCollection(ArrayUtil.toArray(event.result));
+	dpUserProject = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
 
 public function addUserResult(event:ResultEvent):void{
 	threepv_service.getUser.send(session.data.userCompany);
 	changeContent('alleBenutzerContent');
+}
+
+public function editUserResult(event:ResultEvent):void{
+	threepv_service.getUser.send(session.data.userCompany);
+	changeContent('alleBenutzerContent');
+	vornameEdit.text = '';
+	nachnameEdit.text = '';
+	benutzernameEdit.text = '';
+	emailEdit.text = '';
+	passwortEdit.text = '';
+	passwort2Edit.text = '';
 }
 
 public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
@@ -131,13 +148,13 @@ public function getAttributesResult(event:ResultEvent):void{
 
 public function newPortfolioResult(event:ResultEvent):void
 {
-	//var portfolioID:String = String(event.result);
-	Alert.show(event.result.toString());
-	for (var i:int=0; i < dgSpezifischeAttribute.length; i++)
+	var portfolioID:String = String(event.result);
+	for (var i:int=0; i < dgSpezifischeAttribute.length-1; i++)
 	{
-		//Alert.show(dgSpezifischeAttribute[0].toString());
-		//threepv_service.setAttributes.send(portfolioID, , '', );
+		Alert.show(gridPortfolioAttributeNeu.selectedItem[i].toString());
+		//threepv_service.setAttributes.send(portfolioID, dgSpezifischeAttribute[i][0], 'Beschreibung', dgSpezifischeAttribute[i][1]);
 	}
+	threepv_service.getMyPortfolios.send(session.data.userID);
 	changeContent('diagramContent');
 	
 }
@@ -181,46 +198,8 @@ public function newProjectResult(event:ResultEvent):void{
 public function getMyProjectsResult(event:ResultEvent):void
 {
 	var temp:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
-	dpMyProjects = new ArrayCollection();
+	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
 	dpMyAttribute = new ArrayCollection();
-	//Alert.show(temp.length.toString());
-	for(var i:int = 0; i < temp.length; i++){
-		dpMyAttribute.addItem({Projektname:temp[i][1], Beschreibung:temp[i][12], Start:temp[i][2], Ende:temp[i][3], Visualisiert:temp[i][4]});
-		for(var j:int = 0; j < 14; j++){
-			dpMyProjects.addItem(temp[i][j]);
-		}
-		
-	}
-	
-	/*
-	var tempXml:String = '<root>';
-	tempXml += '<node label="Attribute">';
-	tempXml += '<node label="Standard">';
-	for(var i:int = 0; i < temp.length; i++){
-		for(var j:int = 0; j < temp[i][14][0].length; j++){
-			tempXml += '<node label="'+temp[i][14][0][j]+'" />';
-			if(j % 2 > 0){
-				dpMyAttribute.addItemAt("Wert", temp[i][14][0][j]);
-			}else{
-				dpMyAttribute.addItemAt("Allgemein", temp[i][14][0][j]);
-			}
-			
-		}
-	}
-	tempXml += '</node>';
-	tempXml += '<node label="Spezial">';
-	for(var i:int = 0; i < temp.length; i++){
-		for(var j:int = 0; j < temp[i][15][0]; j++){
-			tempXml += '<node label="'+temp[i][15][j][1]+' = '+temp[i][15][j][2]+'" />';
-			dpMyAttribute.addItemAt("Spezifisch", temp[i][j][1]);
-			dpMyAttribute.addItemAt("Wert", temp[i][j][2]);
-		}
-	}
-	tempXml += '</node>';
-	tempXml += '</node>';
-	tempXml += '</root>';
-	//dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
-	*/
 	projectAttributes(temp);
 }
 
