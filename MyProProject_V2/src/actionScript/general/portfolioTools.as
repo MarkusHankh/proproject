@@ -2,11 +2,11 @@
 import mx.events.DataGridEvent;
 
 private function initGridAttribut():void
-			{
-				dgSpezifischeAttribute = new ArrayCollection();
-				dgSpezifischeAttribute.addItem({1:"Attributname...", 3:"0"});
-				dgSpezifischeAttribute.addItem({title: ADD_TASK});
-			}
+{
+	dgSpezifischeAttribute = new ArrayCollection();
+	dgSpezifischeAttribute.addItem({1:"Attributname...", 3:"0"});
+	dgSpezifischeAttribute.addItem({title: ADD_TASK});
+}
 
 private static const ADD_TASK:String = "Click to Add Task";
 
