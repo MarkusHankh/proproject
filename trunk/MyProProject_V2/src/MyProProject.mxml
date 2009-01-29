@@ -9,6 +9,7 @@
 	<mx:Script source="actionScript/portfolios/diagramm/startDiagram.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
+	<mx:Script source="actionScript/portfolios/newPortfolio/preparePortfolioExport.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/project.as"/>
 	<mx:Script source="actionScript/userAdministration/userAdministration.as"/>
 	<mx:RemoteObject id="threepv_service" source="3pv_service.fassade" destination="threepv">
@@ -16,6 +17,7 @@
 		<mx:method name="getUser" result="getUserResult(event);"/>
 		<mx:method name="getMyPortfolios" result="getMyPortfoliosResult(event);"/>
 		<mx:method name="newProject" result="newProjectResult(event);"/>
+		<mx:method name="newPortfolio" result="newPortfolioResult(event);"/>
 		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
 		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
 		<mx:method name="addUser" result="addUserResult(event);"/>
@@ -352,7 +354,7 @@
 								</mx:columns>
 							</mx:DataGrid>
 							
-							<mx:Button x="29" y="340" label="Portfolio speichern!" width="148" id="btnPortfolioSpeichern"/>
+							<mx:Button x="29" y="340" label="Portfolio speichern" width="148" id="btnPortfolioSpeichern" click="preparePortfolioExport()"/>
 							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort"/>
 						</mx:Canvas>
 					</mx:HBox>

@@ -4,7 +4,6 @@ import mx.collections.ArrayCollection;
 import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
-import mx.utils.XMLUtil;
 
 [Bindable]
 public var session:SharedObject = SharedObject.getLocal("3PvSession");
@@ -129,6 +128,18 @@ public function getAttributesResult(event:ResultEvent):void{
 	dpPortfolioAttributes.addItem('');
 }
 
+public function newPortfolioResult(event:ResultEvent):void
+{
+	var portfolioID:String = String(event.result);
+	for (var i:int=0; i < dgSpezifischeAttribute.length; i++)
+	{
+		//Alert.show(dgSpezifischeAttribute[0].toString());
+		//threepv_service.setAttributes.send(portfolioID, , '', );
+	}
+	changeContent('diagramContent');
+	
+}
+
 public function newProjectResult(event:ResultEvent):void{
 	changeContent('listContent');
 	var portfolioName:String = portfolioSelector.text;
@@ -171,7 +182,7 @@ public function getMyProjectsResult(event:ResultEvent):void
 	dpMyProjects = new ArrayCollection();
 	dpMyAttribute = new ArrayCollection();
 	//Alert.show(temp.length.toString());
-	for(var i:int = 0; i < temp.length; i++){
+	/*for(var i:int = 0; i < temp.length; i++){
 		for(var j:int = 0; j < 14; j++){
 			dpMyProjects.addItem(temp[i][j]);	
 		}
@@ -206,6 +217,7 @@ public function getMyProjectsResult(event:ResultEvent):void
 	tempXml += '</node>';
 	tempXml += '</root>';
 	//dpProjectAttributes = XMLUtil.createXMLDocument(tempXml);
+	*/
 	projectAttributes(temp);
 }
 
