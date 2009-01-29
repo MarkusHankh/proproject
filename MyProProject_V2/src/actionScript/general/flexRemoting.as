@@ -130,7 +130,8 @@ public function getAttributesResult(event:ResultEvent):void{
 
 public function newPortfolioResult(event:ResultEvent):void
 {
-	var portfolioID:String = String(event.result);
+	//var portfolioID:String = String(event.result);
+	Alert.show(event.result.toString());
 	for (var i:int=0; i < dgSpezifischeAttribute.length; i++)
 	{
 		//Alert.show(dgSpezifischeAttribute[0].toString());
