@@ -2,6 +2,7 @@ import flash.net.SharedObject;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
+import mx.messaging.management.Attribute;
 import mx.rpc.events.ResultEvent;
 import mx.utils.ArrayUtil;
 
@@ -183,14 +184,15 @@ public function getMyProjectsResult(event:ResultEvent):void
 	dpMyProjects = new ArrayCollection();
 	dpMyAttribute = new ArrayCollection();
 	//Alert.show(temp.length.toString());
-	/*for(var i:int = 0; i < temp.length; i++){
+	for(var i:int = 0; i < temp.length; i++){
+		dpMyAttribute.addItem({Projektname:temp[i][1], Beschreibung:temp[i][12], Start:temp[i][2], Ende:temp[i][3], Visualisiert:temp[i][4]});
 		for(var j:int = 0; j < 14; j++){
-			dpMyProjects.addItem(temp[i][j]);	
+			dpMyProjects.addItem(temp[i][j]);
 		}
 		
 	}
 	
-	
+	/*
 	var tempXml:String = '<root>';
 	tempXml += '<node label="Attribute">';
 	tempXml += '<node label="Standard">';
