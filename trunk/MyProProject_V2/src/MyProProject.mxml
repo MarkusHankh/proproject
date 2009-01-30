@@ -107,7 +107,7 @@
 						<mx:Label x="10" y="67" text="Benutzername: " fontWeight="bold" fontFamily="Arial" fontSize="14" color="#000000"/>
 						<mx:Label x="10" y="106" text="Passwort:" color="#000000" fontWeight="bold" fontSize="15" fontFamily="Arial"/>
 						<mx:TextInput x="133" y="68" width="187" id="benutzernameLogin" color="#000000"/>
-						<mx:TextInput x="133" y="108" width="187" displayAsPassword="true" id="passwortLogin" color="#000000"/>
+						<mx:TextInput x="133" y="108" width="187" displayAsPassword="true" id="passwortLogin" color="#000000" enter="userLogin(benutzernameLogin.text, passwortLogin.text)"/>
 						<mx:Button x="133" y="160" label="Login" color="#000000" width="84" id="btnLogin" click="userLogin(benutzernameLogin.text, passwortLogin.text)"/>
 						<mx:Button x="225" y="160" label="Abbrechen" color="#000000" width="95" id="btnAbbruchLogin" click="userLoginAbort()"/>
 						<mx:Label id="loginFehler" x="10" y="36" text="" color="#FF0000" fontWeight="bold"/>
