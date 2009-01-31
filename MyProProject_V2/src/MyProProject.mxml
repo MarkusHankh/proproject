@@ -21,6 +21,7 @@
 		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
 		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
 		<mx:method name="getPortfolioValues" result="getPortfolioValuesResult(event);"/>
+		<mx:method name="getProjectValues" result="getProjectValuesResult(event);"/>
 		<mx:method name="addUser" result="addUserResult(event);"/>
 		<mx:method name="editUser" result="editUserResult(event);"/>
 		<mx:method name="register" result="registerResult(event);"/>
@@ -175,13 +176,14 @@
 						                  </mx:Component>
 						                </mx:itemRenderer>-->
 							
+						
 								<mx:DataGridColumn headerText="Optionen">
 									<mx:itemRenderer>
 										<mx:Component>
 											<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
 												<mx:Canvas>
 													<mx:Button width="17" height="17" click="outerDocument.deleteProject()" icon="@Embed(source='images/delete.png')"/>
-													<mx:Button enabled="true" x="20" width="17" height="17" click="outerDocument.changeContent('projektEditContent');" icon="@Embed(source='images/edit.png')"/>
+													<mx:Button enabled="true" x="20" width="17" height="17" click="outerDocument.changeContent('projektEditContent'), outerDocument.prepareProjectEditExport();" icon="@Embed(source='images/edit.png')"/>
 												</mx:Canvas>
 											</mx:Box>
 										</mx:Component>
