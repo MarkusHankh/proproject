@@ -157,32 +157,12 @@
 				<mx:Canvas id="listContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:HBox paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" width="100%" height="100%">
 						<mx:AdvancedDataGrid id="gridProjectListView" dataProvider="{dpMyProjects}"  width="100%" height="100%" backgroundAlpha="0.05" borderStyle="none" headerColors="#222222" rollOverColor="#222222" color="#999999">
-							<!--
-							<mx:dataProvider>
-								<mx:GroupingCollection id="gc" source="{dpMyAttribute}">
-									<mx:Grouping>
-										<mx:GroupingField name="Projektname" />
-										<mx:GroupingField name="Allgemein"/>
-										<mx:GroupingField name="Spezifisch"/>
-									</mx:Grouping>
-								</mx:GroupingCollection>
-							</mx:dataProvider>
-							-->
 							<mx:columns>
 								<mx:AdvancedDataGridColumn headerText="Projektname" dataField="1"/>
 								<mx:AdvancedDataGridColumn headerText="Beschreibung" dataField="12"/>
 								<mx:AdvancedDataGridColumn headerText="Start" dataField="2"/>
 								<mx:AdvancedDataGridColumn headerText="Ende" dataField="3"/>
-								<mx:AdvancedDataGridColumn headerText="Visualisiert" dataField="14"/>
-								<!--<mx:AdvancedDataGridColumn headerText="Groesse" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="Rahmenfarbe" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="RingfarbeInnen" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="RingfarbeAussen" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="PositionX" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="PositionY" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="Beschreibung" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="VisualisiertSpezifisch" dataField="15">
-								<mx:AdvancedDataGridColumn headerText="Wert" dataField="15">-->
+								<mx:AdvancedDataGridColumn headerText="Visualisiert" dataField="4"/>
 									<!-- <mx:itemRenderer>
 						                  <mx:Component>
 						                    <mx:Canvas>
@@ -193,8 +173,6 @@
 						                    </mx:Canvas>
 						                  </mx:Component>
 						                </mx:itemRenderer>-->
-		
-								<!--</mx:AdvancedDataGridColumn> -->
 							
 								<mx:AdvancedDataGridColumn headerText="Optionen">
 									<mx:itemRenderer>
@@ -208,25 +186,7 @@
 										</mx:Component>
 									</mx:itemRenderer>
 								</mx:AdvancedDataGridColumn>
-							</mx:columns>
-							
-						<!--	<mx:AdvancedDataGrid id="adg1" designViewDataType="tree" height="100%" width="100%" initialize="gc.refresh()">
-							<mx:dataProvider>
-								<mx:GroupingCollection id="gc" source="{adgArray}">
-									<mx:Grouping>
-										<mx:GroupingField name="Portfolio" />
-										<mx:GroupingField name="Typ"/>
-									</mx:Grouping>
-								</mx:GroupingCollection>
-							</mx:dataProvider>
-							<mx:columns>
-								<mx:AdvancedDataGridColumn headerText="Attribut" dataField="Attribut"/>
-								<mx:AdvancedDataGridColumn headerText="Visualisiert" dataField="Visualisiert"/>
-								<mx:AdvancedDataGridColumn headerText="Wert" dataField="Wert"/>
-							</mx:columns>
-						</mx:AdvancedDataGrid>
-</mx:Application>-->
-							
+							</mx:columns>					
 						</mx:AdvancedDataGrid>
 					</mx:HBox>
 				</mx:Canvas>
