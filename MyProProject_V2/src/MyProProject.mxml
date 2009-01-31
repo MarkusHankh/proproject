@@ -426,7 +426,7 @@
 						<mx:Canvas width="400" height="400">
 							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
 							<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeEdit" editable="true"
-								itemEditBeginning="checkEdit(event)" dataProvider="{dgSpezifischeAttribute}" itemEditEnd="editEnd(event)" enabled="true">
+								itemEditBeginning="checkEdit(event)" dataProvider="{dpPortfolioAttributes}" itemEditEnd="editEnd(event)" enabled="true">
 								<mx:columns>
 									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="true"/>
 									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="true">
