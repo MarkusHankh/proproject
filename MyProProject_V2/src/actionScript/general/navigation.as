@@ -8,6 +8,7 @@
 				this.projektNeuContent.setVisible(false, false);
 				this.portfolioNeuContent.setVisible(false, false);
 				this.portfolioEditContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblDiagramm.setStyle("color", "#0066ff");
 				this.lblListe.setStyle("color", "#808492");
 				this.lblNeuesProjekt.setStyle("color", "#808492");
@@ -20,6 +21,7 @@
 				this.projektNeuContent.setVisible(false, false);
 				this.portfolioNeuContent.setVisible(false, false);
 				this.portfolioEditContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblDiagramm.setStyle("color", "#808492");
 				this.lblListe.setStyle("color", "#0066ff");
 				this.lblNeuesProjekt.setStyle("color", "#808492");
@@ -32,18 +34,33 @@
 				this.projektNeuContent.setVisible(true, false);
 				this.portfolioNeuContent.setVisible(false, false);
 				this.portfolioEditContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblDiagramm.setStyle("color", "#808492");
 				this.lblListe.setStyle("color", "#808492");
 				this.lblNeuesProjekt.setStyle("color", "#0066ff");
 				this.lblNeuesPortfolio.setStyle("color", "#808492");
 				this.lblPortfolioBearbeiten.setStyle("color", "#808492");
 				break;
+			case 'projektEditContent':
+				this.diagramContent.setVisible(false, false);
+				this.listContent.setVisible(false, false);
+				this.projektNeuContent.setVisible(true, false);
+				this.portfolioNeuContent.setVisible(false, false);
+				this.portfolioEditContent.setVisible(false, false);
+				this.projektEditContent.setVisible(true, false);
+				this.lblDiagramm.setStyle("color", "#808492");
+				this.lblListe.setStyle("color", "#808492");
+				this.lblNeuesProjekt.setStyle("color", "#0066ff");
+				this.lblNeuesPortfolio.setStyle("color", "#808492");
+				this.lblPortfolioBearbeiten.setStyle("color", "#808492");
+				break;		
 			case 'portfolioNeuContent':
 				this.diagramContent.setVisible(false, false);
 				this.listContent.setVisible(false, false);
 				this.projektNeuContent.setVisible(false, false);
 				this.portfolioNeuContent.setVisible(true, false);
 				this.portfolioEditContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblDiagramm.setStyle("color", "#808492");
 				this.lblListe.setStyle("color", "#808492");
 				this.lblNeuesProjekt.setStyle("color", "#808492");
@@ -56,6 +73,7 @@
 				this.projektNeuContent.setVisible(false, false);
 				this.portfolioNeuContent.setVisible(false, false);
 				this.portfolioEditContent.setVisible(true, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblDiagramm.setStyle("color", "#808492");
 				this.lblListe.setStyle("color", "#808492");
 				this.lblNeuesProjekt.setStyle("color", "#808492");
@@ -73,6 +91,7 @@
 				this.alleBenutzerContent.setVisible(false, false);
 				this.benutzerNeuContent.setVisible(true, false);
 				this.benutzerEditContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblAlleBenutzer.setStyle("color", "#808492");
 				this.lblBenutzerNeu.setStyle("color", "#0066ff");
 				break;
@@ -80,18 +99,21 @@
 				this.alleBenutzerContent.setVisible(false, false);
 				this.benutzerNeuContent.setVisible(false, false);
 				this.benutzerEditContent.setVisible(true, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblAlleBenutzer.setStyle("color", "#808492");
 				this.lblBenutzerNeu.setStyle("color", "#808492");
 				break;
 			case 'einstellungContent':
 				this.einstellungContent.setVisible(true, false);
 				this.logoUploadContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblEinstellungAllgemein.setStyle("color", "#0066ff");
 				this.lblLogoUpload.setStyle("color", "#808492");
 				break;
 			case 'logoUploadContent':
 				this.einstellungContent.setVisible(false, false);
 				this.logoUploadContent.setVisible(true, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblEinstellungAllgemein.setStyle("color", "#808492");
 				this.lblLogoUpload.setStyle("color", "#0066ff");
 				break;
@@ -99,6 +121,7 @@
 				this.hilfePPContent.setVisible(true, false);
 				this.hilfeBVContent.setVisible(false, false);
 				this.hilfeVideoContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblHilfePP.setStyle("color", "#0066ff");
 				this.lblHilfeBV.setStyle("color", "#808492");
 				this.lblHilfeVideo.setStyle("color", "#808492");
@@ -107,6 +130,7 @@
 				this.hilfePPContent.setVisible(false, false);
 				this.hilfeBVContent.setVisible(true, false);
 				this.hilfeVideoContent.setVisible(false, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblHilfePP.setStyle("color", "#808492");
 				this.lblHilfeBV.setStyle("color", "#0066ff");
 				this.lblHilfeVideo.setStyle("color", "#808492");
@@ -115,6 +139,7 @@
 				this.hilfePPContent.setVisible(false, false);
 				this.hilfeBVContent.setVisible(false, false);
 				this.hilfeVideoContent.setVisible(true, false);
+				this.projektEditContent.setVisible(false, false);
 				this.lblHilfePP.setStyle("color", "#808492");
 				this.lblHilfeBV.setStyle("color", "#808492");
 				this.lblHilfeVideo.setStyle("color", "#0066ff");
