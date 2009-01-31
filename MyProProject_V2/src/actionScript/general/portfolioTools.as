@@ -32,3 +32,25 @@ private function editEnd(e:DataGridEvent):void
 	e.preventDefault();
 	}
 }
+
+public function editPortfolio():void
+{
+	var portfolioName:String = portfolioSelector.text;
+	var portfolioID:int;
+	if (dpPortfolio!=null)
+	{
+		for (var i:int=0; i<dpPortfolioSelector.length; i++)
+		{
+			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
+			{
+				portfolioID=dpPortfolio[i][0];
+			}
+		}
+	}
+	else
+	{
+		Alert.show("dpPortfolio ist null!");
+	}
+	
+	threepv_service.getPortfolioValues.send(portfolioID);
+}

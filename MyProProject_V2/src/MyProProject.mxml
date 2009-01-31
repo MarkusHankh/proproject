@@ -20,6 +20,7 @@
 		<mx:method name="newPortfolio" result="newPortfolioResult(event);"/>
 		<mx:method name="getAttributes" result="getAttributesResult(event);"/>
 		<mx:method name="getMyProjects" result="getMyProjectsResult(event);"/>
+		<mx:method name="getPortfolioValues" result="getPortfolioValuesResult(event);"/>
 		<mx:method name="addUser" result="addUserResult(event);"/>
 		<mx:method name="editUser" result="editUserResult(event);"/>
 		<mx:method name="register" result="registerResult(event);"/>
@@ -139,7 +140,7 @@
 				<mx:Label id="lblListe" x="87" y="10" text="Liste" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('listContent')"/>
 				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent')"/>
 				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>
-				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent')"/>
+				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent'), editPortfolio()"/>
 				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" change="refreshAll(portfolioSelector.text)"/>
 				<!--
 				Diagrammansicht
@@ -447,7 +448,7 @@
 								</mx:columns>
 							</mx:DataGrid>
 							
-							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten"/>
+							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten" click="preparePortfolioEditExport()"/>
 							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort"/>
 						</mx:Canvas>
 					</mx:HBox>

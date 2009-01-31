@@ -42,6 +42,9 @@ private var dgSpezifischeAttribute:ArrayCollection;
 [Bindable]
 private var dgSpezifischeAttributeZwei:ArrayCollection;
 
+[Bindable]
+private var dpPortfolioValues:ArrayCollection;
+
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
 	if(event.result){
@@ -208,6 +211,19 @@ public function getDefaultAttributesVisualisationsResult(event:ResultEvent):void
 	dpDefaultAttributeVisualisations = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
 
+public function getPortfolioValuesResult(event:ResultEvent):void
+{
+	dpPortfolioValues = new ArrayCollection(ArrayUtil.toArray(event.result));
+	
+	portfolionameEdit.text=dpPortfolioValues[0][1];
+	portfolioBeschreibungEdit.text=dpPortfolioValues[0][8];
+	nameXAchseEdit.text=dpPortfolioValues[0][6];
+	nameYAchseEdit.text=dpPortfolioValues[0][7];
+	kleinsterXWertEdit.value=dpPortfolioValues[0][2];
+	groessterXWertEdit.value=dpPortfolioValues[0][3];
+	kleinsterYWertEdit.value=dpPortfolioValues[0][4];
+	groessterYWertEdit.value=dpPortfolioValues[0][5];
+}
 //public function testResult(event:ResultEvent):void{
 //	Alert.show(event.result.toString());
 //}
