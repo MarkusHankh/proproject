@@ -14,6 +14,7 @@ public function preparePortfolioExport():void
 	var userID:int = session.data.userID;
 	var companyID:int =  session.data.userCompany;
 	threepv_service.newPortfolio.send(portfolionameNeu.text, kleinsterXWertNeu.value, groessterXWertNeu.value, kleinsterYWertNeu.value, groessterYWertNeu.value, nameXAchseNeu.text, nameYAchseNeu.text, portfolioBeschreibungNeu.text, companyID);
+	
 	portfolionameNeu.text="";
 	kleinsterXWertNeu.value=0;
 	groessterXWertNeu.value=0;

@@ -151,8 +151,8 @@ public function newPortfolioResult(event:ResultEvent):void
 	var portfolioID:String = String(event.result);
 	for (var i:int=0; i < dgSpezifischeAttribute.length-1; i++)
 	{
-		Alert.show(gridPortfolioAttributeNeu.selectedItem[i].toString());
-		//threepv_service.setAttributes.send(portfolioID, dgSpezifischeAttribute[i][0], 'Beschreibung', dgSpezifischeAttribute[i][1]);
+		
+		threepv_service.setAttributes.send(portfolioID, dgSpezifischeAttribute[i][1], 'Beschreibung', dgSpezifischeAttribute[i][3]);
 	}
 	threepv_service.getMyPortfolios.send(session.data.userID);
 	changeContent('diagramContent');
