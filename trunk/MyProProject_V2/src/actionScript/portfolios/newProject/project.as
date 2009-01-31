@@ -21,9 +21,3 @@ public function deleteProject():void
 	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
 	changeContent('listContent');
 }
-
-public function editProject(projectName:String, startDate:String, endDate:String, form:String, formSize:String, posX:Number, posY:Number, color:String, colorFrame:String, description:String, colorOuterRing:String, colorInnerRing:String):void
-{
-	
-	
-}
