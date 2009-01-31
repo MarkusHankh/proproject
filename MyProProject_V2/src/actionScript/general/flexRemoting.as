@@ -45,6 +45,9 @@ private var dgSpezifischeAttributeZwei:ArrayCollection;
 [Bindable]
 private var dpPortfolioValues:ArrayCollection;
 
+[Bindable]
+private var dpProjectValues:ArrayCollection;
+
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
 	if(event.result){
@@ -224,6 +227,39 @@ public function getPortfolioValuesResult(event:ResultEvent):void
 	kleinsterYWertEdit.value=dpPortfolioValues[0][4];
 	groessterYWertEdit.value=dpPortfolioValues[0][5];
 }
+
+public function getProjectValuesResult(event:ResultEvent):void
+{
+	dpProjectValues = new ArrayCollection(ArrayUtil.toArray(event.result));
+	
+	var formGroesse:String;
+	switch(dpProjectValues[0][5]){
+		case 1:
+			formGroesse = 'Klein';
+			break;
+		case 2:
+			formGroesse = 'Mittel';
+			break;
+		case 3:
+			formGroesse = 'Groß';
+			break;
+	}
+	
+	
+	projektnameEdit.text=dpProjectValues[0][1];
+	startdatumEdit.text=dpProjectValues[0][2];
+	enddatumEdit.text=dpProjectValues[0][3];
+	formEdit.text=dpProjectValues[0][4];
+	formgroesseEdit.text=formGroesse;
+	xAchseEdit.value=dpProjectValues[0][6];
+	yAchseEdit.value=dpProjectValues[0][7];
+	beschreibungEdit.text=dpProjectValues[0][12];
+	fuellfarbeEdit.selectedColor=dpProjectValues[0][8];
+	rahmenfarbeEdit.selectedColor=dpProjectValues[0][9];
+	ringfarbeInnenEdit.selectedColor=dpProjectValues[0][10];
+	ringfarbeAussenEdit.selectedColor=dpProjectValues[0][11];
+}
+
 //public function testResult(event:ResultEvent):void{
 //	Alert.show(event.result.toString());
 //}
