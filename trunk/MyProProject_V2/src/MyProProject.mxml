@@ -142,7 +142,7 @@
 				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent')"/>
 				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>
 				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent'), editPortfolio()"/>
-				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" change="refreshAll(portfolioSelector.text)"/>
+				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" change="refreshAll(portfolioSelector.text)" selectedIndex="-1"/>
 				<!--
 				Diagrammansicht
 				-->
