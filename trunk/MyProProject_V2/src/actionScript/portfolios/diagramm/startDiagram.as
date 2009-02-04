@@ -7,7 +7,7 @@ import mx.collections.ArrayCollection;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.states.*;
-
+import flash.events.MouseEvent;
 var interval;
 var token:AsyncToken
 var pros:ArrayCollection = new ArrayCollection();
@@ -43,11 +43,12 @@ function projectAttributes(attr:ArrayCollection):void{
 			var days:Number = dayOfYear(td2)-dayOfYear(td1);
 			trace("days"+days);
 			var erf:Number;
-			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td1));
+			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td1),0,null,Number("0x"+attr[i][8].toString().substring(1)),Number("0x"+attr[i][9].toString().substring(1)),Number("0x"+attr[i][10].toString().substring(1)),Number("0x"+attr[i][11].toString().substring(1)));
 			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
 			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
+			temp.addEventListener(MouseEvent.DOUBLE_CLICK,doubleClick);
 			temp.info = new InfoShape(25,0,0);
 			temp.put("Anfang",attr[i][2]);
 			temp.put("Ende",attr[i][3]);
@@ -174,4 +175,7 @@ function mouseOut(event:MouseEvent):void {
 function mouseReleased(event:MouseEvent):void {
 	event.target.stopDrag();
     trace(event.target.dropTarget.name);
+}
+function doubleClick(event:MouseEvent):void {
+	Alert.show("Hallo ich bin "+event.target.sd[0]);
 }

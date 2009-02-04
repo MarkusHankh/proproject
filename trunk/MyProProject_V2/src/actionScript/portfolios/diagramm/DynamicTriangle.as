@@ -5,12 +5,12 @@ package actionScript.portfolios.diagramm
 	public class DynamicTriangle extends Shape
 	{
 		var lineLenght:Number = 20;
-		public function DynamicTriangle(lineLenght:Number = 20,border:Number=1)
+		public function DynamicTriangle(lineLenght:Number = 20,border:Number=1,fill:Number=0xcccccc,line:Number=0xff000f)
 		{
 			this.lineLenght=lineLenght;
 			lineLenght=lineLenght/2;
-			graphics.lineStyle(border,0xff000f);
-			graphics.beginFill(0x0f0f0f);
+			graphics.lineStyle(border,line);
+			graphics.beginFill(fill);
 			graphics.lineTo(lineLenght/2, lineLenght);
 			graphics.lineTo((-lineLenght-lineLenght/2), lineLenght);
 			graphics.lineTo(-lineLenght/2, -(lineLenght));

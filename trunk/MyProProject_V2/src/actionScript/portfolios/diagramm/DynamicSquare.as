@@ -4,10 +4,10 @@ package actionScript.portfolios.diagramm
 	
 	public class DynamicSquare extends Shape
 	{
-		public function DynamicSquare(width, height,border:Number=1)
+		public function DynamicSquare(width, height,border:Number=1,fill:Number=0xcccccc,line:Number=0xff000f)
 		{
-			graphics.lineStyle(border,0xff000f);
-			graphics.beginFill(0xcccccc);
+			graphics.lineStyle(border,line);
+			graphics.beginFill(fill);
 			graphics.drawRect(0,0,width,height);
 			graphics.endFill();
 		}
