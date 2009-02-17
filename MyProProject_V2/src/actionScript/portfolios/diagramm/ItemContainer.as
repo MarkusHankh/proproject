@@ -29,8 +29,12 @@ package actionScript.portfolios.diagramm
 			trace(line+" "+fill+" "+ring1color+" "+ring2color);
 			trace("0x12 "+ Number("0x12"))
 			trace("progress1 "+progress1);
-			if(days != 0) {
+			if(days >= 0) {
+				trace("days--->"+days);
+				trace("heute--->"+heute);
+				trace("progress1--->"+progress1);
 				var pr1:Number = ((heute-progress1) / days)*100;
+				trace("pr1--->"+pr1);
 			}else {
 				pr1 =99;
 			}
