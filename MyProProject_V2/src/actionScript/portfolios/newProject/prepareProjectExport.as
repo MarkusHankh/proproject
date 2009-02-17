@@ -1,6 +1,5 @@
 
 	import mx.controls.Alert;
-	import mx.controls.Text;
 	
 	public function prepareProjectExport():void{
 	var portfolioId:int;
@@ -85,6 +84,10 @@ public function getProjectEdit():void{
 			portfolioId = dpPortfolio[i][0];
 		}
 	}
+	//for(var j:int = 0; j < dpProjectValues.length; j++){
+		//formgroesseText = dpProjectValues[0][5];
+		//Alert.show(dpProjectValues[0][5]);
+	//}
 	
 	var formGroesseInt:int;
 	switch(formgroesseEdit.text){
@@ -100,16 +103,8 @@ public function getProjectEdit():void{
 	}
 	
 	threepv_service.getProjectValues.send(projectID);
-	threepv_service.getProjectAttributes.send(projectID);
 	
-	for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
-		//formgroesseText = dpProjectAttributesValues[j][2];
-		//gridAttributeEdit.5.selecte
-		//gridAttributeEdit.selectedItem = j+1;
-		//gridAttributeEdit.selectedItem.value = "test";
-		//Alert.show(dpProjectAttributesValues[j][2].toString());
-	}
-	
+	//Alert.show(projectID.toString());
 	
 	switch(formgroesseText){
 		case 1:
@@ -122,5 +117,17 @@ public function getProjectEdit():void{
 			formgroesseEdit.text = 'Groß';
 			break;
 	}
+	
+	threepv_service.getProjectAttributes.send(projectID);
+	
+	for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
+  		formgroesseText = dpProjectAttributesValues[j][2];
+  		/*gridAttributeEdit.5.selecte
+  		gridAttributeEdit.selectedItem = j+1;
+  		gridAttributeEdit.selectedItem.value = "test";
+  		*/
+  		Alert.show(dpProjectAttributesValues[j][2].toString());
+ 	}
+
 }
 

@@ -252,7 +252,6 @@ public function getProjectValuesResult(event:ResultEvent):void
 			break;
 	}
 	
-	
 	projektnameEdit.text=dpProjectValues[0][1];
 	startdatumEdit.text=dpProjectValues[0][2];
 	enddatumEdit.text=dpProjectValues[0][3];
@@ -271,12 +270,8 @@ public function getProjectValuesResult(event:ResultEvent):void
 
 public function getProjectAttributesResult(event:ResultEvent):void
 {
-	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
 	
-	for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
-		//formgroesseText = dpProjectAttributesValues[j][2];
-		Alert.show(dpProjectAttributesValues[j][2].toString());
-	}
+	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
 }
 
 //public function testResult(event:ResultEvent):void{
