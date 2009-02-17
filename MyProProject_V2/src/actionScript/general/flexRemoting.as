@@ -48,6 +48,9 @@ private var dpPortfolioValues:ArrayCollection;
 [Bindable]
 private var dpProjectValues:ArrayCollection;
 
+[Bindable]
+private var dpProjectAttributesValues:ArrayCollection;
+
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
 	if(event.result){
@@ -262,6 +265,15 @@ public function getProjectValuesResult(event:ResultEvent):void
 	rahmenfarbeEdit.selectedColor=dpProjectValues[0][9];
 	ringfarbeInnenEdit.selectedColor=dpProjectValues[0][10];
 	ringfarbeAussenEdit.selectedColor=dpProjectValues[0][11];
+}
+
+
+
+public function getProjectAttributesResult(event:ResultEvent):void
+{
+	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
+	
+	
 }
 
 //public function testResult(event:ResultEvent):void{

@@ -26,6 +26,7 @@
 		<mx:method name="editUser" result="editUserResult(event);"/>
 		<mx:method name="register" result="registerResult(event);"/>
 		<mx:method name="getDefaultAttributesVisualisations" result="getDefaultAttributesVisualisationsResult(event);"/>
+		<mx:method name="getProjectAttributes" result="getProjectAttributesResult(event);"/>
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
 		<mx:method name="deleteProject"/>

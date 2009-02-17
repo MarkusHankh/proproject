@@ -101,6 +101,6 @@ public function getProjectEdit():void{
 	}
 	
 	threepv_service.getProjectValues.send(projectID);
-
+	threepv_service.getProjectAttributes.send(projectID);
 }
 
