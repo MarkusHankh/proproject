@@ -9,6 +9,7 @@ package actionScript.portfolios.diagramm
 		var rad:Number = 30;
 		var oldX:Number = 0;
 		var oldY:Number = 0;
+		var col:Number=0x0005ff;
 		public var ra:RingAnimation = new RingAnimation(this);
 		
 		public function DynamicRing2(radius:Number,progress:Number, thickness:Number=2,color:Number=0x0005ff)
@@ -16,6 +17,7 @@ package actionScript.portfolios.diagramm
 			this.progress=progress;
 			this.rad=radius;
 			this.oldX = radius;
+			this.col=color;
 			rotation=-90;
 			doInit();
 		}
@@ -26,10 +28,12 @@ package actionScript.portfolios.diagramm
 			ra.play([this]);
 		}
 
-		private function myCircle(mc:Graphics, radius:Number,sides:Number,i:Number):void{
+		private function myCircle(mc:Graphics, radius:Number,sides:Number,i:Number,color:Number=0x0005ff):void{
+			
+			//trace("DR2-color " +color);
 			var centerX = 0; 
 			var centerY = 0; 
-			mc.lineStyle(2,0x0005ff);
+			mc.lineStyle(2,col);
 			mc.moveTo(oldX,  oldY);
 			var pointRatio:Number = i/sides;
 			var xSteps:Number = magicTrigFunctionX(pointRatio);
