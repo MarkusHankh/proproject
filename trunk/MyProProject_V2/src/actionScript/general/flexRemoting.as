@@ -273,7 +273,10 @@ public function getProjectAttributesResult(event:ResultEvent):void
 {
 	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
 	
-	
+	for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
+		//formgroesseText = dpProjectAttributesValues[j][2];
+		Alert.show(dpProjectAttributesValues[j][2].toString());
+	}
 }
 
 //public function testResult(event:ResultEvent):void{

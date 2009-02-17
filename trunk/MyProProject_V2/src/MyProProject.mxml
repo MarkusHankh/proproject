@@ -328,7 +328,7 @@
 								<mx:columns>
 									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="false"/>
 									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
-									<mx:DataGridColumn headerText="Wert" dataField="5" editable="true"/>
+									<mx:DataGridColumn headerText="Wert" dataField="value" editable="true"/>
 								</mx:columns>
 							</mx:DataGrid>
 							<mx:Label x="10" y="236" text="Projektmitglieder" fontSize="12" fontWeight="bold" fontFamily="Arial"/>
@@ -439,8 +439,6 @@
 											<mx:Component>
 												<mx:ComboBox editable="true">
       												<mx:dataProvider>
-      													<mx:String>Groesse</mx:String>
-      													<mx:String>Farbe</mx:String>
       													<mx:String>Umrandung</mx:String>
       													<mx:String>Tooltip</mx:String>
       													<mx:String>Ring aussen</mx:String>
