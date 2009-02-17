@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="870" height="463" backgroundColor="#000000">
-	<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" editable="true">
-		<mx:columns>
-			<mx:DataGridColumn headerText="Attribut" dataField="1" editable="true"/>
-			<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
-		</mx:columns>
-	</mx:DataGrid>
-	<mx:Button x="29" y="361" label="Portfolio speichern!" width="148" id="btnPortfolioSpeichern"/>
-	<mx:Button x="217" y="361" width="25" id="btnPortfolioNeuAbort" icon="@Embed(source='images/delete.png')"/>
-	<mx:NumericStepper x="29" y="411" minimum="0" maximum="100000"/>
+	<mx:Label text="Verleihen Sie 3Pv eine persönliche Note mit ihren eigenen Farbschemata!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
+	<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
+	<mx:Label x="27.5" y="92" text="Hintergrundfarbe: " fontSize="12" fontFamily="Arial" id="lblHintergrundfarbeNeu"/>
+	<mx:Label x="27.5" y="122" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
+	<mx:Label x="27.5" y="152" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
+	<mx:Label x="27.5" y="182" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+	<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
+	<mx:Button x="27.5" y="274" label="Schema speichern!" id="btnSchemaSpeichern"/>
+	<mx:Button x="222.5" y="274" label="Felder zurücksetzen"/>
+	<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
+	<mx:ColorPicker x="222" y="121" width="160.5" selectedColor="#999999"/>
+	<mx:ComboBox x="222" y="151" width="160.5" id="schriftartNeu"></mx:ComboBox>
+	<mx:ComboBox x="222" y="181" width="160.5" id="schriftgroesseNeu"></mx:ComboBox>
 </mx:Canvas>

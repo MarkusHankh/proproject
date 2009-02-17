@@ -190,9 +190,13 @@ public function newProjectResult(event:ResultEvent):void{
 	}
 	//Eigenschaft 0 für String nicht gefunden Zeile 151
 	for(var i:int = 0; i < gridAttributeNeu.dataProvider.length; i++){
-		var attributid:int = gridAttributeNeu.dataProvider[i][0].valueOf();
-		var attributwert:String = gridAttributeNeu.dataProvider[i][5];
-		threepv_service.setProjectAttributes.send(projektid, attributid, attributwert);
+		try{
+			var attributid:int = gridAttributeNeu.dataProvider[i][0].valueOf();
+			var attributwert:String = gridAttributeNeu.dataProvider[i][5];
+			threepv_service.setProjectAttributes.send(projektid, attributid, attributwert);
+		}catch(e:ReferenceError){
+			//Do Nothing :-)
+		}
 	}
 	
 	threepv_service.getAttributes.send(portfolioID);

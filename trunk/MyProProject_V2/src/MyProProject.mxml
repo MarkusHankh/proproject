@@ -90,7 +90,9 @@
 			color: #999999;
 		}
 	</mx:Style>
-	<mx:Canvas id="FullApplication" backgroundImage="images/bg_raster.jpg" height="590" width="1000">
+	<mx:Canvas id="FullApplication" backgroundImage="images/bg_raster.png" height="590" width="1000">
+		<mx:Canvas id="logo" x="42" y="0" width="166" height="42">
+		</mx:Canvas>
 		<mx:Canvas id="Navigation" visible="false">
 			<mx:LinkButton id="lbPortfolios" x="254" y="19" label="Portfolios" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Portfolios'"/>
 			<mx:LinkButton id="lbBenutzerverwaltung" x="386.5" y="19" label="Benutzerverwaltung" fontFamily="Arial" fontWeight="bold" fontSize="14" height="20" color="#808492" themeColor="#808492" click="this.currentState='Benutzerverwaltung'"/>
@@ -183,7 +185,7 @@
 											<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
 												<mx:Canvas>
 													<mx:Button width="17" height="17" click="outerDocument.deleteProject()" icon="@Embed(source='images/delete.png')"/>
-													<mx:Button enabled="true" x="20" width="17" height="17" click="outerDocument.changeContent('projektEditContent'), outerDocument.getProjectEdit();" icon="@Embed(source='images/edit.png')"/>
+													<mx:Button enabled="true" x="20" width="17" height="17" click="outerDocument.changeContent('projektEditContent'), outerDocument.prepareProjectEditExport();" icon="@Embed(source='images/edit.png')"/>
 												</mx:Canvas>
 											</mx:Box>
 										</mx:Component>
@@ -344,7 +346,7 @@
 							</mx:DataGrid>
 						</mx:Canvas>
 					</mx:HBox>
-					<mx:Button label="Projekt bearbeiten" y="430" x="418" click="prepareProjectEditExport()"/>
+					<mx:Button label="Projekt bearbeiten" y="430" x="418"/>
 					<mx:Button label="Felder zurücksetzen" y="430" x="560"/>
 				</mx:Canvas>
 				<!--
@@ -531,6 +533,23 @@
 				<mx:Label id="lblEinstellungAllgemein" x="0" y="10" text="Allgemeine Einstellungen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('einstellungContent')"/>
 				<mx:Label id="lblLogoUpload" x="167" y="10" text="Logo Upload" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('logoUploadContent')"/>
 				<mx:Canvas id="einstellungContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
+					<mx:Label text="Verleihen Sie 3Pv eine persönliche Note mit ihren eigenen Farbschemata!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
+					<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
+					<mx:Label x="27.5" y="92" text="Hintergrundfarbe: " fontSize="12" fontFamily="Arial" id="lblHintergrundfarbeNeu"/>
+					<mx:Label x="27.5" y="122" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
+					<mx:Label x="27.5" y="152" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
+					<mx:Label x="27.5" y="182" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+					<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
+					<mx:Button x="27.5" y="274" label="Schema speichern!" id="btnSchemaSpeichern"/>
+					<mx:Button x="222.5" y="274" label="Felder zurücksetzen"/>
+					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
+					<mx:ColorPicker x="222" y="121" width="160.5" selectedColor="#999999"/>
+					<mx:ComboBox x="222" y="151" width="160.5" id="schriftartNeu">
+						
+					</mx:ComboBox>
+					<mx:ComboBox x="222" y="181" width="160.5" id="schriftgroesseNeu">
+					
+					</mx:ComboBox>
 				</mx:Canvas>
 				<mx:Canvas id="logoUploadContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 				</mx:Canvas>
