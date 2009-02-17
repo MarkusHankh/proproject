@@ -152,7 +152,7 @@ public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 
 public function getAttributesResult(event:ResultEvent):void{
 	dpPortfolioAttributes = new ArrayCollection(ArrayUtil.toArray(event.result));
-	dpPortfolioAttributes.addItem('');
+	dpPortfolioAttributes.addItem({bla: ADD_TASK});
 }
 
 public function newPortfolioResult(event:ResultEvent):void
