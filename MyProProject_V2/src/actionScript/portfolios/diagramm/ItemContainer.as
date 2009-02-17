@@ -25,16 +25,9 @@ package actionScript.portfolios.diagramm
 				x = 20;
 			}
 			
-			//var pr2:Number = (progress1 / days)*100;
 			trace(line+" "+fill+" "+ring1color+" "+ring2color);
-			trace("0x12 "+ Number("0x12"))
-			trace("progress1 "+progress1);
 			if(days >= 0) {
-				trace("days--->"+days);
-				trace("heute--->"+heute);
-				trace("progress1--->"+progress1);
-				var pr1:Number = ((heute-progress1) / days)*100;
-				trace("pr1--->"+pr1);
+				var pr1:Number = ((progress1-heute) / days)*100;
 			}else {
 				pr1 =99;
 			}
@@ -45,9 +38,6 @@ package actionScript.portfolios.diagramm
 			if(!(pr1>=0 && pr1 <=100)) {
 				pr1=0;
 			}
-			trace("pr1->"+pr1);
-			trace("heute "+heute);
-			
 			
 			radius = radius * 15;
 			formatter.rounding = "down";
@@ -57,13 +47,13 @@ package actionScript.portfolios.diagramm
 			this.info=info;
 			switch (shape){
 				case 0:
-				var square = new DynamicSquare(radius,radius);
+				var square = new DynamicSquare(radius,radius,1,fill,line);
 				square.x = ring.x-(square.width/2);
 				square.y = ring.y-(square.height/2);
 				rawChildren.addChild(square);
 				break;
 				case 1:
-				var tri = new DynamicTriangle(radius);
+				var tri = new DynamicTriangle(radius,1,fill,line);
 
 				tri.x = ring.x+radius-(tri.width/1.5);
 				tri.y = ring.y+radius-(tri.height);

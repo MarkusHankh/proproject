@@ -3,11 +3,13 @@ import actionScript.portfolios.diagramm.*;
 
 import com.flexoop.utilities.dateutils.DateUtils;
 
+import flash.events.MouseEvent;
+import flash.geom.ColorTransform;
+
 import mx.collections.ArrayCollection;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.states.*;
-import flash.events.MouseEvent;
 var interval;
 var token:AsyncToken
 var pros:ArrayCollection = new ArrayCollection();
@@ -43,7 +45,11 @@ function projectAttributes(attr:ArrayCollection):void{
 			var days:Number = dayOfYear(td2)-dayOfYear(td1);
 			trace("days"+days + " " +dayOfYear(td2)+" "+dayOfYear(td1) );
 			var erf:Number;
-			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),0,null,Number("0x"+attr[i][8].toString().substring(1)),Number("0x"+attr[i][9].toString().substring(1)),Number("0x"+attr[i][10].toString().substring(1)),Number("0x"+attr[i][11].toString().substring(1)));
+			var myuint:uint = uint("0x"+attr[i][11].toString().substring(1));
+			
+
+			trace("color "+myuint);
+			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),0,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
 			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
 			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
@@ -57,6 +63,9 @@ function projectAttributes(attr:ArrayCollection):void{
 		}
 	}
 }
+
+
+
 private static function dayOfYear( date:Date ):Number {
 	// add one as it has to include first of year
 	return DateUtils.dateDiff( DateUtils.DAY_OF_MONTH, new Date( date.fullYear, DateUtils.monthAsNumber( DateUtils.JANUARY ), 1 ), date ) + 1;
