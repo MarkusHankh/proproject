@@ -41,7 +41,7 @@ function projectAttributes(attr:ArrayCollection):void{
 			trace("anfang "+dayOfYear(td1));
 			var heute:Date = new Date();
 			var days:Number = dayOfYear(td2)-dayOfYear(td1);
-			trace("days"+days);
+			trace("days"+days + " " +dayOfYear(td2)+" "+dayOfYear(td1) );
 			var erf:Number;
 			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td1),0,null,Number("0x"+attr[i][8].toString().substring(1)),Number("0x"+attr[i][9].toString().substring(1)),Number("0x"+attr[i][10].toString().substring(1)),Number("0x"+attr[i][11].toString().substring(1)));
 			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
