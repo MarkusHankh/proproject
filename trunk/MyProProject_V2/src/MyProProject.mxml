@@ -30,6 +30,7 @@
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
 		<mx:method name="deleteProject"/>
+		<mx:method name="deletePortfolio"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Portfolios">
@@ -44,6 +45,7 @@
 			<mx:SetProperty target="{HilfeView}" name="width" value="0%"/>
 			<mx:SetProperty target="{BenutzerverwaltungView}" name="height" value="0%"/>
 			<mx:SetProperty target="{BenutzerverwaltungView}" name="width" value="0%"/>
+			<mx:SetProperty target="{portfolioSelector}" name="width" value="144"/>
 		</mx:State>
 		<mx:State name="Benutzerverwaltung">
 			<mx:SetProperty target="{Navigation}" name="visible" value="true"/>
@@ -146,6 +148,7 @@
 				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>
 				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent'), editPortfolio()"/>
 				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" change="refreshAll(portfolioSelector.text)" selectedIndex="-1"/>
+				<mx:Button id="btnPortfolioLoeschen" x="835" y="10" icon="@Embed(source='images/delete.png')" click="deletePortfolio()"/>
 				<!--
 				Diagrammansicht
 				-->
