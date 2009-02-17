@@ -51,6 +51,9 @@ private var dpProjectValues:ArrayCollection;
 [Bindable]
 private var dpProjectAttributesValues:ArrayCollection;
 
+[Bindable]
+private var dpProjectUser:ArrayCollection;
+
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void{
 	if(event.result){
@@ -260,10 +263,10 @@ public function getProjectValuesResult(event:ResultEvent):void
 	xAchseEdit.value=dpProjectValues[0][6];
 	yAchseEdit.value=dpProjectValues[0][7];
 	beschreibungEdit.text=dpProjectValues[0][12];
-	fuellfarbeEdit.selectedColor=dpProjectValues[0][8];
-	rahmenfarbeEdit.selectedColor=dpProjectValues[0][9];
-	ringfarbeInnenEdit.selectedColor=dpProjectValues[0][10];
-	ringfarbeAussenEdit.selectedColor=dpProjectValues[0][11];
+	fuellfarbeEdit.selectedColor=dpProjectValues[0][8].toString(16);
+	rahmenfarbeEdit.selectedColor=dpProjectValues[0][9].toString(16);
+	ringfarbeInnenEdit.selectedColor=dpProjectValues[0][10].toString(16);
+	ringfarbeAussenEdit.selectedColor=dpProjectValues[0][11].toString(16);
 }
 
 
@@ -272,6 +275,12 @@ public function getProjectAttributesResult(event:ResultEvent):void
 {
 	
 	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
+}
+
+public function getProjectUserResult(event:ResultEvent):void
+{
+	dpProjectUser = new ArrayCollection(ArrayUtil.toArray(event.result));
+	
 }
 
 //public function testResult(event:ResultEvent):void{
