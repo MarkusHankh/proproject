@@ -1,5 +1,6 @@
 
 	import mx.controls.Alert;
+	import mx.events.CollectionEvent;
 	
 	public function prepareProjectExport():void{
 	var portfolioId:int;
@@ -102,9 +103,9 @@ public function getProjectEdit():void{
 			break;
 	}
 	
-	threepv_service.getProjectValues.send(projectID);
 	
-	//Alert.show(projectID.toString());
+	threepv_service.getProjectValues.send(projectID);
+
 	
 	switch(formgroesseText){
 		case 1:
@@ -120,14 +121,14 @@ public function getProjectEdit():void{
 	
 	threepv_service.getProjectAttributes.send(projectID);
 	
-	for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
-  		formgroesseText = dpProjectAttributesValues[j][2];
+	//for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
+  		//formgroesseText = dpProjectAttributesValues[j][2];
   		/*gridAttributeEdit.5.selecte
   		gridAttributeEdit.selectedItem = j+1;
   		gridAttributeEdit.selectedItem.value = "test";
   		*/
-  		Alert.show(dpProjectAttributesValues[j][2].toString());
- 	}
+  		//Alert.show(dpProjectAttributesValues[j][2].toString());
+ 	//}
 
 }
 

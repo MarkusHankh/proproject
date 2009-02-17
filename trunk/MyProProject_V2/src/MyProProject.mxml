@@ -388,10 +388,8 @@
 											<mx:Component>
 												<mx:ComboBox editable="true">
       												<mx:dataProvider>
-      													<mx:String>Groesse</mx:String>
-      													<mx:String>Farbe</mx:String>
-      													<mx:String>Umrandung</mx:String>
       													<mx:String>Tooltip</mx:String>
+      													<mx:String>Umrandung</mx:String>
       													<mx:String>Ring aussen</mx:String>
       													<mx:String>Ring innen</mx:String>
       												</mx:dataProvider>
@@ -434,7 +432,7 @@
 						<mx:Canvas width="400" height="400">
 							<mx:Label x="10" y="10" text="Benutzerspezifische Attribute" fontWeight="bold" fontFamily="Arial" fontSize="12"/>
 							<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeEdit" editable="true"
-								itemEditBeginning="checkEdit(event)" dataProvider="{dpPortfolioAttributes}" itemEditEnd="editEnd(event)" enabled="true">
+								itemEditBeginning="checkEdit2(event)" dataProvider="{dpPortfolioAttributes}" itemEditEnd="editEnd2(event)" enabled="true">
 								<mx:columns>
 									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="true"/>
 									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="true">
@@ -442,8 +440,8 @@
 											<mx:Component>
 												<mx:ComboBox editable="true">
       												<mx:dataProvider>
-      													<mx:String>Umrandung</mx:String>
       													<mx:String>Tooltip</mx:String>
+      													<mx:String>Umrandung</mx:String>
       													<mx:String>Ring aussen</mx:String>
       													<mx:String>Ring innen</mx:String>
       												</mx:dataProvider>
