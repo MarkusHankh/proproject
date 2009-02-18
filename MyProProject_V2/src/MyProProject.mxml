@@ -143,7 +143,7 @@
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="PortfolioView" height="0%" width="0%">
-				<mx:Label id="lblDiagramm" x="0" y="10" text="Diagramm" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('diagramContent')"/>
+				<mx:Label id="lblDiagramm" x="0" y="10" text="Diagramm" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('diagramContent'); refreshAll(portfolioSelector.text);"/>
 				<mx:Label id="lblListe" x="87" y="10" text="Liste" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('listContent')"/>
 				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent')"/>
 				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>

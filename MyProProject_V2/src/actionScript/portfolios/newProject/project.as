@@ -19,5 +19,6 @@ public function deleteProject():void
 	}
 	threepv_service.deleteProject.send(gridProjectListView.selectedItem[0]);
 	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
+	
 	changeContent('listContent');
 }
