@@ -205,7 +205,7 @@ public function newProjectResult(event:ResultEvent):void{
 			//Do Nothing :-)
 		}
 	}
-	changeContent('listContent');
+	changeContent('diagramContent');
 	setAttrb(dpPortfolio);
 	refreshAll(portfolioSelector.text);
 }
