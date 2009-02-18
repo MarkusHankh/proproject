@@ -66,3 +66,11 @@ public function resetNewProject():void
 	init();
 	
 }
+
+public function resetEditProject():void
+{
+	
+	getProjectEdit();
+	gridTeamEdit.dataProvider = new ArrayCollection();
+	init();
+}
