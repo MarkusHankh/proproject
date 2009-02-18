@@ -69,9 +69,10 @@ public function prepareProjectEditExport():void
 	var projektLeader:int = session.data.userID;
 	
 	threepv_service.editProject.send(projectID, projektnameEdit.text, startdatumEdit.text, enddatumEdit.text, formEdit.text, formGroesseInt, xAchseEdit.value, yAchseEdit.value, fuellfarbeEdit.selectedColor.toString(16), rahmenfarbeEdit.selectedColor.toString(16), beschreibungEdit.text, ringfarbeInnenEdit.selectedColor.toString(16), ringfarbeAussenEdit.selectedColor.toString(16));
-	Alert.show("Änderungen wurde gespeichert \nListenansicht muss noch refresht werden!!!");
+	//Alert.show("Änderungen wurde gespeichert \nListenansicht muss noch refresht werden!!!");
 	threepv_service.getProjectValues.send(projectID);
-
+	refreshAll(portfolioSelector.text);
+	changeContent('diagramContent');
 }
 
 public function getProjectEdit():void{

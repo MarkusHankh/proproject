@@ -274,7 +274,7 @@
 						</mx:Canvas>
 					</mx:HBox>
 					<mx:Button label="Projekt speichern" y="430" x="418" click="prepareProjectExport()"/>
-					<mx:Button label="Felder zurücksetzen" y="430" x="560"/>
+					<mx:Button label="Felder zurücksetzen" y="430" x="560" click="resetNewProject()"/>
 				</mx:Canvas>
 				<!--
 				Projekt bearbeiten
@@ -382,7 +382,7 @@
 							<mx:DataGrid x="10" y="50" width="380" height="230" id="gridPortfolioAttributeNeu" editable="true"
 								itemEditBeginning="checkEdit(event)" dataProvider="{dgSpezifischeAttribute}" itemEditEnd="editEnd(event)" enabled="true">
 								<mx:columns>
-									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="true"/>
+									<mx:DataGridColumn headerText="Attribut" id="newPortfolioAttribut" dataField="1" editable="true"/>
 									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="true">
 										<mx:itemEditor>
 											<mx:Component>
@@ -401,7 +401,7 @@
 							</mx:DataGrid>
 							
 							<mx:Button x="29" y="340" label="Portfolio speichern" width="148" id="btnPortfolioSpeichern" click="preparePortfolioExport()"/>
-							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort"/>
+							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort" click="resetNewPortfolio()"/>
 						</mx:Canvas>
 					</mx:HBox>
 				</mx:Canvas>
