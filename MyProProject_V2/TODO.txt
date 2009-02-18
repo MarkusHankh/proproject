@@ -3,7 +3,6 @@ TODO:
 -Formen werden nicht richtig angezeigt
 -Ring außen mit Prozentwert
 -Doppelklickfunktion 
--Bei Projekt bearbeiten werden die Projekte nicht mehr im Diagramm angezeigt
 -Tooltip-Attribute werden nicht angezeigt
 -Projektname in den Tooltip schreiben
 
@@ -11,9 +10,8 @@ TODO:
 -Beschriftung x- und y-achse sind vertauscht
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
-	-Größe anzeigen 
 	-Im Datagrid Attribute werden die Werte nicht angezeigt
-	-Projektmitglieder werden nicht angezeigt 
+	-Projektmitglieder aus der Verfügbarenliste löschen
 
 -Einstellungen komplett
 -Logoupload
