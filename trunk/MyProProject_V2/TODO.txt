@@ -15,7 +15,7 @@ TODO:
 	-Im Datagrid Attribute werden die Werte nicht angezeigt
 	-Projektmitglieder werden nicht angezeigt 
 
--sämtliche Resetbuttons ohne Funktion
+-sämtliche Resetbuttons ohne Funktion ->DONE!!!
 -Einstellungen komplett
 -Logoupload
 -Wenn das Projekt bewegt wird, muss die  neue Position gespeichert werden

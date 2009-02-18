@@ -69,6 +69,7 @@ public function preparePortfolioEditExport():void
 	nameYAchseEdit.text="";
 	portfolioBeschreibungEdit.text="";
 	threepv_service.getMyPortfolios.send(session.data.userID);
-	//TODO: RefreshALl
+	refreshAll(portfolioSelector.text);
+	changeContent('diagramContent');
 	
 }
