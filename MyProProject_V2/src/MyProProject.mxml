@@ -10,7 +10,6 @@
 	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
 	<mx:Script source="actionScript/portfolios/newPortfolio/preparePortfolioExport.as"/>
-	<mx:Script source="actionScript/portfolios/newProject/project.as"/>
 	<mx:Script source="actionScript/userAdministration/userAdministration.as"/>
 	<mx:RemoteObject id="threepv_service" source="3pv_service.fassade" destination="threepv">
 		<mx:method name="userLogin" result="userLoginResult(event);"/>
