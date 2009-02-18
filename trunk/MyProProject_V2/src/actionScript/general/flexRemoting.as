@@ -200,7 +200,7 @@ public function newProjectResult(event:ResultEvent):void{
 			var attributid:int = gridAttributeNeu.dataProvider[i][0].valueOf();
 			var attributwert:String = gridAttributeNeu.dataProvider[i][5];
 			threepv_service.setProjectAttributes.send(projektid, attributid, attributwert);
-		}catch(e:ReferenceError){
+		}catch(e:Error){
 			//Do Nothing :-)
 		}
 	}
