@@ -1,16 +1,19 @@
 TODO:
 
--Fehlermeldung beim Portfolio anlegen beseitigen
--Nach Portfolio erstellen muss ein Refresh gemacht werden, sodass das Portfolio im Dropdown angezeigt wird
+-Füllfarbe und Rahmenfarbe vertauschen
+-Formen werden nicht richtig angezeigt
+-Ring außen mit Prozentwert
+-Doppelklickfunktion 
+-Seite refreshen überall nach jeder Änderung
+-Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
+-Projekt bearbeiten: 
+	-Größe anzeigen 
+	-Farben für die Colorpicker einstellen 
+	-Im Datagrid Attribute werden die Werte nicht angezeigt
+	-Projektmitglieder werden nicht angezeigt 
 
-[RPC Fault faultString="Channel disconnected" faultCode="Client.Error.DeliveryInDoubt" faultDetail="Channel disconnected before an acknowledgement was received"]
-	at mx.rpc::AbstractInvoker/http://www.adobe.com/2006/flex/mx/internal::faultHandler()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\rpc\AbstractInvoker.as:220]
-	at mx.rpc::Responder/fault()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\rpc\Responder.as:53]
-	at mx.rpc::AsyncRequest/fault()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\rpc\AsyncRequest.as:103]
-	at NetConnectionMessageResponder/channelDisconnectHandler()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\messaging\channels\NetConnectionChannel.as:646]
-	at flash.events::EventDispatcher/dispatchEventFunction()
-	at flash.events::EventDispatcher/dispatchEvent()
-	at mx.messaging::Channel/disconnectSuccess()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\messaging\Channel.as:1091]
-	at mx.messaging.channels::NetConnectionChannel/internalDisconnect()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\messaging\channels\NetConnectionChannel.as:163]
-	at mx.messaging.channels::AMFChannel/internalDisconnect()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\messaging\channels\AMFChannel.as:312]
-	at mx.messaging.channels::AMFChannel/statusHandler()[C:\autobuild\3.2.0\frameworks\projects\rpc\src\mx\messaging\channels\AMFChannel.as:382]
+-sämtliche Resetbuttons ohne Funktion
+-Einstellungen komplett
+-Logoupload
+-Wenn das Projekt bewegt wird, muss die  neue Position gespeichert werden
+-
