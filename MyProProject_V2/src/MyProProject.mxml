@@ -453,7 +453,7 @@
 							</mx:DataGrid>
 							
 							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten" click="preparePortfolioEditExport()"/>
-							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort"/>
+							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort" click="resetEditPortfolio()"/>
 						</mx:Canvas>
 					</mx:HBox>
 				</mx:Canvas>
