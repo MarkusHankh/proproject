@@ -34,10 +34,10 @@
 	xAchseNeu.value=0.00;
 	yAchseNeu.value=0.00;
 	beschreibungNeu.text="";
-	//fuellfarbeNeu.;
-	//rahmenfarbeNeu.;
-	//ringfarbeInnenNeu.;
-	//ringfarbeAussenNeu.;
+	fuellfarbeNeu.selectedColor = 000000;
+	rahmenfarbeNeu.selectedColor = 000000;
+	ringfarbeInnenNeu.selectedColor = 000000;
+	ringfarbeAussenNeu.selectedColor = 000000;
 }
 
 public function prepareProjectEditExport():void
