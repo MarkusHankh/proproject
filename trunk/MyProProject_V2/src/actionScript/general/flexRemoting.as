@@ -204,11 +204,9 @@ public function newProjectResult(event:ResultEvent):void{
 			//Do Nothing :-)
 		}
 	}
-	
-	threepv_service.getAttributes.send(portfolioID);
-	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
 	changeContent('listContent');
 	setAttrb(dpPortfolio);
+	refreshAll(portfolioSelector.text);
 }
 
 public function getMyProjectsResult(event:ResultEvent):void
