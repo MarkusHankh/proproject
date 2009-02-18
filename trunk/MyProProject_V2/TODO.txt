@@ -1,6 +1,5 @@
 TODO:
 
--Füllfarbe und Rahmenfarbe vertauschen
 -Formen werden nicht richtig angezeigt
 -Ring außen mit Prozentwert
 -Doppelklickfunktion 
@@ -11,12 +10,9 @@ TODO:
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
 	-Größe anzeigen 
-	-Farben für die Colorpicker einstellen 																				->	##### passsst :) #####
 	-Im Datagrid Attribute werden die Werte nicht angezeigt
 	-Projektmitglieder werden nicht angezeigt 
 
--sämtliche Resetbuttons ohne Funktion ->DONE!!!
 -Einstellungen komplett
 -Logoupload
 -Wenn das Projekt bewegt wird, muss die  neue Position gespeichert werden
--Wenn man ein neues Projekt erstellt hat und dann wieder auf "neues Projekt" klickt, müssen die Felder resettet werden  -> ##### geht klar!!! #####
