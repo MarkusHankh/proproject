@@ -3,6 +3,7 @@ import flash.net.SharedObject;
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
+import mx.styles.StyleManager;
 import mx.utils.ArrayUtil;
 
 [Bindable]
@@ -253,6 +254,7 @@ public function getProjectValuesResult(event:ResultEvent):void
 			break;
 	}
 	
+	
 	projektnameEdit.text=dpProjectValues[0][1];
 	startdatumEdit.text=dpProjectValues[0][2];
 	enddatumEdit.text=dpProjectValues[0][3];
@@ -261,10 +263,10 @@ public function getProjectValuesResult(event:ResultEvent):void
 	xAchseEdit.value=dpProjectValues[0][6];
 	yAchseEdit.value=dpProjectValues[0][7];
 	beschreibungEdit.text=dpProjectValues[0][12];
-	fuellfarbeEdit.selectedColor=dpProjectValues[0][8];
-	rahmenfarbeEdit.selectedColor=dpProjectValues[0][9];
-	ringfarbeInnenEdit.selectedColor=dpProjectValues[0][10];
-	ringfarbeAussenEdit.selectedColor=dpProjectValues[0][11];
+	fuellfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][8]);
+	rahmenfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][9]);
+	ringfarbeInnenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][10]);
+	ringfarbeAussenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][11]);
 }
 
 
