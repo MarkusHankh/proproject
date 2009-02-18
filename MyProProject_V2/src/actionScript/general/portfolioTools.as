@@ -101,6 +101,20 @@ public function deletePortfolio():void
 	}
 	
 	threepv_service.deletePortfolio.send(portfolioID);
+	refreshAll(portfolioSelector.text);
+	changeContent('diagramContent');
 	
-	
+}
+
+public function resetNewPortfolio():void
+{
+	portfolionameNeu.text='';
+	portfolioBeschreibungNeu.text='';
+	nameXAchseNeu.text='';
+	nameYAchseNeu.text='';
+	kleinsterXWertNeu.value=0;
+	groessterXWertNeu.value=0;
+	kleinsterYWertNeu.value=0;
+	groessterYWertNeu.value=0;
+	initGridAttribut();
 }

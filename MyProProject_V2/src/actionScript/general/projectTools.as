@@ -46,3 +46,23 @@ public function deleteProject():void
 	
 	changeContent('listContent');
 }
+
+public function resetNewProject():void
+{
+	projektnameNeu.text='';
+	beschreibungNeu.text='';
+	startdatumNeu.text='';
+	enddatumNeu.text='';
+	formNeu.text="Kreis";
+	formgroesseNeu.text="Klein";
+	xAchseNeu.value=0.0;
+	yAchseNeu.value=0.0;
+	fuellfarbeNeu.selectedColor = 000000;
+	rahmenfarbeNeu.selectedColor = 000000;
+	ringfarbeInnenNeu.selectedColor = 000000;
+	ringfarbeAussenNeu.selectedColor = 000000;
+	
+	gridTeamNeu.dataProvider = new ArrayCollection();
+	init();
+	
+}
