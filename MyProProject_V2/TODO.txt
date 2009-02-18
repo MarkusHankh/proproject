@@ -17,4 +17,4 @@ TODO:
 -Einstellungen komplett
 -Logoupload
 -Wenn das Projekt bewegt wird, muss die  neue Position gespeichert werden
--Wenn man ein neues Projekt erstellt hat und dann wieder auf "neues Projekt" klickt, müssen die Felder resettet werden
+-Wenn man ein neues Projekt erstellt hat und dann wieder auf "neues Projekt" klickt, müssen die Felder resettet werden  -> ##### geht klar!!! #####
