@@ -4,6 +4,7 @@ TODO:
 -Formen werden nicht richtig angezeigt
 -Ring außen mit Prozentwert
 -Doppelklickfunktion 
+-Bei Projekt bearbeiten werden die Projekte nicht mehr im Diagramm angezeigt
 -Seite refreshen überall nach jeder Änderung
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
@@ -16,4 +17,4 @@ TODO:
 -Einstellungen komplett
 -Logoupload
 -Wenn das Projekt bewegt wird, muss die  neue Position gespeichert werden
--
+-Wenn man ein neues Projekt erstellt hat und dann wieder auf "neues Projekt" klickt, müssen die Felder resettet werden
