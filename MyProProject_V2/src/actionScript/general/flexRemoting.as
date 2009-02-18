@@ -243,13 +243,13 @@ public function getProjectValuesResult(event:ResultEvent):void
 	
 	var formGroesse:String;
 	switch(dpProjectValues[0][5]){
-		case 1:
+		case '1':
 			formGroesse = 'Klein';
 			break;
-		case 2:
+		case '2':
 			formGroesse = 'Mittel';
 			break;
-		case 3:
+		case '3':
 			formGroesse = 'Groß';
 			break;
 	}
