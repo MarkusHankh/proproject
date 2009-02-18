@@ -11,7 +11,7 @@ TODO:
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
 	-Größe anzeigen 
-	-Farben für die Colorpicker einstellen 
+	-Farben für die Colorpicker einstellen 																				->	##### passsst :) #####
 	-Im Datagrid Attribute werden die Werte nicht angezeigt
 	-Projektmitglieder werden nicht angezeigt 
 
