@@ -49,12 +49,20 @@ function projectAttributes(attr:ArrayCollection):void{
 			
 
 			trace("color "+myuint);
-			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),0,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
+			
+			// Hier die achte Variable ersetzen.
+			//es heist progress2 in der andere Klasse
+			// nur hier ersetzten.
+			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),/*hier einfügen*/0,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
 			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
+			//============= hier kann man noch die werte eingeben falls das objekt bewegt wurde
 			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
+			
 			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
-			temp.addEventListener(MouseEvent.DOUBLE_CLICK,doubleClick);
+			
+			//============== hier mouse double click
+			temp.addEventListener(MouseEvent.MOUSE_WHEEL,doubleClick);
 			temp.info = new InfoShape(25,0,0);
 			temp.put("Anfang",attr[i][2]);
 			temp.put("Ende",attr[i][3]);

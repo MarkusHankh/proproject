@@ -42,18 +42,21 @@ package actionScript.portfolios.diagramm
 			radius = radius * 15;
 			formatter.rounding = "down";
 			formatter.precision = 0;
+			// kleiner Ring
 			ring = new DynamicRing2(radius,pr1,2,ring1color);
+			//Großer Ring
+			// hier progress2 0-100 
 			ring2 = new DynamicRing2(radius+7,progress2,3,ring2color);
 			this.info=info;
 			switch (shape){
 				case 0:
-				var square = new DynamicSquare(radius,radius,1,fill,line);
+				var square = new DynamicSquare(radius,radius,1,line,fill);
 				square.x = ring.x-(square.width/2);
 				square.y = ring.y-(square.height/2);
 				rawChildren.addChild(square);
 				break;
 				case 1:
-				var tri = new DynamicTriangle(radius,1,fill,line);
+				var tri = new DynamicTriangle(radius,1,line,fill);
 
 				tri.x = ring.x+radius-(tri.width/1.5);
 				tri.y = ring.y+radius-(tri.height);
