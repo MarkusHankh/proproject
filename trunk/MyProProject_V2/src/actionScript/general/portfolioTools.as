@@ -117,4 +117,11 @@ public function resetNewPortfolio():void
 	kleinsterYWertNeu.value=0;
 	groessterYWertNeu.value=0;
 	initGridAttribut();
+	init();
+}
+
+public function resetEditPortfolio():void
+{
+	editPortfolio();
+	init();
 }
