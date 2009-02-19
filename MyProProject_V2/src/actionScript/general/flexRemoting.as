@@ -267,6 +267,7 @@ public function getProjectValuesResult(event:ResultEvent):void
 	rahmenfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][9]);
 	ringfarbeInnenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][10]);
 	ringfarbeAussenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][11]);
+
 }
 
 
@@ -275,6 +276,14 @@ public function getProjectAttributesResult(event:ResultEvent):void
 {
 	
 	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
+		
+	
+	for(var i:int = 0; i < dpProjectAttributesValues.length; i++){
+  		//gridAttributeEdit.selectedItem = i;
+  		//gridAttributeEdit.selectedItem.5 = dpProjectAttributesValues[i][2];
+  		dpPortfolioAttributes.setItemAt({1:dpPortfolioAttributes[i][1], 3:dpPortfolioAttributes[i][3], 5:dpProjectAttributesValues[i][2]}, i);
+  		//Alert.show(dpProjectAttributesValues[i][2].toString());
+ 	}
 }
 
 public function getProjectUserResult(event:ResultEvent):void
