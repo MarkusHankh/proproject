@@ -10,7 +10,7 @@ TODO:
 -Beschriftung x- und y-achse sind vertauscht
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
-	-Im Datagrid Attribute werden die Werte nicht gespeichert
+	-Werte im Datagrid werden nicht gespeichert
 	-Projektmitglieder aus der Verfügbarenliste löschen
 
 -Einstellungen komplett
