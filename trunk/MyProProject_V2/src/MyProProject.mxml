@@ -331,7 +331,7 @@
 								<mx:columns>
 									<mx:DataGridColumn headerText="Attribut" dataField="1" editable="false"/>
 									<mx:DataGridColumn headerText="Visualisierung" dataField="3" editable="false"/>
-									<mx:DataGridColumn headerText="Wert" dataField="value" editable="true"/>
+									<mx:DataGridColumn headerText="Wert" dataField="5" editable="true"/>
 								</mx:columns>
 							</mx:DataGrid>
 							<mx:Label x="10" y="236" text="Projektmitglieder" fontSize="12" fontWeight="bold" fontFamily="Arial"/>

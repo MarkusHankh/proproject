@@ -89,47 +89,10 @@ public function getProjectEdit():void{
 	//for(var j:int = 0; j < dpProjectValues.length; j++){
 		//formgroesseText = dpProjectValues[0][5];
 		//Alert.show(dpProjectValues[0][5]);
-	//}
-	
-	var formGroesseInt:int;
-	switch(formgroesseEdit.text){
-		case 'Klein':
-			formGroesseInt = 1;
-			break;
-		case 'Mittel':
-			formGroesseInt = 2;
-			break;
-		case 'Groß':
-			formGroesseInt = 3;
-			break;
-	}
-	
+	//}	
 	
 	threepv_service.getProjectValues.send(projectID);
-
-	
-	switch(formgroesseText){
-		case 1:
-			formgroesseEdit.text = 'Klein';
-			break;
-		case 2:
-			formgroesseEdit.text = 'Mittel';
-			break;
-		case 3:
-			formgroesseEdit.text = 'Groß';
-			break;
-	}
 	
 	threepv_service.getProjectAttributes.send(projectID);
-	
-	//for(var j:int = 0; j < dpProjectAttributesValues.length; j++){
-  		//formgroesseText = dpProjectAttributesValues[j][2];
-  		/*gridAttributeEdit.5.selecte
-  		gridAttributeEdit.selectedItem = j+1;
-  		gridAttributeEdit.selectedItem.value = "test";
-  		*/
-  		//Alert.show(dpProjectAttributesValues[j][2].toString());
- 	//}
-
 }
 
