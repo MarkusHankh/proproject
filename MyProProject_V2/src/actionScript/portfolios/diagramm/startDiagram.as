@@ -49,10 +49,8 @@ function projectAttributes(attr:ArrayCollection):void{
 
 			trace("color "+myuint);
 			
-			// Hier die achte Variable ersetzen.
-			//es heist progress2 in der andere Klasse
-			// nur hier ersetzten.
-			var ringAussen:int;
+			var ringAussen:int = 0;
+			var toolInfo:ArrayCollection;
 			for(var j:int = 0; j < attr[i][15].length; j++){
 				if(attr[i][15][j][2] == 'Ring aussen'){
 					ringAussen = attr[i][15][j][3];
@@ -65,7 +63,11 @@ function projectAttributes(attr:ArrayCollection):void{
 			
 			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
-			
+//			for(var k:int = 0; k < attr[i][15].length; j++){
+//				if(attr[i][15][k][2] == 'Tooltip'){
+//					temp.put(attr[i][15][k][1], attr[i][15][k][2]);
+//				}
+//			}
 			//============== hier mouse double click
 			temp.addEventListener(MouseEvent.MOUSE_WHEEL,doubleClick);
 			temp.info = new InfoShape(25,0,0);
