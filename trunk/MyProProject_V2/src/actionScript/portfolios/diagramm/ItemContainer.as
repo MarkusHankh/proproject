@@ -58,10 +58,15 @@ package actionScript.portfolios.diagramm
 				break;
 				case 1:
 				var tri = new DynamicTriangle(radius,1,line,fill);
-
 				tri.x = ring.x+radius-(tri.width/1.5);
 				tri.y = ring.y+radius-(tri.height);
 				rawChildren.addChild(tri);
+				break;
+				case 2:
+				var egg = new DynamicEgg(radius,1,line,fill);
+				egg.x = ring.x+radius-(egg.width/1.5);
+				egg.y = ring.y+radius-(egg.height);
+				rawChildren.addChild(egg);
 				break;
 			}
 			this.x=x;

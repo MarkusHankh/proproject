@@ -37,7 +37,18 @@ function projectAttributes(attr:ArrayCollection):void{
 	if(attr != null && attr.length > 0) {
 		for(var i = 0; i< attr.length; i++){
 			trace(attr[i]);
-			var shape: Number = ((attr[i][4] == "Dreieck")?0:1); 
+			var shape: Number = ((attr[i][4] == "Dreieck")?1:0); 
+			
+			if(attr[i][4] == "Viereck"){
+				shape = 0;
+			}
+			if(attr[i][4] == "Dreieck"){
+				shape = 1;
+			}
+			if(attr[i][4] == "Kreis"){
+				shape = 2;
+			}
+			
 			var td1:Date = new Date(Number(attr[i][2].toString().substr(0,4)),Number(attr[i][2].toString().substr(5,2))-1,Number(attr[i][2].toString().substr(8,2)));
 			var td2:Date = new Date(Number(attr[i][3].toString().substr(0,4)),Number(attr[i][3].toString().substr(5,2))-1,Number(attr[i][3].toString().substr(8,2)));
 			trace("anfang "+dayOfYear(td1));
