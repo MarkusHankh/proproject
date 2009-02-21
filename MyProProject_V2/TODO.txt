@@ -2,7 +2,6 @@ TODO:
 
 -Formen werden nicht richtig angezeigt
 
--Beim anmelden werden die Projekte nicht richtig geladen
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
 	-Werte im Datagrid werden nicht gespeichert

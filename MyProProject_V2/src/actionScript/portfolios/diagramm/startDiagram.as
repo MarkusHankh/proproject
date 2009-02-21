@@ -17,7 +17,7 @@ function doInit() {
 	//interval = setInterval(addCharts,2000);
 	var session:SharedObject = SharedObject.getLocal("3PvSession");
 	var ao:AbstractOperation = threepv_service.getOperation("getMyPortfolios");
-	token  = ao.send(1);
+	//token  = ao.send(1);
 	//addCharts();
 }
 
