@@ -7,7 +7,6 @@ TODO:
 -Projektname in den Tooltip schreiben
 
 -Beim anmelden werden die Projekte nicht richtig geladen
--Beschriftung x- und y-achse sind vertauscht
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
 -Projekt bearbeiten: 
 	-Werte im Datagrid werden nicht gespeichert
