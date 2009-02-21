@@ -63,9 +63,9 @@ function projectAttributes(attr:ArrayCollection):void{
 			
 			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
-			
+			temp.doubleClickEnabled = true;
 			//============== hier mouse double click
-			temp.addEventListener(MouseEvent.MOUSE_WHEEL,doubleClick);
+			temp.addEventListener(MouseEvent.DOUBLE_CLICK,doubleClick);
 			temp.info = new InfoShape(25,0,0);
 			temp.put("Name", attr[i][1]);
 			temp.put("Beschreibung", attr[i][12]);
