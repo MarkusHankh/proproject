@@ -75,9 +75,12 @@ public function prepareProjectEditExport():void
 	changeContent('diagramContent');
 }
 
-public function getProjectEdit():void{
-	var projectID:int=gridProjectListView.selectedItem[0];
-
+public function getProjectEdit(id:int):void{
+	if(id != 0){
+		var projectID:int = id;
+	}else{
+		var projectID:int=gridProjectListView.selectedItem[0];
+	}
 	var portfolioId:int;
 	var formgroesseText:int;
 	var portfolioName:String = portfolioSelector.text;

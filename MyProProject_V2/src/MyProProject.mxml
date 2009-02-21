@@ -29,6 +29,7 @@
 		<mx:method name="getProjectUser" result="getProjectUserResult(event);" /> 
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
+		<mx:method name="setProjectPosition"/>
 		<mx:method name="deleteProject"/>
 		<mx:method name="deletePortfolio"/>
 	</mx:RemoteObject>
@@ -189,7 +190,7 @@
 											<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
 												<mx:Canvas>
 													<mx:Button width="17" height="17" click="outerDocument.deleteProject()" icon="@Embed(source='images/delete.png')"/>
-													<mx:Button enabled="true" x="20" width="17" height="17" click="outerDocument.changeContent('projektEditContent'), outerDocument.getProjectEdit();" icon="@Embed(source='images/edit.png')"/>
+													<mx:Button enabled="true" x="20" width="17" height="17" click="outerDocument.changeContent('projektEditContent'), outerDocument.getProjectEdit(0);" icon="@Embed(source='images/edit.png')"/>
 												</mx:Canvas>
 											</mx:Box>
 										</mx:Component>

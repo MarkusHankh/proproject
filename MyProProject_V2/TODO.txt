@@ -1,7 +1,6 @@
 TODO:
 
 -Formen werden nicht richtig angezeigt
--Doppelklickfunktion 
 
 -Beim anmelden werden die Projekte nicht richtig geladen
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
@@ -11,4 +10,3 @@ TODO:
 
 -Einstellungen komplett
 -Logoupload
--Wenn das Projekt bewegt wird, muss die  neue Position gespeichert werden

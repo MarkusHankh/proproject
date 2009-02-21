@@ -70,7 +70,7 @@ public function resetNewProject():void
 public function resetEditProject():void
 {
 	
-	getProjectEdit();
+	getProjectEdit(0);
 	gridTeamEdit.dataProvider = new ArrayCollection();
 	init();
 }
