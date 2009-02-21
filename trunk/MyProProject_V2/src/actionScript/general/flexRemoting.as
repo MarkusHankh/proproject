@@ -195,7 +195,7 @@ public function newProjectResult(event:ResultEvent):void{
 	for(var i:int = 0; i < gridTeamNeu.dataProvider.length; i++){
 		threepv_service.setBenutzerProjekt.send(gridTeamNeu.dataProvider[i][0], projektid);
 	}
-	//Eigenschaft 0 für String nicht gefunden Zeile 151
+	
 	for(var i:int = 0; i < gridAttributeNeu.dataProvider.length; i++){
 		try{
 			var attributid:int = gridAttributeNeu.dataProvider[i][0].valueOf();

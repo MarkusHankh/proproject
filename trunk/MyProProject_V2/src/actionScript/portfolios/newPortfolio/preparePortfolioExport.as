@@ -68,7 +68,7 @@ public function preparePortfolioEditExport():void
 	nameXAchseEdit.text="";
 	nameYAchseEdit.text="";
 	portfolioBeschreibungEdit.text="";
-	threepv_service.getMyPortfolios.send(session.data.userID);
+	//threepv_service.getMyPortfolios.send(session.data.userID);
 	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
 	
