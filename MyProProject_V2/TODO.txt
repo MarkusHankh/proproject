@@ -1,10 +1,7 @@
 TODO:
 
 -Formen werden nicht richtig angezeigt
--Ring außen mit Prozentwert
 -Doppelklickfunktion 
--Tooltip-Attribute werden nicht angezeigt
--Projektname in den Tooltip schreiben
 
 -Beim anmelden werden die Projekte nicht richtig geladen
 -Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert

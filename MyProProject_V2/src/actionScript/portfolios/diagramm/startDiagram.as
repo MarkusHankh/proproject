@@ -63,11 +63,7 @@ function projectAttributes(attr:ArrayCollection):void{
 			
 			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
-//			for(var k:int = 0; k < attr[i][15].length; j++){
-//				if(attr[i][15][k][2] == 'Tooltip'){
-//					temp.put(attr[i][15][k][1], attr[i][15][k][2]);
-//				}
-//			}
+			
 			//============== hier mouse double click
 			temp.addEventListener(MouseEvent.MOUSE_WHEEL,doubleClick);
 			temp.info = new InfoShape(25,0,0);
@@ -75,6 +71,11 @@ function projectAttributes(attr:ArrayCollection):void{
 			temp.put("Beschreibung", attr[i][12]);
 			temp.put("Anfang",attr[i][2]);
 			temp.put("Ende",attr[i][3]);
+			for(var k:int = 0; k < attr[i][15].length; k++){
+				if(attr[i][15][k][2] == 'Tooltip'){
+					temp.put(attr[i][15][k][1], attr[i][15][k][3]);
+				}
+			}
 			pros.addItem(temp);
 			dia.addChild(temp);
 		}
