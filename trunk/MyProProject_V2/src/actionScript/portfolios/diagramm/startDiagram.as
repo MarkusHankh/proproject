@@ -6,6 +6,7 @@ import com.flexoop.utilities.dateutils.DateUtils;
 import flash.events.MouseEvent;
 
 import mx.collections.ArrayCollection;
+import mx.controls.Alert;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.states.*;
@@ -50,13 +51,18 @@ function projectAttributes(attr:ArrayCollection):void{
 			trace("color "+myuint);
 			
 			var ringAussen:int = 0;
+			var ringInnen:int = 0;
 			var toolInfo:ArrayCollection;
 			for(var j:int = 0; j < attr[i][15].length; j++){
 				if(attr[i][15][j][2] == 'Ring aussen'){
 					ringAussen = attr[i][15][j][3];
 				}
+				if(attr[i][15][j][2] == 'Ring innen'){
+					ringInnen = attr[i][15][j][3];
+				}
 			}
-			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),ringAussen,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
+			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), ringInnen,ringAussen,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
+			temp.myId = attr[i][0];
 			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 			//============= hier kann man noch die werte eingeben falls das objekt bewegt wurde
 			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
@@ -202,7 +208,11 @@ function mouseOut(event:MouseEvent):void {
 function mouseReleased(event:MouseEvent):void {
 	event.target.stopDrag();
     trace(event.target.dropTarget.name);
+    //Alert.show(event.target.myId + event.target.getXValue());
+    threepv_service.setProjectPosition.send(event.target.myId, event.target.getYValue(), event.target.getXValue());
 }
 function doubleClick(event:MouseEvent):void {
-	Alert.show("Hallo ich bin "+event.target.sd[0]);
+	//Alert.show("Hallo ich bin "+event.target.myId);
+	changeContent('projektEditContent'); 
+	getProjectEdit(event.target.myId);
 }

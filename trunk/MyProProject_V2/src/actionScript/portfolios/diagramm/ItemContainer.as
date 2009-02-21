@@ -12,6 +12,7 @@ package actionScript.portfolios.diagramm
 		var formatter:NumberFormatter = new NumberFormatter();
 		public var sd:ArrayCollection = new ArrayCollection();
 		public var info:InfoShape;
+		public var myId:int;
 		public function ItemContainer(shape:Number=0,radius:Number=25,x:Number=0,y:Number=0,days:Number=0,heute:Number=0,progress1:Number=0,progress2:Number=0,info:InfoShape=null,line:Number=0,fill:Number=0,ring1color:Number=0,ring2color:Number=0)
 		{
 			if(y > 0){
@@ -43,7 +44,7 @@ package actionScript.portfolios.diagramm
 			formatter.rounding = "down";
 			formatter.precision = 0;
 			// kleiner Ring
-			ring = new DynamicRing2(radius,pr1,2,ring1color);
+			ring = new DynamicRing2(radius,progress1,2,ring1color);
 			//Großer Ring
 			// hier progress2 0-100 
 			ring2 = new DynamicRing2(radius+7,progress2,3,ring2color);
