@@ -4,7 +4,6 @@ import actionScript.portfolios.diagramm.*;
 import com.flexoop.utilities.dateutils.DateUtils;
 
 import flash.events.MouseEvent;
-import flash.geom.ColorTransform;
 
 import mx.collections.ArrayCollection;
 import mx.rpc.AbstractOperation;
@@ -53,7 +52,13 @@ function projectAttributes(attr:ArrayCollection):void{
 			// Hier die achte Variable ersetzen.
 			//es heist progress2 in der andere Klasse
 			// nur hier ersetzten.
-			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),/*hier einfügen*/0,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
+			var ringAussen:int;
+			for(var j:int = 0; j < attr[i][15].length; j++){
+				if(attr[i][15][j][2] == 'Ring aussen'){
+					ringAussen = attr[i][15][j][3];
+				}
+			}
+			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), dayOfYear(td2),ringAussen,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
 			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 			//============= hier kann man noch die werte eingeben falls das objekt bewegt wurde
 			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
@@ -64,6 +69,8 @@ function projectAttributes(attr:ArrayCollection):void{
 			//============== hier mouse double click
 			temp.addEventListener(MouseEvent.MOUSE_WHEEL,doubleClick);
 			temp.info = new InfoShape(25,0,0);
+			temp.put("Name", attr[i][1]);
+			temp.put("Beschreibung", attr[i][12]);
 			temp.put("Anfang",attr[i][2]);
 			temp.put("Ende",attr[i][3]);
 			pros.addItem(temp);

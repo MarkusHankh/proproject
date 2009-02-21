@@ -121,8 +121,8 @@ public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection{
 		for(var i:int = 0; i < length; i++){
 			dpPortfolioSelector.addItem(event.result[i][1]);
 		}
-		lblYAchse.text = dpPortfolio[0][6];
-		lblXAchse.text = dpPortfolio[0][7];
+		lblYAchse.text = dpPortfolio[0][7];
+		lblXAchse.text = dpPortfolio[0][6];
 	}else{
 		dpPortfolioSelector = new ArrayCollection();
 		dpPortfolioSelector.addItem('Keine Portfolios vorhanden...');
