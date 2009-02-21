@@ -16,7 +16,7 @@ package actionScript.portfolios.diagramm
 			this.width = 200;
 			graphics.lineStyle(2,0x0066ff);
 			graphics.beginFill(0xb7babc);
-			graphics.drawRoundRect(x+30,y+30,150,200,20,20);
+			graphics.drawRoundRect(x+30,y+30,250,300,20,20);
 			graphics.endFill();	
 			x1=x;
 			y1=y;
@@ -25,7 +25,6 @@ package actionScript.portfolios.diagramm
 			}
 			
 			var tfield:UITextField = new UITextField();
-			tfield.text = "INFO";
 			tfield.x = x+90;
 			tfield.y = y+30;
 			this.addChild(tfield);
