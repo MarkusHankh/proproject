@@ -1,8 +1,8 @@
 TODO:
 
--Formen werden nicht richtig angezeigt
-
--Portfolio bearbeiten: Werte im Datagrid werden nicht gespeichert
+-Portfolio bearbeiten: 
+	-Werte im Datagrid werden nicht gespeichert
+	-Nach Bearbeitung werden Achesen-Beschriftung und portfolioSelector-Text nicht aktualisiert
 -Projekt bearbeiten: 
 	-Werte im Datagrid werden nicht gespeichert
 	-Projektmitglieder aus der Verfügbarenliste löschen
