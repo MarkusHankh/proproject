@@ -163,15 +163,30 @@ public function deletePortfolioAttribute():void
 			attributeID=dpPortfolioAttributes[i][0];
 		}
 	}
-	//if (dpPortfolioAttributes[][]==gridPortfolioAttributeEdit.selectedItem[1];
-	//Alert.show("Hallo, ich soll ein Portfolioattribut löschen! Die aktuelle PortfolioID ist: " + this.getCurrentPortfolioID().toString() 
-	//			+ ", die AttributID ist: " + attributeID.toString());
 	
-	threepv_service.deleteAttribute(portfolioID, attributeID);
+	threepv_service.deleteAttribute.send(portfolioID, attributeID);
 	refreshAll(portfolioSelector.text);
 }
 
 public function newPortfolioAttribute():void
 {
 	
+	
+}
+
+public function updatePortfolioAttribute():void
+{
+	var portfolioID:int=this.getCurrentPortfolioID();
+	var attributeID:int;
+	for (var i:int=0; i < dpPortfolioAttributes.length; i++)
+	{
+		if (dpPortfolioAttributes[i][1]==gridPortfolioAttributeEdit.selectedItem[1])
+		{
+			//Alert.show('dpPortfolioAttributes[i][1]==gridPortfolioAttributeEdit.selectedItem[1]');
+			attributeID=dpPortfolioAttributes[i][0];
+		}
+	}
+
+	threepv_service.upateupdateAttribute.send(portfolioID, attributeID, gridPortfolioAttributeEdit.selectedItem[1], gridPortfolioAttributeEdit.selectedItem[2]);
+	refreshAll(portfolioSelector.text);
 }
