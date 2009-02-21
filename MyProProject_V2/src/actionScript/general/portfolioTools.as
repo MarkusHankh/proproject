@@ -8,13 +8,34 @@ private function initGridAttribut():void
 	dgSpezifischeAttribute.addItem({2: ADD_TASK});
 }
 
-
 private static const ADD_TASK:String = "Neues Attribut hinzufügen!";
 
 private function checkEdit(e:DataGridEvent):void
 {
 	if(e.rowIndex == dgSpezifischeAttribute.length - 1 && e.columnIndex != 0)
 	e.preventDefault();
+}
+
+public function getCurrentPortfolioID():int
+{
+	var portfolioName:String = portfolioSelector.text;
+	var portfolioID:int;
+	if (dpPortfolio!=null)
+	{
+		for (var i:int=0; i<dpPortfolioSelector.length; i++)
+		{
+			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
+			{
+				portfolioID=dpPortfolio[i][0];
+			}
+		}
+	}
+	else
+	{
+		Alert.show("dpPortfolio ist null!");
+	}
+	
+	return portfolioID;
 }
       
 private function editEnd(e:DataGridEvent):void
@@ -61,49 +82,17 @@ private function editEnd2(e:DataGridEvent):void
 
 public function editPortfolio():void
 {
-	var portfolioName:String = portfolioSelector.text;
-	var portfolioID:int;
-	if (dpPortfolio!=null)
-	{
-		for (var i:int=0; i<dpPortfolioSelector.length; i++)
-		{
-			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
-			{
-				portfolioID=dpPortfolio[i][0];
-			}
-		}
-	}
-	else
-	{
-		Alert.show("dpPortfolio ist null!");
-	}
-	
+	var portfolioID:int = this.getCurrentPortfolioID();
 	threepv_service.getPortfolioValues.send(portfolioID);
 }
 
 public function deletePortfolio():void
 {
-	var portfolioName:String = portfolioSelector.text;
-	var portfolioID:int;
-	if (dpPortfolio!=null)
-	{
-		for (var i:int=0; i<dpPortfolioSelector.length; i++)
-		{
-			if (dpPortfolio.length > 0 && dpPortfolio[i][1]==portfolioName)
-			{
-				portfolioID=dpPortfolio[i][0];
-			}
-		}
-	}
-	else
-	{
-		Alert.show("dpPortfolio ist null!");
-	}
+	var portfolioID:int = this.getCurrentPortfolioID();
 	
 	threepv_service.deletePortfolio.send(portfolioID);
 	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
-	
 }
 
 public function resetNewPortfolio():void
@@ -124,4 +113,65 @@ public function resetEditPortfolio():void
 {
 	editPortfolio();
 	init();
+}
+
+public function preparePortfolioExport():void
+{
+	var userID:int = session.data.userID;
+	var companyID:int =  session.data.userCompany;
+	threepv_service.newPortfolio.send(portfolionameNeu.text, kleinsterXWertNeu.value, groessterXWertNeu.value, kleinsterYWertNeu.value, groessterYWertNeu.value, nameXAchseNeu.text, nameYAchseNeu.text, portfolioBeschreibungNeu.text, companyID);
+	
+	portfolionameNeu.text="";
+	kleinsterXWertNeu.value=0;
+	groessterXWertNeu.value=0;
+	kleinsterYWertNeu.value=0;
+	groessterYWertNeu.value=0;
+	nameXAchseNeu.text="";
+	nameYAchseNeu.text="";
+	portfolioBeschreibungNeu.text="";
+}
+
+public function preparePortfolioEditExport():void
+{
+	var portfolioID:int=this.getCurrentPortfolioID();
+	var companyID:int =  session.data.userCompany;
+	
+	threepv_service.editPortfolio.send(portfolioID, portfolionameEdit.text, kleinsterXWertEdit.value, groessterXWertEdit.value, kleinsterYWertEdit.value, groessterYWertEdit.value, nameXAchseEdit.text, nameYAchseEdit.text, portfolioBeschreibungEdit.text, companyID);
+	
+	portfolionameEdit.text="";
+	kleinsterXWertEdit.value=0;
+	groessterXWertEdit.value=0;
+	kleinsterYWertEdit.value=0;
+	groessterYWertEdit.value=0;
+	nameXAchseEdit.text="";
+	nameYAchseEdit.text="";
+	portfolioBeschreibungEdit.text="";
+	
+	refreshAll(portfolioSelector.text);
+	changeContent('diagramContent');
+}
+
+public function deletePortfolioAttribute():void
+{
+	var portfolioID:int=this.getCurrentPortfolioID();
+	var attributeID:int;
+	for (var i:int=0; i < dpPortfolioAttributes.length; i++)
+	{
+		if (dpPortfolioAttributes[i][1]==gridPortfolioAttributeEdit.selectedItem[1])
+		{
+			//Alert.show('dpPortfolioAttributes[i][1]==gridPortfolioAttributeEdit.selectedItem[1]');
+			attributeID=dpPortfolioAttributes[i][0];
+		}
+	}
+	//if (dpPortfolioAttributes[][]==gridPortfolioAttributeEdit.selectedItem[1];
+	//Alert.show("Hallo, ich soll ein Portfolioattribut löschen! Die aktuelle PortfolioID ist: " + this.getCurrentPortfolioID().toString() 
+	//			+ ", die AttributID ist: " + attributeID.toString());
+	
+	threepv_service.deleteAttribute(portfolioID, attributeID);
+	refreshAll(portfolioSelector.text);
+}
+
+public function newPortfolioAttribute():void
+{
+	
 }

@@ -8,8 +8,6 @@
 	<mx:Script source="actionScript/general/portfolioTools.as"/>
 	<mx:Script source="actionScript/portfolios/diagramm/startDiagram.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
-	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
-	<mx:Script source="actionScript/portfolios/newPortfolio/preparePortfolioExport.as"/>
 	<mx:Script source="actionScript/userAdministration/userAdministration.as"/>
 	<mx:RemoteObject id="threepv_service" source="3pv_service.fassade" destination="threepv">
 		<mx:method name="userLogin" result="userLoginResult(event);"/>
@@ -449,6 +447,17 @@
       											</mx:ComboBox>
 											</mx:Component>
 										</mx:itemEditor>
+									</mx:DataGridColumn>
+									<mx:DataGridColumn headerText="Optionen" editable="false">
+										<mx:itemRenderer>
+											<mx:Component>
+												<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
+													<mx:Canvas>
+														<mx:Button width="17" height="17" click="outerDocument.deletePortfolioAttribute()" icon="@Embed(source='images/delete.png')"/>
+													</mx:Canvas>
+												</mx:Box>
+											</mx:Component>				
+										</mx:itemRenderer>
 									</mx:DataGridColumn>
 								</mx:columns>
 							</mx:DataGrid>
