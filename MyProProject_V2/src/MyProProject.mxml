@@ -555,7 +555,7 @@
 					<mx:Label x="28" y="153" text="Hintergrundbild:" fontFamily="Arial" fontSize="12"/>
 					<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
 					<mx:Button x="27.5" y="318" label="Schema speichern!" id="btnSchemaSpeichern" click="sendFile();"/>
-					<mx:Button x="222" y="318" label="Felder zurücksetzen"/>
+					<mx:Button x="222" y="318" label="Felder zurücksetzen" click="resetSchemaForm()"/>
 					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#000000" id="hintergrundfarbeNeu"/>
 					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#000000" id="schriftfarbeNeu"/>
 					<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu">
