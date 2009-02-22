@@ -56,6 +56,9 @@ private var dpProjectAttributesValues:ArrayCollection;
 private var dpProjectUser:ArrayCollection;
 
 [Bindable]
+private var dpGridTeamEdit:ArrayCollection;
+
+[Bindable]
 var attributesCountFromDB:int;
 
 //Result Events - FlexRemoting
@@ -277,6 +280,13 @@ public function getProjectAttributesResult(event:ResultEvent):void
 
 public function getProjectUserResult(event:ResultEvent):void
 {
-	dpProjectUser = new ArrayCollection(ArrayUtil.toArray(event.result));
+	var temp:ArrayCollection=new ArrayCollection(ArrayUtil.toArray(event.result));
+	
+	for(var i:int=0; i<temp.length; i++)
+	{
+		
+		dpGridTeamEdit.addItemAt(({'ID':temp[i][0], 'Benutzer':temp[i][1]}), i);
+	}
 }
+
 
