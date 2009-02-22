@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="870" height="463" backgroundColor="#000000">
 	<mx:Label text="Verleihen Sie 3Pv eine persönliche Note mit ihren eigenen Farbschemata!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
-	<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
-	<mx:Label x="27.5" y="92" text="Hintergrundfarbe: " fontSize="12" fontFamily="Arial" id="lblHintergrundfarbeNeu"/>
-	<mx:Label x="27.5" y="123" text="Logo:" id="lblLogo" fontFamily="Arial" fontSize="12"/>
-	<mx:Label x="27.5" y="185" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
-	<mx:Label x="27.5" y="215" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
-	<mx:Label x="27.5" y="245" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
-	<mx:Label x="28" y="153" text="Hintergrundbild:" fontFamily="Arial" fontSize="12"/>
-	<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
-	<mx:Button x="27.5" y="285" label="Schema speichern!" id="btnSchemaSpeichern"/>
-	<mx:Button x="222" y="285" label="Felder zurücksetzen"/>
-	<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
-	<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999"/>
-	<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu"></mx:ComboBox>
-	<mx:ComboBox x="222" y="244" width="160.5" id="schriftgroesseNeu"></mx:ComboBox>
-	<mx:Button x="222" y="121" label="Datei auswählen..." width="160.5"/>
-	<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu"></mx:ComboBox>
-	<mx:Label x="390" y="123" id="uploadMessage" color="#73FF02" fontFamily="Arial" fontSize="12"/>
-	<mx:ProgressBar x="417" y="123" id="progressBar" indeterminate="true" visible="false"/>
+					<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
+					<mx:Label x="27.5" y="92" text="Hintergrundfarbe: " fontSize="12" fontFamily="Arial" id="lblHintergrundfarbeNeu"/>
+					<mx:Label x="27.5" y="123" text="Logo:" id="lblLogo" fontFamily="Arial" fontSize="12"/>
+					<mx:Label x="27.5" y="185" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
+					<mx:Label x="27.5" y="215" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
+					<mx:Label x="27.5" y="245" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+					<mx:Label x="28" y="153" text="Hintergrundbild:" fontFamily="Arial" fontSize="12"/>
+					<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
+					<mx:Button x="27.5" y="318" label="Schema speichern!" id="btnSchemaSpeichern" click="sendFile();"/>
+					<mx:Button x="222" y="318" label="Felder zurücksetzen"/>
+					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
+					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999" id="schriftfarbeNeu"/>
+					<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="Arial"/>
+								<mx:Object label="Times New Roman"/>
+								<mx:Object label="Courier New"/>
+								<mx:Object label="Georgia"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:ComboBox x="222" y="244" width="160.5" id="schriftgroesseNeu">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="10"/>
+								<mx:Object label="11"/>
+								<mx:Object label="12"/>
+								<mx:Object label="13"/>
+								<mx:Object label="14"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:Button x="222" y="121" label="Datei auswählen..." width="160.5" click="myUpload()"/>
+					<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="schwarz"/>
+								<mx:Object label="silber"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:Label x="222" y="121" id="uploadMessage" color="#73FF02" fontFamily="Arial" fontSize="12" height="23"/>
+					<mx:ProgressBar x="27.5" y="282" id="progressBar" indeterminate="true" width="355"/>
+					<mx:Label x="27" y="282" id="lblSchemaGespeichert" color="#24FF00"/>
 </mx:Canvas>

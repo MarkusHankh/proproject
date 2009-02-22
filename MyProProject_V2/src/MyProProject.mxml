@@ -554,10 +554,10 @@
 					<mx:Label x="27.5" y="245" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
 					<mx:Label x="28" y="153" text="Hintergrundbild:" fontFamily="Arial" fontSize="12"/>
 					<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
-					<mx:Button x="27.5" y="285" label="Schema speichern!" id="btnSchemaSpeichern"/>
-					<mx:Button x="222" y="285" label="Felder zurücksetzen"/>
-					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
-					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999" id="schriftfarbeNeu"/>
+					<mx:Button x="27.5" y="318" label="Schema speichern!" id="btnSchemaSpeichern" click="sendFile();"/>
+					<mx:Button x="222" y="318" label="Felder zurücksetzen"/>
+					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#000000" id="hintergrundfarbeNeu"/>
+					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#000000" id="schriftfarbeNeu"/>
 					<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu">
 						<mx:dataProvider>
 							<mx:Array>
@@ -579,7 +579,7 @@
 							</mx:Array>
 						</mx:dataProvider>
 					</mx:ComboBox>
-					<mx:Button x="222" y="121" label="Datei auswählen..." width="160.5" click="myUpload()"/>
+					<mx:Button id="btnDateiUpload" x="222" y="121" label="Datei auswählen..." width="160.5" click="myUpload()"/>
 					<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu">
 						<mx:dataProvider>
 							<mx:Array>
@@ -588,8 +588,9 @@
 							</mx:Array>
 						</mx:dataProvider>
 					</mx:ComboBox>
-					<mx:Label x="390" y="123" id="uploadMessage" color="#73FF02" fontFamily="Arial" fontSize="12"/>
-					<mx:ProgressBar x="417" y="123" id="progressBar" indeterminate="true" visible="false"/>
+					<mx:Label x="222" y="121" id="uploadMessage" color="#73FF02" fontFamily="Arial" fontSize="12" height="23"/>
+					<mx:ProgressBar x="27.5" y="282" id="progressBar" indeterminate="true" width="355" visible="false"/>
+					<mx:Label x="27" y="282" id="lblSchemaGespeichert" color="#24FF00"/>
 				</mx:Canvas>
 				<mx:Canvas id="logoUploadContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 				</mx:Canvas>
