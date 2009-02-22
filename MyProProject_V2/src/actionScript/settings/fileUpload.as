@@ -4,7 +4,7 @@ import flash.net.FileReference;
 import flash.net.URLRequest;
 import flash.net.URLVariables;
 
-var file:FileReference;
+public var file:FileReference;
 
 public function myUpload():void{
 	file = new FileReference();
@@ -36,7 +36,21 @@ public function sendFile():void{
 	try{
 		file.upload(req, 'upload');
 	}catch(error:Error){
-		//hier muss noch ne Methode auf der Fassade aufgerufen werden, die den Kram auch ohne Logo speichert
+		var name:String = schemaNameNeu.text;
+		var hintergrundfarbe:String = hintergrundfarbeNeu.selectedColor.toString(16);
+		var schriftfarbe:String = schriftfarbeNeu.selectedColor.toString(16);
+		var schriftart:String = schriftartNeu.text;
+		var schriftgroesse:String = schriftgroesseNeu.text;
+		var hintergrundbild:String;
+		if(hintergrundbildNeu.text == 'schwarz'){
+			hintergrundbild = 'bg_blank_raster.png';
+		}else{
+			hintergrundbild = 'bg_raster_silver.png';
+		}
+		var benutzer:int = session.data.userID;
+		threepv_service.setSettings.send(name, hintergrundfarbe, schriftfarbe, schriftart, schriftgroesse, hintergrundbild, benutzer);
+		lblSchemaGespeichert.text = "Schema wurde gespeichert";
+		resetSchemaForm();
 	}
 }
 
