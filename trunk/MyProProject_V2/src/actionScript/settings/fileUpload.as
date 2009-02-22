@@ -4,20 +4,23 @@ import flash.net.FileReference;
 import flash.net.URLRequest;
 import flash.net.URLVariables;
 
-import mx.formatters.NumberFormatter;
-
 var file:FileReference;
 
 public function myUpload():void{
 	file = new FileReference();
-	file.addEventListener(Event.SELECT, sendFile);
+	file.addEventListener(Event.SELECT, waitForUser);
 	file.addEventListener(ProgressEvent.PROGRESS, progress);
 	file.addEventListener(Event.COMPLETE, complete);
 	file.browse();
 	uploadMessage.text = '';
 }
 
-public function sendFile(event:Event):void{
+public function waitForUser(event:Event):void{
+	btnDateiUpload.visible = false;
+	uploadMessage.text = 'Datei: ' + file.name + ' ausgewählt';
+}
+
+public function sendFile():void{
 	var params:URLVariables = new URLVariables();
 	params.aktion = 'upload';
 	params.name = schemaNameNeu.text;
@@ -31,10 +34,9 @@ public function sendFile(event:Event):void{
 	req.method = URLRequestMethod.POST;
 	req.data = params;
 	try{
-		var numberFormatter:NumberFormatter = new NumberFormatter();
 		file.upload(req, 'upload');
 	}catch(error:Error){
-		uploadMessage.text = "ERROR: zero-byte file";
+		//hier muss noch ne Methode auf der Fassade aufgerufen werden, die den Kram auch ohne Logo speichert
 	}
 }
 
@@ -44,5 +46,20 @@ public function progress(event:Event):void{
 
 public function complete(event:Event):void{
 	uploadMessage.text = "Upload erfolgreich!";
+	lblSchemaGespeichert.text = "Schema wurde gespeichert";
     progressBar.visible = false;
+    resetSchemaForm();
+}
+
+public function resetSchemaForm():void{
+	schemaNameNeu.text = '';
+	hintergrundfarbeNeu.selectedColor = 000000;
+	schriftfarbeNeu.selectedColor = 000000;
+	schriftartNeu.selectedIndex = 0;
+	hintergrundbildNeu.selectedIndex = 0;
+	schriftartNeu.selectedIndex = 0;
+	schriftgroesseNeu.selectedIndex = 0;
+	uploadMessage.text = '';
+	btnDateiUpload.visible = true;
+	
 }
