@@ -449,6 +449,18 @@
 											</mx:Component>
 										</mx:itemEditor>
 									</mx:DataGridColumn>
+									<mx:DataGridColumn headerText="Optionen" editable="false">
+										<mx:itemRenderer>
+											<mx:Component>
+												<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
+													<mx:Canvas>
+														<mx:Button width="17" height="17" click="outerDocument.deletePortfolioAttribute()" icon="@Embed(source='images/delete.png')"/>
+													</mx:Canvas>
+												</mx:Box>
+											</mx:Component>
+										</mx:itemRenderer>
+										
+									</mx:DataGridColumn>
 								</mx:columns>
 							</mx:DataGrid>
 							
