@@ -145,9 +145,17 @@ public function preparePortfolioEditExport(attributesCount:int):void
 		}
 	}
 	
+	if (dpPortfolioChildren = attributesCountFromDB)
+	{
+		for (var i:int=0; i < dpPortfolioChildren; i++)
+		{
+			threepv_service.updateAttribute.send(portfolioID, dpPortfolioAttributes[i][0], dpPortfolioAttributes[i][1], dpPortfolioAttributes[i][3]);
+		}
+	}
+	
 	threepv_service.editPortfolio.send(portfolioID, portfolionameEdit.text, kleinsterXWertEdit.value, groessterXWertEdit.value, kleinsterYWertEdit.value, groessterYWertEdit.value, nameXAchseEdit.text, nameYAchseEdit.text, portfolioBeschreibungEdit.text, companyID);
 	
-	this.updatePortfolioAttribute();
+	
 	portfolionameEdit.text="";
 	kleinsterXWertEdit.value=0;
 	groessterXWertEdit.value=0;
@@ -175,14 +183,5 @@ public function deletePortfolioAttribute():void
 	}
 	
 	threepv_service.deleteAttribute.send(portfolioID, attributeID);
-	refreshAll(portfolioSelector.text);
-}
-
-public function updatePortfolioAttribute():void
-{
-	var portfolioID:int=this.getCurrentPortfolioID();
-	var attributeID:int;
-
-	threepv_service.updateAttribute.send(portfolioID, gridPortfolioAttributeEdit.selectedItem[0], gridPortfolioAttributeEdit.selectedItem[1], gridPortfolioAttributeEdit.selectedItem[3]);
 	refreshAll(portfolioSelector.text);
 }
