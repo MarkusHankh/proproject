@@ -61,6 +61,9 @@ private var dpGridTeamEdit:ArrayCollection;
 [Bindable]
 var attributesCountFromDB:int;
 
+[Bindable]
+public var dpMySettings:ArrayCollection;
+
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void
 {
@@ -294,7 +297,12 @@ public function getProjectUserResult(event:ResultEvent):void
 			}
 		}
 	}
-
 }
 
-
+public function getMySettingsResult(event:ResultEvent):void{
+	if(event.result){
+		dpMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
+	}else{
+		//Standard laden
+	}
+}
