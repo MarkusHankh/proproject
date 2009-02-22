@@ -8,7 +8,10 @@
 	<mx:Script source="actionScript/general/portfolioTools.as"/>
 	<mx:Script source="actionScript/portfolios/diagramm/startDiagram.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
+	<mx:Script source="actionScript/portfolios/newProject/prepareProjectExport.as"/>
+	<mx:Script source="actionScript/portfolios/newPortfolio/preparePortfolioExport.as"/>
 	<mx:Script source="actionScript/userAdministration/userAdministration.as"/>
+	<mx:Script source="actionScript/settings/fileUpload.as"/>
 	<mx:RemoteObject id="threepv_service" source="3pv_service.fassade" destination="threepv">
 		<mx:method name="userLogin" result="userLoginResult(event);"/>
 		<mx:method name="getUser" result="getUserResult(event);"/>
@@ -448,17 +451,6 @@
 											</mx:Component>
 										</mx:itemEditor>
 									</mx:DataGridColumn>
-									<mx:DataGridColumn headerText="Optionen" editable="false">
-										<mx:itemRenderer>
-											<mx:Component>
-												<mx:Box horizontalAlign="middle" verticalAlign="left" paddingLeft="10" width="60" verticalCenter="10">
-													<mx:Canvas>
-														<mx:Button width="17" height="17" click="outerDocument.deletePortfolioAttribute()" icon="@Embed(source='images/delete.png')"/>
-													</mx:Canvas>
-												</mx:Box>
-											</mx:Component>				
-										</mx:itemRenderer>
-									</mx:DataGridColumn>
 								</mx:columns>
 							</mx:DataGrid>
 							
@@ -546,20 +538,20 @@
 					<mx:Label text="Verleihen Sie 3Pv eine persönliche Note mit ihren eigenen Farbschemata!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
 					<mx:Label x="27.5" y="92" text="Hintergrundfarbe: " fontSize="12" fontFamily="Arial" id="lblHintergrundfarbeNeu"/>
-					<mx:Label x="27.5" y="122" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
-					<mx:Label x="27.5" y="152" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
-					<mx:Label x="27.5" y="182" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+					<mx:Label x="27.5" y="123" text="Logo:" id="lblLogo" fontFamily="Arial" fontSize="12"/>
+					<mx:Label x="27.5" y="185" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
+					<mx:Label x="27.5" y="215" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
+					<mx:Label x="27.5" y="245" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+					<mx:Label x="28" y="153" text="Hintergrundbild:" fontFamily="Arial" fontSize="12"/>
 					<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
-					<mx:Button x="27.5" y="274" label="Schema speichern!" id="btnSchemaSpeichern"/>
-					<mx:Button x="222.5" y="274" label="Felder zurücksetzen"/>
+					<mx:Button x="27.5" y="285" label="Schema speichern!" id="btnSchemaSpeichern"/>
+					<mx:Button x="222" y="285" label="Felder zurücksetzen"/>
 					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
-					<mx:ColorPicker x="222" y="121" width="160.5" selectedColor="#999999"/>
-					<mx:ComboBox x="222" y="151" width="160.5" id="schriftartNeu">
-						
-					</mx:ComboBox>
-					<mx:ComboBox x="222" y="181" width="160.5" id="schriftgroesseNeu">
-					
-					</mx:ComboBox>
+					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999"/>
+					<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu"></mx:ComboBox>
+					<mx:ComboBox x="222" y="244" width="160.5" id="schriftgroesseNeu"></mx:ComboBox>
+					<mx:Button x="222" y="121" label="Datei auswählen..." width="160.5" click="myUpload()"/>
+					<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu"></mx:ComboBox>
 				</mx:Canvas>
 				<mx:Canvas id="logoUploadContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 				</mx:Canvas>
