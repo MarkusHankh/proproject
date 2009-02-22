@@ -111,7 +111,7 @@ public function prepareProjectEditExport():void
 
 public function getProjectEdit(id:int):void
 {
-	CurrentProjectID=id;
+	
 	if(id != 0)
 	{
 		var projectID:int = id;
@@ -123,6 +123,6 @@ public function getProjectEdit(id:int):void
 	var portfolioID:int=getCurrentPortfolioID();
 	threepv_service.getProjectValues.send(projectID);
 	threepv_service.getProjectAttributes.send(projectID);
-	threepv_service.getProjectUser.send(CurrentProjectID);
+	threepv_service.getProjectUser.send(projectID);
 }
 
