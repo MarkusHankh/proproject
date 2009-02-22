@@ -123,5 +123,6 @@ public function getProjectEdit(id:int):void
 	var portfolioID:int=getCurrentPortfolioID();
 	threepv_service.getProjectValues.send(projectID);
 	threepv_service.getProjectAttributes.send(projectID);
+	threepv_service.getProjectUser.send(CurrentProjectID);
 }
 
