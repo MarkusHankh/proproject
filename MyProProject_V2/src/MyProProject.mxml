@@ -557,11 +557,39 @@
 					<mx:Button x="27.5" y="285" label="Schema speichern!" id="btnSchemaSpeichern"/>
 					<mx:Button x="222" y="285" label="Felder zurücksetzen"/>
 					<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
-					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999"/>
-					<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu"></mx:ComboBox>
-					<mx:ComboBox x="222" y="244" width="160.5" id="schriftgroesseNeu"></mx:ComboBox>
+					<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999" id="schriftfarbeNeu"/>
+					<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="Arial"/>
+								<mx:Object label="Times New Roman"/>
+								<mx:Object label="Courier New"/>
+								<mx:Object label="Georgia"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:ComboBox x="222" y="244" width="160.5" id="schriftgroesseNeu">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="10"/>
+								<mx:Object label="11"/>
+								<mx:Object label="12"/>
+								<mx:Object label="13"/>
+								<mx:Object label="14"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
 					<mx:Button x="222" y="121" label="Datei auswählen..." width="160.5" click="myUpload()"/>
-					<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu"></mx:ComboBox>
+					<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="schwarz"/>
+								<mx:Object label="silber"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:Label x="390" y="123" id="uploadMessage" color="#73FF02" fontFamily="Arial" fontSize="12"/>
+					<mx:ProgressBar x="417" y="123" id="progressBar" indeterminate="true" visible="false"/>
 				</mx:Canvas>
 				<mx:Canvas id="logoUploadContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 				</mx:Canvas>
