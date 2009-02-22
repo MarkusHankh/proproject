@@ -32,6 +32,7 @@ function addCharts():void {
 }
 
 function projectAttributes(attr:ArrayCollection):void{
+	
 	trace("attr.value "+attr.toString());
 	trace("attr.length "+attr.length);
 	if(attr != null && attr.length > 0) {
@@ -64,37 +65,40 @@ function projectAttributes(attr:ArrayCollection):void{
 			var ringAussen:int = 0;
 			var ringInnen:int = 0;
 			var toolInfo:ArrayCollection;
-			for(var j:int = 0; j < attr[i][15].length; j++){
-				if(attr[i][15][j][2] == 'Ring aussen'){
-					ringAussen = attr[i][15][j][3];
-				}
-				if(attr[i][15][j][2] == 'Ring innen'){
-					ringInnen = attr[i][15][j][3];
-				}
-			}
-			var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), ringInnen,ringAussen,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
-			temp.myId = attr[i][0];
-			temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
-			//============= hier kann man noch die werte eingeben falls das objekt bewegt wurde
-			temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
 			
-			temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
-			temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
-			temp.doubleClickEnabled = true;
-			//============== hier mouse double click
-			temp.addEventListener(MouseEvent.DOUBLE_CLICK,doubleClick);
-			temp.info = new InfoShape(25,0,0);
-			temp.put("Name", attr[i][1]);
-			temp.put("Beschreibung", attr[i][12]);
-			temp.put("Anfang",attr[i][2]);
-			temp.put("Ende",attr[i][3]);
-			for(var k:int = 0; k < attr[i][15].length; k++){
-				if(attr[i][15][k][2] == 'Tooltip'){
-					temp.put(attr[i][15][k][1], attr[i][15][k][3]);
+				for(var j:int = 0; j < attr[i][15].length; j++){
+					if(attr[i][15][j][2] == 'Ring aussen'){
+						ringAussen = attr[i][15][j][3];
+					}
+					if(attr[i][15][j][2] == 'Ring innen'){
+						ringInnen = attr[i][15][j][3];
+					}
 				}
-			}
-			pros.addItem(temp);
-			dia.addChild(temp);
+			
+				var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), ringInnen,ringAussen,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
+				temp.myId = attr[i][0];
+				temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
+				//============= hier kann man noch die werte eingeben falls das objekt bewegt wurde
+				temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
+				
+				temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
+				temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
+				temp.doubleClickEnabled = true;
+				//============== hier mouse double click
+				temp.addEventListener(MouseEvent.DOUBLE_CLICK,doubleClick);
+				temp.info = new InfoShape(25,0,0);
+				temp.put("Name", attr[i][1]);
+				temp.put("Beschreibung", attr[i][12]);
+				temp.put("Anfang",attr[i][2]);
+				temp.put("Ende",attr[i][3]);
+				for(var k:int = 0; k < attr[i][15].length; k++){
+					if(attr[i][15][k][2] == 'Tooltip'){
+						temp.put(attr[i][15][k][1], attr[i][15][k][3]);
+					}
+				}
+				pros.addItem(temp);
+				dia.addChild(temp);
+			
 		}
 	}
 }
