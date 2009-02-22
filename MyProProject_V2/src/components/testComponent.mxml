@@ -3,14 +3,19 @@
 	<mx:Label text="Verleihen Sie 3Pv eine persönliche Note mit ihren eigenen Farbschemata!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 	<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
 	<mx:Label x="27.5" y="92" text="Hintergrundfarbe: " fontSize="12" fontFamily="Arial" id="lblHintergrundfarbeNeu"/>
-	<mx:Label x="27.5" y="122" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
-	<mx:Label x="27.5" y="152" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
-	<mx:Label x="27.5" y="182" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+	<mx:Label x="27.5" y="123" text="Logo:" id="lblLogo" fontFamily="Arial" fontSize="12"/>
+	<mx:Label x="27.5" y="185" text="Schriftfarbe: " fontFamily="Arial" fontSize="12" id="lblSchriftfarbeNeu"/>
+	<mx:Label x="27.5" y="215" text="Schriftart: " fontSize="12" fontFamily="Arial" id="lblSchriftartNeu"/>
+	<mx:Label x="27.5" y="245" text="Schriftgröße: " fontSize="12" fontFamily="Arial" id="lblSchriftgroesseNeu"/>
+	<mx:Label x="28" y="153" text="Hintergrundbild:" fontFamily="Arial" fontSize="12"/>
 	<mx:TextInput x="222.5" y="61" id="schemaNameNeu"/>
-	<mx:Button x="27.5" y="274" label="Schema speichern!" id="btnSchemaSpeichern"/>
-	<mx:Button x="222.5" y="274" label="Felder zurücksetzen"/>
+	<mx:Button x="27.5" y="285" label="Schema speichern!" id="btnSchemaSpeichern"/>
+	<mx:Button x="222" y="285" label="Felder zurücksetzen"/>
 	<mx:ColorPicker x="222" y="91" width="160.5" selectedColor="#808492" id="hintergrundfarbeNeu"/>
-	<mx:ColorPicker x="222" y="121" width="160.5" selectedColor="#999999"/>
-	<mx:ComboBox x="222" y="151" width="160.5" id="schriftartNeu"></mx:ComboBox>
-	<mx:ComboBox x="222" y="181" width="160.5" id="schriftgroesseNeu"></mx:ComboBox>
+	<mx:ColorPicker x="222" y="184" width="160.5" selectedColor="#999999"/>
+	<mx:ComboBox x="222" y="214" width="160.5" id="schriftartNeu"></mx:ComboBox>
+	<mx:ComboBox x="222" y="244" width="160.5" id="schriftgroesseNeu"></mx:ComboBox>
+	<mx:Button x="222" y="121" label="Datei auswählen..." width="160.5"/>
+	<mx:ComboBox x="222" y="151" width="160.5" id="hintergrundbildNeu"></mx:ComboBox>
+	
 </mx:Canvas>
