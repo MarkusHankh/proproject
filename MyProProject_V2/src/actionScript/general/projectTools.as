@@ -1,6 +1,9 @@
 import mx.controls.Alert;
 import mx.events.CollectionEvent;
 
+[Bindable]
+var CurrentProjectID:int;
+
 public function refreshAll(portfolio:String):void
 {
 	var portfolioID:int=getCurrentPortfolioID();
@@ -79,8 +82,11 @@ public function prepareProjectExport():void
 
 public function prepareProjectEditExport():void
 {
-	var projectID:int=gridProjectListView.selectedItem[0];
+	
+	//var projectID:int=gridProjectListView.selectedItem[0];
+	var projectID:int=CurrentProjectID;
 	var portfolioID:int=getCurrentPortfolioID();
+	
 	var formGroesseInt:int;
 	switch(formgroesseEdit.text)
 	{
@@ -97,6 +103,7 @@ public function prepareProjectEditExport():void
 	threepv_service.getProjectValues.send(projectID);
 	var projektLeader:int = session.data.userID;
 	threepv_service.editProject.send(projectID, projektnameEdit.text, startdatumEdit.text, enddatumEdit.text, formEdit.text, formGroesseInt, xAchseEdit.value, yAchseEdit.value, fuellfarbeEdit.selectedColor.toString(16), rahmenfarbeEdit.selectedColor.toString(16), beschreibungEdit.text, ringfarbeInnenEdit.selectedColor.toString(16), ringfarbeAussenEdit.selectedColor.toString(16));
+	
 	threepv_service.getProjectValues.send(projectID);
 	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
@@ -104,6 +111,7 @@ public function prepareProjectEditExport():void
 
 public function getProjectEdit(id:int):void
 {
+	CurrentProjectID=id;
 	if(id != 0)
 	{
 		var projectID:int = id;
