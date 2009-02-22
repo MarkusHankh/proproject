@@ -7,5 +7,4 @@ TODO:
 	-Werte im Datagrid werden nicht gespeichert
 	-Projektmitglieder aus der Verfügbarenliste löschen
 
--Einstellungen komplett
--Logoupload
+-Einstellungen anzeigen
