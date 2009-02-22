@@ -2,6 +2,7 @@
 import mx.collections.ArrayCollection;
 import mx.events.DataGridEvent;
 
+
 private function initGridAttribut():void
 {
 	dgSpezifischeAttribute = new ArrayCollection();
@@ -131,13 +132,22 @@ public function preparePortfolioExport():void
 	portfolioBeschreibungNeu.text="";
 }
 
-public function preparePortfolioEditExport():void
+public function preparePortfolioEditExport(attributesCount:int):void
 {
 	var portfolioID:int=this.getCurrentPortfolioID();
 	var companyID:int =  session.data.userCompany;
+	var dpPortfolioChildren:int = dpPortfolioAttributes.length-1;
+	if (dpPortfolioChildren > attributesCountFromDB)
+	{
+		for (var i:int=attributesCountFromDB-1; i<=dpPortfolioChildren; i++)
+		{
+			threepv_service.setAttributes.send(portfolioID, dpPortfolioAttributes[i][1], '', dpPortfolioAttributes[i][3]);
+		}
+	}
 	
 	threepv_service.editPortfolio.send(portfolioID, portfolionameEdit.text, kleinsterXWertEdit.value, groessterXWertEdit.value, kleinsterYWertEdit.value, groessterYWertEdit.value, nameXAchseEdit.text, nameYAchseEdit.text, portfolioBeschreibungEdit.text, companyID);
 	
+	this.updatePortfolioAttribute();
 	portfolionameEdit.text="";
 	kleinsterXWertEdit.value=0;
 	groessterXWertEdit.value=0;
@@ -168,25 +178,11 @@ public function deletePortfolioAttribute():void
 	refreshAll(portfolioSelector.text);
 }
 
-public function newPortfolioAttribute():void
-{
-	
-	
-}
-
 public function updatePortfolioAttribute():void
 {
 	var portfolioID:int=this.getCurrentPortfolioID();
 	var attributeID:int;
-	for (var i:int=0; i < dpPortfolioAttributes.length; i++)
-	{
-		if (dpPortfolioAttributes[i][1]==gridPortfolioAttributeEdit.selectedItem[1])
-		{
-			//Alert.show('dpPortfolioAttributes[i][1]==gridPortfolioAttributeEdit.selectedItem[1]');
-			attributeID=dpPortfolioAttributes[i][0];
-		}
-	}
 
-	threepv_service.upateupdateAttribute.send(portfolioID, attributeID, gridPortfolioAttributeEdit.selectedItem[1], gridPortfolioAttributeEdit.selectedItem[2]);
+	threepv_service.updateAttribute.send(portfolioID, gridPortfolioAttributeEdit.selectedItem[0], gridPortfolioAttributeEdit.selectedItem[1], gridPortfolioAttributeEdit.selectedItem[3]);
 	refreshAll(portfolioSelector.text);
 }
