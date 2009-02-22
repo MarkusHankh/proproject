@@ -281,12 +281,20 @@ public function getProjectAttributesResult(event:ResultEvent):void
 public function getProjectUserResult(event:ResultEvent):void
 {
 	var temp:ArrayCollection=new ArrayCollection(ArrayUtil.toArray(event.result));
-	
+	dpGridTeamEdit=new ArrayCollection();
 	for(var i:int=0; i<temp.length; i++)
 	{
-		
-		dpGridTeamEdit.addItemAt(({'ID':temp[i][0], 'Benutzer':temp[i][1]}), i);
+		//dpGridTeamEdit.addItem({'BenutzerID':temp[i][0], 'Benutzer':temp[i][1]});
+		dpGridTeamEdit.addItem({0:temp[i][0], 1:temp[i][1]});
+		for(var j:int=0; j<dpUserProject.length; j++)
+		{
+			if(dpGridTeamEdit[i][0]==dpUserProject[j][0])
+			{
+				dpUserProject.removeItemAt(j)
+			}
+		}
 	}
+
 }
 
 
