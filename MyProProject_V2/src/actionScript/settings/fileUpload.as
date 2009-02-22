@@ -28,7 +28,12 @@ public function sendFile():void{
 	params.schriftfarbe = schriftfarbeNeu.selectedColor.toString(16);
 	params.schriftart = schriftartNeu.text;
 	params.schriftgroesse = schriftgroesseNeu.text;
-	params.hintergrundbild = hintergrundbildNeu.text;
+	params.hintergrundbild
+	if(hintergrundbildNeu.text == 'schwarz'){
+		params.hintergrundbild = 'bg_blank_raster.png';
+	}else{
+		params.hintergrundbild = 'bg_raster_silver.png';
+	}
 	params.benutzer = session.data.userID;
 	var req:URLRequest = new URLRequest("http://3pv.proproject.labasto.de/amfphp/services/3pv_service/fassade.php");
 	req.method = URLRequestMethod.POST;
