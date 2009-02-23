@@ -1,9 +1,8 @@
 TODO:
 
 -Portfolio bearbeiten: 
-	-Nach Bearbeitung werden Achesen-Beschriftung und portfolioSelector-Text nicht aktualisiert ->Aktualisierung
+	-Nach Bearbeitung werden Achesen-Beschriftung und portfolioSelector-Text nicht aktualisiert
 -Projekt bearbeiten: 
-	-Werte im Datagrid werden nicht gespeichert
 	-Projektmitglieder aus der Verfügbarenliste löschen
 
 -Einstellungen anzeigen
