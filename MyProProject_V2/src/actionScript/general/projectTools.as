@@ -83,8 +83,8 @@ public function prepareProjectExport():void
 public function prepareProjectEditExport():void
 {
 	
-	//var projectID:int=gridProjectListView.selectedItem[0];
-	var projectID:int=CurrentProjectID;
+	var projectID:int=gridProjectListView.selectedItem[0];
+	//var projectID:int=CurrentProjectID; //=0
 	var portfolioID:int=getCurrentPortfolioID();
 	
 	var formGroesseInt:int;
@@ -100,11 +100,26 @@ public function prepareProjectEditExport():void
 			formGroesseInt = 3;
 			break;
 	}
-	threepv_service.getProjectValues.send(projectID);
+
 	var projektLeader:int = session.data.userID;
 	threepv_service.editProject.send(projectID, projektnameEdit.text, startdatumEdit.text, enddatumEdit.text, formEdit.text, formGroesseInt, xAchseEdit.value, yAchseEdit.value, fuellfarbeEdit.selectedColor.toString(16), rahmenfarbeEdit.selectedColor.toString(16), beschreibungEdit.text, ringfarbeInnenEdit.selectedColor.toString(16), ringfarbeAussenEdit.selectedColor.toString(16));
 	
-	threepv_service.getProjectValues.send(projectID);
+	//threepv_service.getProjectValues.send(projectID);
+	
+	for(var i:int = 0; i < gridAttributeEdit.dataProvider.length-1; i++)
+ 	{
+ 		try
+ 		{
+   			var attributid:int = gridAttributeEdit.dataProvider[i][0].valueOf();
+   			var attributwert:String = gridAttributeEdit.dataProvider[i][5];
+  			threepv_service.updateProjectAttribues.send(projectID, attributid, attributwert);
+  		}
+  		catch(e:Error)
+  		{
+   			//Do Nothing :)
+  		}
+ 	}
+	
 	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
 }
