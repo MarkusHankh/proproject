@@ -122,8 +122,9 @@ public function prepareProjectEditExport():void
    			//dpPortfolioAttributes
    			if(gridAttributeEdit.dataProvider[i][5])
    			{
-   				attributwert = gridAttributeEdit.dataProvider[i][5];
-  				threepv_service.setProjectAttributes.send(projectID, attributid, attributwert);
+   				//attributwert = gridAttributeEdit.dataProvider[i][5];
+  				threepv_service.setProjectAttributes.send(projectID, attributid, gridAttributeEdit.dataProvider[i][5]);
+  				
    			}
    			else
    			{
