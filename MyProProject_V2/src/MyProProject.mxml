@@ -554,7 +554,7 @@
 			</mx:Canvas>
 			<mx:Canvas id="EinstellungenView" height="0%" width="0%">
 				<mx:Label id="lblEinstellungAllgemein" x="0" y="10" text="Template anlegen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('einstellungContent')"/>
-				<mx:Label id="lblLogoUpload" x="150" y="10" text="Meine Templates" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('logoUploadContent')"/>
+				<mx:Label id="lblLogoUpload" x="150" y="10" text="Meine Templates" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('logoUploadContent'); threepv_service.getAllMySettings.send(session.data.userID);"/>
 				<mx:Canvas id="einstellungContent" x="4" y="42" width="870" height="463" backgroundColor="#000000">
 					<mx:Label text="Verleihen Sie 3Pv eine persönliche Note mit ihren eigenen Farbschemata!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:Label x="27.5" y="61" text="Schema-Name:" fontSize="12" fontFamily="Arial" id="lblSchemaNameNeu"/>
@@ -613,14 +613,15 @@
 					<mx:Label x="27" y="237" text="Schriftgröße:" fontSize="12"/>
 					<mx:Label x="27" y="289" text="Verwendetes Logo:" fontSize="12"/>
 					<mx:Image x="27" y="318" width="160" height="40" id="logoVorschau" scaleContent="true"/>
-					<mx:ComboBox x="244" y="68" dataProvider="{dpSchemaSelector}"/>
-					<mx:ColorPicker x="244" y="119" width="160"/>
-					<mx:ComboBox x="244" y="147"></mx:ComboBox>
-					<mx:ColorPicker x="244" y="177" width="160"/>
-					<mx:ComboBox x="244" y="207"></mx:ComboBox>
-					<mx:ComboBox x="244" y="237"></mx:ComboBox>
+					<mx:ComboBox id="schemaSelector" x="244" y="68" dataProvider="{dpSchemaSelector}" change="refreshSchema(schemaSelector.text)"/>
+					<mx:ColorPicker id="templateHintergrundfarbe" x="244" y="119" width="160"/>
+					<mx:Label id="templateHintergrundbild" x="244" y="147" fontSize="12" text=""/>
+					<mx:ColorPicker id="templateSchriftfarbe" x="244" y="177" width="160"/>
+					<mx:Label id="templateSchriftart" x="244" y="207" fontSize="12" text=""/>
+					<mx:Label id="templateSchriftgroesse" x="244" y="237" fontSize="12" text=""/>
 					<mx:Label x="27" y="382" color="#36FF00" id="lblSchemaAktivate"/>
 					<mx:Button x="27" y="409" label="Template aktivieren"/>
+					<mx:Button x="200" y="409" label="Template löschen"/>
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="HilfeView" height="0%" width="0%">
