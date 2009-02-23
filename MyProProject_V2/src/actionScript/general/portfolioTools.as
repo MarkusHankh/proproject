@@ -93,6 +93,7 @@ public function deletePortfolio():void
 	
 	threepv_service.deletePortfolio.send(portfolioID);
 	refreshAll(portfolioSelector.text);
+	refreshPortfolioOnly();
 	changeContent('diagramContent');
 }
 
