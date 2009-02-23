@@ -402,7 +402,8 @@
 												<mx:ComboBox editable="true">
       												<mx:dataProvider>
       													<mx:String>Tooltip</mx:String>
-      													<mx:String>Umrandung</mx:String>
+      													<mx:String>Umrandungsfarbe</mx:String>
+      													<mx:String>Fuellfarbe</mx:String>
       													<mx:String>Ring aussen</mx:String>
       													<mx:String>Ring innen</mx:String>
       												</mx:dataProvider>
@@ -454,7 +455,8 @@
 												<mx:ComboBox editable="true">
       												<mx:dataProvider>
       													<mx:String>Tooltip</mx:String>
-      													<mx:String>Umrandung</mx:String>
+      													<mx:String>Umrandungsfarbe</mx:String>
+      													<mx:String>Fuellfarbe</mx:String>
       													<mx:String>Ring aussen</mx:String>
       													<mx:String>Ring innen</mx:String>
       												</mx:dataProvider>
