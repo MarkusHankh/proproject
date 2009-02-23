@@ -309,6 +309,10 @@ public function getMySettingsResult(event:ResultEvent):void{
 	var tempSettings:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
 	if(tempSettings[0][1] != null){
 		dpMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
+		StyleManager.getStyleDeclaration("Application").setStyle("backgroundColor", dpMySettings[0][2]);
+		StyleManager.getStyleDeclaration("Application").setStyle("backgroundColor", dpMySettings[0][2]);
+		StyleManager.getStyleDeclaration("Label").setStyle("color", dpMySettings[0][3]);
+		StyleManager.getStyleDeclaration("Label").setStyle("fontFamily", dpMySettings[0][4]);
 	}else{
 		standardSettings();
 	}
@@ -329,6 +333,11 @@ public function getAllMySettingsResult(event:ResultEvent):void{
 		templateSchriftfarbe.selectedColor = dpAllMySettings[0][3];
 		templateSchriftgroesse.text = dpAllMySettings[0][5];
 		lblHiddenSchemaId.text = dpAllMySettings[0][0];
+		if(dpAllMySettings[0][9] == 1){
+			lblSchemaStatus.text = 'bereits aktiv';
+		}else{
+			lblSchemaStatus.text = 'nicht aktiv';
+		}
 	}else{
 		dpSchemaSelector = new ArrayCollection();
 		dpSchemaSelector.addItem('Kein Schema vorhanden...');
@@ -343,8 +352,15 @@ public function getSchemaAttributesResult(event:ResultEvent):void{
 	templateSchriftfarbe.selectedColor = event.result[0][3];
 	templateSchriftgroesse.text = event.result[0][5];
 	lblHiddenSchemaId.text = event.result[0][0];
+	if(event.result[0][9] == 1){
+			lblSchemaStatus.text = 'bereits aktiv';
+		}else{
+			lblSchemaStatus.text = 'nicht aktiv';
+		}
 }
 
 public function aktivateSettingResult(event:ResultEvent):void{
 	threepv_service.getMySettings.send(session.data.userID);
+	lblSchemaStatus.text = 'bereits aktiv';
+	lblSchemaAktivate.text = 'Schema wurde aktiviert';
 }
