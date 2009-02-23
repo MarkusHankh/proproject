@@ -1,8 +1,11 @@
-import mx.controls.Alert;
-import mx.events.CollectionEvent;
+import mx.collections.ArrayCollection;
+import mx.utils.ArrayUtil;
 
 [Bindable]
 var CurrentProjectID:int;
+
+[Bindable]
+public var teamEditBeforUpdate:ArrayCollection;
 
 public function refreshAll(portfolio:String):void
 {
@@ -111,7 +114,10 @@ public function prepareProjectEditExport():void
 	var projektLeader:int = session.data.userID;
 	threepv_service.editProject.send(projectID, projektnameEdit.text, startdatumEdit.text, enddatumEdit.text, formEdit.text, formGroesseInt, xAchseEdit.value, yAchseEdit.value, fuellfarbeEdit.selectedColor.toString(16), rahmenfarbeEdit.selectedColor.toString(16), beschreibungEdit.text, ringfarbeInnenEdit.selectedColor.toString(16), ringfarbeAussenEdit.selectedColor.toString(16));
 	
-	//threepv_service.getProjectValues.send(projectID);
+	/*
+	 *Benutzerspezifische Attribute erzeugen und bearbeiten
+	 *
+	 */
 	var attributid:int=0;
 	var attributwert:String='';
 	for(var i:int = 0; i < gridAttributeEdit.dataProvider.length-1; i++)
@@ -137,7 +143,19 @@ public function prepareProjectEditExport():void
   		}
  	}
 	
-	for(var i:int = 0; i < gridTeamEdit.dataProvider.length; i++)
+	/*
+	 *Projektmitglieder hinzufügen und löschen
+	 *
+	 */
+	 
+	//if(gridTeamEdit.dataProvider.length>projectTeamCountFromDB) 
+	
+	
+	for (var j:int=0; j<teamEditBeforUpdate.length; j++)
+	{
+		threepv_service.deleteBenutzerProjekt.send(teamEditBeforUpdate[j][0], projectID);
+	}
+	for (var i:int=0; i<gridTeamEdit.dataProvider.length; i++)
 	{
 		threepv_service.setBenutzerProjekt.send(gridTeamEdit.dataProvider[i][0], projectID);
 	}
@@ -158,6 +176,7 @@ public function getProjectEdit(id:int):void
 		CurrentProjectID=gridProjectListView.selectedItem[0];
 	}
 	var portfolioID:int=getCurrentPortfolioID();
+	teamEditBeforUpdate=new ArrayCollection();
 	threepv_service.getProjectValues.send(CurrentProjectID);
 	threepv_service.getProjectAttributes.send(CurrentProjectID);
 	threepv_service.getProjectUser.send(CurrentProjectID);
