@@ -303,10 +303,11 @@ public function getProjectUserResult(event:ResultEvent):void
 }
 
 public function getMySettingsResult(event:ResultEvent):void{
-	if(event.result){
+	var tempSettings:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
+	if(tempSettings[0][1] != null){
 		dpMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
 	}else{
-		//Standard laden
+		standardSettings();
 	}
 }
 
@@ -314,7 +315,7 @@ public function getAllMySettingsResult(event:ResultEvent):void{
 	if(event.result){
 		dpAllMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
 	}else{
-		//Standard laden, wenn ueberhaupt...
+		//Eigentlich nichts...glaube ich
 	}
 }
 
