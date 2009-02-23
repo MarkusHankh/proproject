@@ -105,16 +105,17 @@ public function prepareProjectEditExport():void
 	threepv_service.editProject.send(projectID, projektnameEdit.text, startdatumEdit.text, enddatumEdit.text, formEdit.text, formGroesseInt, xAchseEdit.value, yAchseEdit.value, fuellfarbeEdit.selectedColor.toString(16), rahmenfarbeEdit.selectedColor.toString(16), beschreibungEdit.text, ringfarbeInnenEdit.selectedColor.toString(16), ringfarbeAussenEdit.selectedColor.toString(16));
 	
 	//threepv_service.getProjectValues.send(projectID);
-	
+	var attributid:int=0;
+	var attributwert:String='';
 	for(var i:int = 0; i < gridAttributeEdit.dataProvider.length-1; i++)
  	{
  		//try
  		//{
-   			var attributid:int = gridAttributeEdit.dataProvider[i][0].valueOf();
+   			attributid = gridAttributeEdit.dataProvider[i][0].valueOf();
    			//dpPortfolioAttributes
    			if(gridAttributeEdit.dataProvider[i][5])
    			{
-   				var attributwert:String = gridAttributeEdit.dataProvider[i][5];
+   				attributwert = gridAttributeEdit.dataProvider[i][5];
   				threepv_service.setProjectAttributes.send(projectID, attributid, attributwert);
    			}
    			else
