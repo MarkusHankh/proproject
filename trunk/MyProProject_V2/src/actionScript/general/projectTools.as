@@ -160,7 +160,7 @@ public function prepareProjectEditExport():void
 		threepv_service.setBenutzerProjekt.send(gridTeamEdit.dataProvider[i][0], projectID);
 	}
 	
-	//refreshAll(portfolioSelector.text);
+	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
 }
 

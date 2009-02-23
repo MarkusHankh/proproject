@@ -92,7 +92,7 @@ public function deletePortfolio():void
 	var portfolioID:int = this.getCurrentPortfolioID();
 	
 	threepv_service.deletePortfolio.send(portfolioID);
-//	refreshAll(portfolioSelector.text);
+	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
 }
 
@@ -160,7 +160,7 @@ public function preparePortfolioEditExport(attributesCount:int):void
 	nameYAchseEdit.text="";
 	portfolioBeschreibungEdit.text="";
 	
-//	refreshAll(portfolioSelector.text);
+	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
 }
 
@@ -178,5 +178,5 @@ public function deletePortfolioAttribute():void
 	}
 	
 	threepv_service.deleteAttribute.send(portfolioID, attributeID);
-//	refreshAll(portfolioSelector.text);
+	refreshAll(portfolioSelector.text);
 }

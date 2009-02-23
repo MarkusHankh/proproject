@@ -8,6 +8,7 @@ public function refresh():void{
 	threepv_service.getUser.send(session.data.userCompany);
 	gridTeamNeu.dataProvider = new ArrayCollection();
 	dgSpezifischeAttribute = new ArrayCollection();
+	initGridAttribut();
 }
 
 public function refreshPortfolioOnly():void{
@@ -18,5 +19,5 @@ public function newPortfolioRefresh():void
 {
 	dia.removeAllChildren();
 	threepv_service.getMyPortfolios.send(session.data.userID);
-	
+	initGridAttribut();
 }
