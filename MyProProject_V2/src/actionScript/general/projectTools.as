@@ -137,6 +137,11 @@ public function prepareProjectEditExport():void
   		}
  	}
 	
+	for(var i:int = 0; i < gridTeamEdit.dataProvider.length; i++)
+	{
+		threepv_service.setBenutzerProjekt.send(gridTeamEdit.dataProvider[i][0], projectID);
+	}
+	
 	refreshAll(portfolioSelector.text);
 	changeContent('diagramContent');
 }
