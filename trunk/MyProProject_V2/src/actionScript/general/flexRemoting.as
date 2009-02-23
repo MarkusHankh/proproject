@@ -322,6 +322,12 @@ public function getAllMySettingsResult(event:ResultEvent):void{
 		for(var i:int = 0; i < length; i++){
 			dpSchemaSelector.addItem(event.result[i][1]);
 		}
+		logoVorschau.source = "http://3pv.proproject.labasto.de/amfphp/services/uploads/"+ dpAllMySettings[0][10][0][2];
+		templateHintergrundbild.text = dpAllMySettings[0][6];
+		templateHintergrundfarbe.selectedColor = dpAllMySettings[0][6];
+		templateSchriftart.text = dpAllMySettings[0][4];
+		templateSchriftfarbe.selectedColor = dpAllMySettings[0][3];
+		templateSchriftgroesse.text = dpAllMySettings[0][5];
 	}else{
 		dpSchemaSelector = new ArrayCollection();
 		dpSchemaSelector.addItem('Kein Schema vorhanden...');

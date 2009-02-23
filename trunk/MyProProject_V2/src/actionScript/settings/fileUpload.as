@@ -82,3 +82,25 @@ public function resetSchemaForm():void{
 	btnDateiUpload.visible = true;
 	
 }
+
+public function refreshSchema(schema:String):void{
+	var schemaID:int=getCurrentSchemaID();
+	
+}
+
+public function getCurrentSchemaID():int
+{
+	var schemaName:String = schemaSelector.text;
+	var schemaID:int;
+	if (dpAllMySettings != null){
+		for (var i:int=0; i < dpSchemaSelector.length; i++){
+			if (dpAllMySettings.length > 0 && dpAllMySettings[i][1] == schemaName){
+				schemaID = dpAllMySettings[i][0];
+			}
+		}
+	}
+	else{
+		Alert.show("dpSchema ist null!");
+	}
+	return schemaID;
+}
