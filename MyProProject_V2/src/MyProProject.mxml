@@ -622,7 +622,8 @@
 					<mx:Label id="templateSchriftart" x="244" y="207" fontSize="12" text=""/>
 					<mx:Label id="templateSchriftgroesse" x="244" y="237" fontSize="12" text=""/>
 					<mx:Label x="27" y="382" color="#36FF00" id="lblSchemaAktivate"/>
-					<mx:Button x="27" y="409" label="Template aktivieren"/>
+					<mx:Label x="400" y="68" color="#36FF00" id="lblSchemaStatus"/>
+					<mx:Button x="27" y="409" label="Template aktivieren" click="threepv_service.aktivateSetting.send(lblHiddenSchemaId.text, session.data.userID)"/>
 					<mx:Button x="200" y="409" label="Template löschen"/>
 				</mx:Canvas>
 			</mx:Canvas>
