@@ -613,7 +613,7 @@
 					<mx:Label x="27" y="237" text="Schriftgröße:" fontSize="12"/>
 					<mx:Label x="27" y="289" text="Verwendetes Logo:" fontSize="12"/>
 					<mx:Image x="27" y="318" width="160" height="40" id="logoVorschau" scaleContent="true"/>
-					<mx:ComboBox x="244" y="68"></mx:ComboBox>
+					<mx:ComboBox x="244" y="68" dataProvider="{dpSchemaSelector}"/>
 					<mx:ColorPicker x="244" y="119" width="160"/>
 					<mx:ComboBox x="244" y="147"></mx:ComboBox>
 					<mx:ColorPicker x="244" y="177" width="160"/>

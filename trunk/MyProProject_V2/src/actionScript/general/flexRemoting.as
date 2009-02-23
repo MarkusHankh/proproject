@@ -20,6 +20,9 @@ public var dpUserProject:ArrayCollection;
 public var dpPortfolioSelector:ArrayCollection;
 
 [Bindable]
+public var dpSchemaSelector:ArrayCollection;
+
+[Bindable]
 public var dpPortfolio:ArrayCollection;
 
 [Bindable]
@@ -312,10 +315,16 @@ public function getMySettingsResult(event:ResultEvent):void{
 }
 
 public function getAllMySettingsResult(event:ResultEvent):void{
-	if(event.result){
-		dpAllMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
+	dpAllMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
+	var length:int = event.result.length;
+	if(length > 0){
+		dpSchemaSelector = new ArrayCollection();
+		for(var i:int = 0; i < length; i++){
+			dpSchemaSelector.addItem(event.result[i][1]);
+		}
 	}else{
-		//Eigentlich nichts...glaube ich
+		dpSchemaSelector = new ArrayCollection();
+		dpSchemaSelector.addItem('Kein Schema vorhanden...');
 	}
 }
 
