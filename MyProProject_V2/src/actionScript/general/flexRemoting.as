@@ -70,6 +70,9 @@ public var dpMySettings:ArrayCollection;
 [Bindable]
 public var dpAllMySettings:ArrayCollection;
 
+[Bindable]
+public var projectTeamCountFromDB:int;
+
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void
 {
@@ -194,11 +197,18 @@ public function newProjectResult(event:ResultEvent):void
 	var projektid:String = String(event.result);
 	var portfolioID:int=getCurrentPortfolioID();
 	
-	for(var i:int = 0; i < gridTeamNeu.dataProvider.length; i++)
+	try
 	{
-		threepv_service.setBenutzerProjekt.send(gridTeamNeu.dataProvider[i][0], projektid);
+		for(var i:int = 0; i < gridTeamNeu.dataProvider.length; i++)
+		{
+			threepv_service.setBenutzerProjekt.send(gridTeamNeu.dataProvider[i][0], projektid);
+		}
 	}
- 
+ 	catch(e:Error)
+ 	{
+ 		//Do Nothing :)
+ 	}
+ 	
  	for(var i:int = 0; i < gridAttributeNeu.dataProvider.length; i++)
  	{
  		try
@@ -269,14 +279,10 @@ public function getProjectValuesResult(event:ResultEvent):void
 	xAchseEdit.value=dpProjectValues[0][6];
 	yAchseEdit.value=dpProjectValues[0][7];
 	beschreibungEdit.text=dpProjectValues[0][12];
-//	fuellfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][8]);
-//	rahmenfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][9]);
-//	ringfarbeInnenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][10]);
-//	ringfarbeAussenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][11]);
-	fuellfarbeEdit.selectedColor = (uint)('0x'+dpProjectValues[0][8]);
-	rahmenfarbeEdit.selectedColor = (uint)('0x'+dpProjectValues[0][9]);
-	ringfarbeInnenEdit.selectedColor = (uint)('0x'+dpProjectValues[0][10]);
-	ringfarbeAussenEdit.selectedColor = (uint)('0x'+dpProjectValues[0][11]);
+	fuellfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][8]);
+	rahmenfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][9]);
+	ringfarbeInnenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][10]);
+	ringfarbeAussenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][11]);
 }
 
 
@@ -295,9 +301,10 @@ public function getProjectUserResult(event:ResultEvent):void
 {
 	var temp:ArrayCollection=new ArrayCollection(ArrayUtil.toArray(event.result));
 	dpGridTeamEdit=new ArrayCollection();
+	projectTeamCountFromDB=temp.length;
+	teamEditBeforUpdate=temp;
 	for(var i:int=0; i<temp.length; i++)
 	{
-		//dpGridTeamEdit.addItem({'BenutzerID':temp[i][0], 'Benutzer':temp[i][1]});
 		dpGridTeamEdit.addItem({0:temp[i][0], 1:temp[i][1]});
 		for(var j:int=0; j<dpUserProject.length; j++)
 		{

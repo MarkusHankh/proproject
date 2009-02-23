@@ -6,3 +6,11 @@ TODO:
 	-Projektmitglieder aus der Verfügbarenliste löschen
 
 -Einstellungen anzeigen
+
+function setBenutzerProjekt($userid, $projektid){
+		$mysql = new Database();
+		$query = "INSERT INTO benutzer_projekt(BenutzerID, ProjektID, Rolle) VALUES('".$userid."','".$projektid."','Benutzer') " .
+				 "ON DUPLICATE KEY UPDATE BenutzerID='".$userid."', ProjektID='".$projektid."', Rolle='Benutzer' ;";
+		$mysql->query($query);
+		$mysql->result = null;
+	}
