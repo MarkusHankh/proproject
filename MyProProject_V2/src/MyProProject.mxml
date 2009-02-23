@@ -6,6 +6,7 @@
 	<mx:Script source="actionScript/general/creationComplete.as"/>
 	<mx:Script source="actionScript/general/flexRemoting.as"/>
 	<mx:Script source="actionScript/general/portfolioTools.as"/>
+	<mx:Script source="actionScript/general/refresh.as"/>
 	<mx:Script source="actionScript/portfolios/diagramm/startDiagram.as"/>
 	<mx:Script source="actionScript/portfolios/newProject/dragAndDrop.as"/>
 	<mx:Script source="actionScript/userAdministration/userAdministration.as"/>
@@ -127,7 +128,7 @@
 						<mx:Label x="10" y="106" text="Passwort:" color="#000000" fontWeight="bold" fontSize="15" fontFamily="Arial"/>
 						<mx:TextInput x="133" y="68" width="187" id="benutzernameLogin" color="#000000"/>
 						<mx:TextInput x="133" y="108" width="187" displayAsPassword="true" id="passwortLogin" color="#000000" enter="userLogin(benutzernameLogin.text, passwortLogin.text)"/>
-						<mx:Button x="133" y="160" label="Login" color="#000000" width="84" id="btnLogin" click="userLogin(benutzernameLogin.text, passwortLogin.text)"/>
+						<mx:Button x="133" y="160" label="Login" color="#000000" width="84" id="btnLogin" click="userLogin(benutzernameLogin.text, passwortLogin.text);"/>
 						<mx:Button x="225" y="160" label="Abbrechen" color="#000000" width="95" id="btnAbbruchLogin" click="userLoginAbort()"/>
 						<mx:Label id="loginFehler" x="10" y="36" text="" color="#FF0000" fontWeight="bold"/>
 					</mx:Panel>
@@ -154,13 +155,13 @@
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="PortfolioView" height="0%" width="0%">
-				<mx:Label id="lblDiagramm" x="0" y="10" text="Diagramm" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('diagramContent'); refreshAll(portfolioSelector.text);"/>
-				<mx:Label id="lblListe" x="87" y="10" text="Liste" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('listContent')"/>
-				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent')"/>
-				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent')"/>
-				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent'), editPortfolio()"/>
-				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" change="refreshAll(portfolioSelector.text)" selectedIndex="-1"/>
-				<mx:Button id="btnPortfolioLoeschen" x="835" y="10" icon="@Embed(source='images/delete.png')" click="deletePortfolio()"/>
+				<mx:Label id="lblDiagramm" x="0" y="10" text="Diagramm" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('diagramContent'); refresh();"/>
+				<mx:Label id="lblListe" x="87" y="10" text="Liste" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('listContent'); refresh();"/>
+				<mx:Label id="lblNeuesProjekt" x="143" y="10" text="Neues Projekt hinzufügen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('projektNeuContent'); refresh();"/>
+				<mx:Label id="lblNeuesPortfolio" x="316" y="10" text="Neues Portfolio erstellen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioNeuContent'); refresh();"/>
+				<mx:Label id="lblPortfolioBearbeiten" x="484" y="10" text="Dieses Portfolio bearbeiten" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('portfolioBearbeitenContent'); editPortfolio(); refresh();"/>
+				<mx:ComboBox id="portfolioSelector" dataProvider="{dpPortfolioSelector}" x="666" y="10" width="200" selectedIndex="-1" change="refresh();"/>
+				<mx:Button id="btnPortfolioLoeschen" x="835" y="10" icon="@Embed(source='images/delete.png')" click="deletePortfolio(); refresh(); refreshPortfolioOnly();"/>
 				<!--
 				Diagrammansicht
 				-->
@@ -362,8 +363,8 @@
 							</mx:DataGrid>
 						</mx:Canvas>
 					</mx:HBox>
-					<mx:Button label="Projekt bearbeiten" y="430" x="418" click="prepareProjectEditExport()"/>
-					<mx:Button label="Felder zurücksetzen" y="430" x="560" click="resetEditProject()"/>
+					<mx:Button label="Projekt bearbeiten" y="430" x="418" click="prepareProjectEditExport(); refresh();"/>
+					<mx:Button label="Felder zurücksetzen" y="430" x="560" click="resetEditProject(); refresh();"/>
 				</mx:Canvas>
 				<!--
 				Neues Portfolio erstellen
@@ -412,8 +413,8 @@
 								</mx:columns>
 							</mx:DataGrid>
 							
-							<mx:Button x="29" y="340" label="Portfolio speichern" width="148" id="btnPortfolioSpeichern" click="preparePortfolioExport()"/>
-							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort" click="resetNewPortfolio()"/>
+							<mx:Button x="29" y="340" label="Portfolio speichern" width="148" id="btnPortfolioSpeichern" click="preparePortfolioExport(); refresh();"/>
+							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioNeuAbort" click="resetNewPortfolio(); refresh();"/>
 						</mx:Canvas>
 					</mx:HBox>
 				</mx:Canvas>
@@ -476,15 +477,15 @@
 								</mx:columns>
 							</mx:DataGrid>
 							
-							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten" click="preparePortfolioEditExport(gridPortfolioAttributeEdit.numChildren)"/>
-							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort" click="resetEditPortfolio()"/>
+							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten" click="preparePortfolioEditExport(gridPortfolioAttributeEdit.numChildren); refreshPortfolioOnly();"/>
+							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort" click="resetEditPortfolio(); refresh();"/>
 						</mx:Canvas>
 					</mx:HBox>
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="BenutzerverwaltungView" height="0%" width="0%">
-				<mx:Label id="lblAlleBenutzer" x="0" y="10" text="Alle Benutzer anzeigen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('alleBenutzerContent')"/>
-				<mx:Label id="lblBenutzerNeu" x="147" y="10" text="Neue Benutzer anlegen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('benutzerNeuContent')"/>
+				<mx:Label id="lblAlleBenutzer" x="0" y="10" text="Alle Benutzer anzeigen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#0066ff" click="changeContent('alleBenutzerContent'); refresh();"/>
+				<mx:Label id="lblBenutzerNeu" x="147" y="10" text="Neue Benutzer anlegen" fontSize="12" fontFamily="Arial" fontWeight="bold" paddingLeft="5" paddingRight="10" color="#808492" click="changeContent('benutzerNeuContent'); refresh();"/>
 				<!--
 				Alle Benutzer anzeigen
 				-->
@@ -530,8 +531,8 @@
 					<mx:TextInput x="222.5" y="148" id="emailNeu"/>
 					<mx:TextInput x="222.5" y="177" id="passwortNeu" displayAsPassword="true"/>
 					<mx:TextInput x="222.5" y="206" id="passwort2Neu" displayAsPassword="true"/>
-					<mx:Button x="27.5" y="274" label="Benutzer speichern!" id="btnBenutzerSpeichern" click="createUserAccount(vornameNeu.text, nachnameNeu.text, benutzernameNeu.text, emailNeu.text, passwortNeu.text, passwort2Neu.text)"/>
-					<mx:Button x="222.5" y="274" label="Felder zurücksetzen" click="clearNewUserFields()"/>
+					<mx:Button x="27.5" y="274" label="Benutzer speichern!" id="btnBenutzerSpeichern" click="createUserAccount(vornameNeu.text, nachnameNeu.text, benutzernameNeu.text, emailNeu.text, passwortNeu.text, passwort2Neu.text); refresh();"/>
+					<mx:Button x="222.5" y="274" label="Felder zurücksetzen" click="clearNewUserFields(); refresh();"/>
 				</mx:Canvas>
 				<!--
 				Benutzer bearbeiten
@@ -550,7 +551,7 @@
 					<mx:TextInput x="222.5" y="148" id="emailEdit"/>
 					<mx:TextInput x="222.5" y="177" id="passwortEdit" displayAsPassword="true"/>
 					<mx:TextInput x="222.5" y="206" id="passwort2Edit" displayAsPassword="true"/>
-					<mx:Button x="27.5" y="274" label="Benutzer ändern!" id="btnBenutzerBearbeiten" click="editUser(vornameEdit.text, nachnameEdit.text, benutzernameEdit.text, emailEdit.text, passwortEdit.text, passwort2Edit.text)"/>
+					<mx:Button x="27.5" y="274" label="Benutzer ändern!" id="btnBenutzerBearbeiten" click="editUser(vornameEdit.text, nachnameEdit.text, benutzernameEdit.text, emailEdit.text, passwortEdit.text, passwort2Edit.text); refresh();"/>
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="EinstellungenView" height="0%" width="0%">
