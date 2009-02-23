@@ -11,58 +11,61 @@ public var session:SharedObject = SharedObject.getLocal("3PvSession");
 
 //Variablen vom Backend
 [Bindable]
-private var dpUser:ArrayCollection;
+public var dpUser:ArrayCollection;
 
 [Bindable]
-private var dpUserProject:ArrayCollection;
+public var dpUserProject:ArrayCollection;
 
 [Bindable]
-private var dpPortfolioSelector:ArrayCollection;
+public var dpPortfolioSelector:ArrayCollection;
 
 [Bindable]
-private var dpPortfolio:ArrayCollection;
+public var dpPortfolio:ArrayCollection;
 
 [Bindable]
-private var dpPortfolioAttributes:ArrayCollection;
+public var dpPortfolioAttributes:ArrayCollection;
 
 [Bindable]
-private var dpMyProjects:ArrayCollection;
+public var dpMyProjects:ArrayCollection;
 
 [Bindable]
-private var dpMyAttribute:ArrayCollection;
+public var dpMyAttribute:ArrayCollection;
 
 [Bindable]
-private var dpUserSession:ArrayCollection;
+public var dpUserSession:ArrayCollection;
 
 [Bindable]
-private var dpDefaultAttributeVisualisations:ArrayCollection;
+public var dpDefaultAttributeVisualisations:ArrayCollection;
 
 [Bindable]
-private var dgSpezifischeAttribute:ArrayCollection;
+public var dgSpezifischeAttribute:ArrayCollection;
 
 [Bindable]
-private var dgSpezifischeAttributeZwei:ArrayCollection;
+public var dgSpezifischeAttributeZwei:ArrayCollection;
 
 [Bindable]
-private var dpPortfolioValues:ArrayCollection;
+public var dpPortfolioValues:ArrayCollection;
 
 [Bindable]
-private var dpProjectValues:ArrayCollection;
+public var dpProjectValues:ArrayCollection;
 
 [Bindable]
-private var dpProjectAttributesValues:ArrayCollection;
+public var dpProjectAttributesValues:ArrayCollection;
 
 [Bindable]
-private var dpProjectUser:ArrayCollection;
+public var dpProjectUser:ArrayCollection;
 
 [Bindable]
-private var dpGridTeamEdit:ArrayCollection;
+public var dpGridTeamEdit:ArrayCollection;
 
 [Bindable]
-var attributesCountFromDB:int;
+public var attributesCountFromDB:int;
 
 [Bindable]
 public var dpMySettings:ArrayCollection;
+
+[Bindable]
+public var dpAllMySettings:ArrayCollection;
 
 //Result Events - FlexRemoting
 public function registerResult(event:ResultEvent):void
@@ -305,4 +308,16 @@ public function getMySettingsResult(event:ResultEvent):void{
 	}else{
 		//Standard laden
 	}
+}
+
+public function getAllMySettingsResult(event:ResultEvent):void{
+	if(event.result){
+		dpAllMySettings = new ArrayCollection(ArrayUtil.toArray(event.result));
+	}else{
+		//Standard laden, wenn ueberhaupt...
+	}
+}
+
+public function aktivateSettingResult(event:ResultEvent):void{
+	threepv_service.getMySettings.send(session.data.userID);
 }
