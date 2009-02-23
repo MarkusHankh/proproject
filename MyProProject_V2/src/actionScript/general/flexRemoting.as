@@ -328,10 +328,21 @@ public function getAllMySettingsResult(event:ResultEvent):void{
 		templateSchriftart.text = dpAllMySettings[0][4];
 		templateSchriftfarbe.selectedColor = dpAllMySettings[0][3];
 		templateSchriftgroesse.text = dpAllMySettings[0][5];
+		lblHiddenSchemaId.text = dpAllMySettings[0][0];
 	}else{
 		dpSchemaSelector = new ArrayCollection();
 		dpSchemaSelector.addItem('Kein Schema vorhanden...');
 	}
+}
+
+public function getSchemaAttributesResult(event:ResultEvent):void{
+	logoVorschau.source = "http://3pv.proproject.labasto.de/amfphp/services/uploads/"+ event.result[0][10][0][2];
+	templateHintergrundbild.text = event.result[0][6];
+	templateHintergrundfarbe.selectedColor = event.result[0][6];
+	templateSchriftart.text = event.result[0][4];
+	templateSchriftfarbe.selectedColor = event.result[0][3];
+	templateSchriftgroesse.text = event.result[0][5];
+	lblHiddenSchemaId.text = event.result[0][0];
 }
 
 public function aktivateSettingResult(event:ResultEvent):void{

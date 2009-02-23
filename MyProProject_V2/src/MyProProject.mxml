@@ -28,6 +28,7 @@
 		<mx:method name="getProjectUser" result="getProjectUserResult(event);" />
 		<mx:method name="getMySettings" result="getMySettingsResult(event);" />
 		<mx:method name="getAllMySettings" result="getAllMySettingsResult(event);" />
+		<mx:method name="getSchemaAttributes" result="getSchemaAttributesResult(event);" />
 		<mx:method name="aktivateSetting" result="aktivateSettingResult(event);" />
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
@@ -606,6 +607,7 @@
 				<mx:Canvas id="logoUploadContent" x="4" y="42" width="870" height="463" backgroundColor="#000000" visible="false">
 					<mx:Label text="Wenn sie bereits Templates angelegt haben, können sie diese hier auswählen!" x="10" color="#999999" fontWeight="bold" fontSize="14"/>
 					<mx:Label x="27" y="68" text="Gespeicherte Templates:" fontSize="12" color="#999999"/>
+					<mx:Label id="lblHiddenSchemaId" visible="false" x="27" y="130" text="" fontSize="12"/>
 					<mx:Label x="27" y="118" text="Hintergrundfarbe:" fontSize="12"/>
 					<mx:Label x="27" y="147" text="Hintergrundbild:" fontSize="12"/>
 					<mx:Label x="27" y="178" text="Schriftfarbe:" fontSize="12"/>

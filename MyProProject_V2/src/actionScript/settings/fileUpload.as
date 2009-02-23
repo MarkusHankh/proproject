@@ -85,7 +85,7 @@ public function resetSchemaForm():void{
 
 public function refreshSchema(schema:String):void{
 	var schemaID:int=getCurrentSchemaID();
-	
+	threepv_service.getSchemaAttributes.send(schemaID);
 }
 
 public function getCurrentSchemaID():int
