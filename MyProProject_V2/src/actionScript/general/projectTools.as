@@ -16,6 +16,7 @@ public function refreshAll(portfolio:String):void
 	dia.removeAllChildren();
 	gridTeamNeu.dataProvider = new ArrayCollection();
 	dgSpezifischeAttribute = new ArrayCollection();
+	initGridAttribut();
 }
 
 public function deleteProject():void
