@@ -82,9 +82,16 @@ public function prepareProjectExport():void
 
 public function prepareProjectEditExport():void
 {
+	var projectID:int=0;
+	if (gridProjectListView.selectedItem!=null)
+	{
+		projectID=gridProjectListView.selectedItem[0];
+	}
+	else
+	{
+		projectID=CurrentProjectID;
+	}
 	
-	var projectID:int=gridProjectListView.selectedItem[0];
-	//var projectID:int=CurrentProjectID; //=0
 	var portfolioID:int=getCurrentPortfolioID();
 	
 	var formGroesseInt:int;
@@ -109,8 +116,8 @@ public function prepareProjectEditExport():void
 	var attributwert:String='';
 	for(var i:int = 0; i < gridAttributeEdit.dataProvider.length-1; i++)
  	{
- 		//try
- 		//{
+ 		try
+ 		{
    			attributid = gridAttributeEdit.dataProvider[i][0].valueOf();
    			//dpPortfolioAttributes
    			if(gridAttributeEdit.dataProvider[i][5])
@@ -122,11 +129,11 @@ public function prepareProjectEditExport():void
    			{
    				continue;
    			}
-  		//}
-  		/*catch(e:Error)
+  		}
+  		catch(e:Error)
   		{
    			//Do Nothing :)
-  		}*/
+  		}
  	}
 	
 	refreshAll(portfolioSelector.text);
@@ -138,15 +145,15 @@ public function getProjectEdit(id:int):void
 	
 	if(id != 0)
 	{
-		var projectID:int = id;
+		CurrentProjectID = id;
 	}
 	else
 	{
-		var projectID:int=gridProjectListView.selectedItem[0];
+		CurrentProjectID=gridProjectListView.selectedItem[0];
 	}
 	var portfolioID:int=getCurrentPortfolioID();
-	threepv_service.getProjectValues.send(projectID);
-	threepv_service.getProjectAttributes.send(projectID);
-	threepv_service.getProjectUser.send(projectID);
+	threepv_service.getProjectValues.send(CurrentProjectID);
+	threepv_service.getProjectAttributes.send(CurrentProjectID);
+	threepv_service.getProjectUser.send(CurrentProjectID);
 }
 
