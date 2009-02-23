@@ -222,17 +222,16 @@ public function newProjectResult(event:ResultEvent):void
    			//Do Nothing :)
   		}
  	}
+ 	refresh();
 	changeContent('diagramContent');
 	setAttrb(dpPortfolio);
- 	refreshAll(portfolioSelector.text);
+// 	refreshAll(portfolioSelector.text);
 }
 
 public function getMyProjectsResult(event:ResultEvent):void
 {
-	var temp:ArrayCollection = new ArrayCollection(ArrayUtil.toArray(event.result));
 	dpMyProjects = new ArrayCollection(ArrayUtil.toArray(event.result));
-	dpMyAttribute = new ArrayCollection();
-	projectAttributes(temp);
+	projectAttributes(dpMyProjects);
 }
 
 public function getDefaultAttributesVisualisationsResult(event:ResultEvent):void
