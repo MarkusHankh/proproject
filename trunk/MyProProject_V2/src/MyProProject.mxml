@@ -33,6 +33,7 @@
 		<mx:method name="setSettings"/>
 		<mx:method name="deleteProject"/>
 		<mx:method name="deletePortfolio"/>
+		<mx:method name="updateProjectAttribues"/>
 	</mx:RemoteObject>
 	<mx:states>
 		<mx:State name="Portfolios">

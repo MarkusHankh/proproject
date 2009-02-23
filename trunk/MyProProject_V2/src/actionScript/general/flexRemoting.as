@@ -277,7 +277,7 @@ public function getProjectAttributesResult(event:ResultEvent):void
 	dpProjectAttributesValues = new ArrayCollection(ArrayUtil.toArray(event.result));
 	for(var i:int = 0; i < dpProjectAttributesValues.length; i++)
 	{
-  		dpPortfolioAttributes.setItemAt({1:dpPortfolioAttributes[i][1], 3:dpPortfolioAttributes[i][3], 5:dpProjectAttributesValues[i][2]}, i);
+  		dpPortfolioAttributes.setItemAt({0:dpPortfolioAttributes[i][0], 1:dpPortfolioAttributes[i][1], 3:dpPortfolioAttributes[i][3], 5:dpProjectAttributesValues[i][2]}, i);
  	}
 }
 
