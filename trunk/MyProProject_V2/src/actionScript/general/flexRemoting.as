@@ -167,7 +167,7 @@ public function getAttributesResult(event:ResultEvent):void
 	dpPortfolioAttributes = new ArrayCollection(ArrayUtil.toArray(event.result));
 	dpPortfolioAttributes.addItem({bla: ADD_TASK});
 	
-	attributesCountFromDB=dpPortfolioAttributes.length;
+	attributesCountFromDB=dpPortfolioAttributes.length-1;
 }
 
 public function newPortfolioResult(event:ResultEvent):void
