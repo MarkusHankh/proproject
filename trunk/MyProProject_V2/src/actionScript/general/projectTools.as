@@ -14,6 +14,8 @@ public function refreshAll(portfolio:String):void
 	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
 	//TODO Diagramm neu laden
 	dia.removeAllChildren();
+	gridTeamNeu.dataProvider = new ArrayCollection();
+	dgSpezifischeAttribute = new ArrayCollection();
 }
 
 public function deleteProject():void
