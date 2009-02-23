@@ -115,7 +115,7 @@ public function prepareProjectEditExport():void
    			if(gridAttributeEdit.dataProvider[i][5])
    			{
    				var attributwert:String = gridAttributeEdit.dataProvider[i][5];
-  				threepv_service.setProjectAttribues.send(projectID, attributid, attributwert);
+  				threepv_service.setProjectAttributes.send(projectID, attributid, attributwert);
    			}
    			else
    			{
