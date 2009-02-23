@@ -108,16 +108,24 @@ public function prepareProjectEditExport():void
 	
 	for(var i:int = 0; i < gridAttributeEdit.dataProvider.length-1; i++)
  	{
- 		try
- 		{
+ 		//try
+ 		//{
    			var attributid:int = gridAttributeEdit.dataProvider[i][0].valueOf();
-   			var attributwert:String = gridAttributeEdit.dataProvider[i][5];
-  			threepv_service.updateProjectAttribues.send(projectID, attributid, attributwert);
-  		}
-  		catch(e:Error)
+   			//dpPortfolioAttributes
+   			if(gridAttributeEdit.dataProvider[i][5])
+   			{
+   				var attributwert:String = gridAttributeEdit.dataProvider[i][5];
+  				threepv_service.setProjectAttribues.send(projectID, attributid, attributwert);
+   			}
+   			else
+   			{
+   				continue;
+   			}
+  		//}
+  		/*catch(e:Error)
   		{
    			//Do Nothing :)
-  		}
+  		}*/
  	}
 	
 	refreshAll(portfolioSelector.text);
