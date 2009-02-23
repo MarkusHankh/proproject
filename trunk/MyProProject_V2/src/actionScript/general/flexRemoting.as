@@ -269,10 +269,14 @@ public function getProjectValuesResult(event:ResultEvent):void
 	xAchseEdit.value=dpProjectValues[0][6];
 	yAchseEdit.value=dpProjectValues[0][7];
 	beschreibungEdit.text=dpProjectValues[0][12];
-	fuellfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][8]);
-	rahmenfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][9]);
-	ringfarbeInnenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][10]);
-	ringfarbeAussenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][11]);
+//	fuellfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][8]);
+//	rahmenfarbeEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][9]);
+//	ringfarbeInnenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][10]);
+//	ringfarbeAussenEdit.selectedColor=StyleManager.getColorName(dpProjectValues[0][11]);
+	fuellfarbeEdit.selectedColor = (uint)('0x'+dpProjectValues[0][8]);
+	rahmenfarbeEdit.selectedColor = (uint)('0x'+dpProjectValues[0][9]);
+	ringfarbeInnenEdit.selectedColor = (uint)('0x'+dpProjectValues[0][10]);
+	ringfarbeAussenEdit.selectedColor = (uint)('0x'+dpProjectValues[0][11]);
 }
 
 
