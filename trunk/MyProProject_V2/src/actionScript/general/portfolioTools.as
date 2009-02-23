@@ -136,26 +136,21 @@ public function preparePortfolioEditExport(attributesCount:int):void
 {
 	var portfolioID:int=this.getCurrentPortfolioID();
 	var companyID:int =  session.data.userCompany;
-	var dpPortfolioChildren:int = dpPortfolioAttributes.length-1;
-	if (dpPortfolioChildren > attributesCountFromDB)
+	
+	for (var i:int=0; i<dpPortfolioAttributes.length-1; i++)
 	{
-		for (var i:int=attributesCountFromDB-1; i<=dpPortfolioChildren; i++)
+		if(i<attributesCountFromDB)	
+		{
+			threepv_service.updateAttribute.send(portfolioID, dpPortfolioAttributes[i][0], dpPortfolioAttributes[i][1], dpPortfolioAttributes[i][3]);
+		}
+		else
 		{
 			threepv_service.setAttributes.send(portfolioID, dpPortfolioAttributes[i][1], '', dpPortfolioAttributes[i][3]);
 		}
 	}
-	
-	if (dpPortfolioChildren = attributesCountFromDB)
-	{
-		for (var i:int=0; i < dpPortfolioChildren; i++)
-		{
-			threepv_service.updateAttribute.send(portfolioID, dpPortfolioAttributes[i][0], dpPortfolioAttributes[i][1], dpPortfolioAttributes[i][3]);
-		}
-	}
-	
+
 	threepv_service.editPortfolio.send(portfolioID, portfolionameEdit.text, kleinsterXWertEdit.value, groessterXWertEdit.value, kleinsterYWertEdit.value, groessterYWertEdit.value, nameXAchseEdit.text, nameYAchseEdit.text, portfolioBeschreibungEdit.text, companyID);
-	
-	
+		
 	portfolionameEdit.text="";
 	kleinsterXWertEdit.value=0;
 	groessterXWertEdit.value=0;
