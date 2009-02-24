@@ -162,6 +162,7 @@ public function preparePortfolioEditExport(attributesCount:int):void
 	portfolioBeschreibungEdit.text="";
 	
 	refreshAll(portfolioSelector.text);
+	
 	changeContent('diagramContent');
 }
 
