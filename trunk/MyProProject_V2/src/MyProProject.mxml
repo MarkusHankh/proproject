@@ -31,6 +31,7 @@
 		<mx:method name="getAllMySettings" result="getAllMySettingsResult(event);" />
 		<mx:method name="getSchemaAttributes" result="getSchemaAttributesResult(event);" />
 		<mx:method name="aktivateSetting" result="aktivateSettingResult(event);" />
+		<mx:method name="deleteTemplate"/>
 		<mx:method name="setBenutzerProjekt"/>
 		<mx:method name="setProjectAttributes"/>
 		<mx:method name="setProjectPosition"/>
@@ -625,7 +626,7 @@
 					<mx:Label x="27" y="382" color="#36FF00" id="lblSchemaAktivate"/>
 					<mx:Label x="400" y="68" color="#36FF00" id="lblSchemaStatus"/>
 					<mx:Button x="27" y="409" label="Template aktivieren" click="threepv_service.aktivateSetting.send(lblHiddenSchemaId.text, session.data.userID)"/>
-					<mx:Button x="200" y="409" label="Template löschen"/>
+					<mx:Button x="200" y="409" label="Template löschen" click="threepv_service.deleteTemplate.send(lblHiddenSchemaId.text)"/>
 				</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas id="HilfeView" height="0%" width="0%">

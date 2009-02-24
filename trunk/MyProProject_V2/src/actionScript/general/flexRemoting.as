@@ -78,7 +78,7 @@ public function registerResult(event:ResultEvent):void
 {
 	if(event.result)
 	{
-		var user:String = event.result[0];
+		var user:String = event.result[0][6];
 		var pass:String = event.result[1];
 		threepv_service.userLogin.send(user, pass);
 	}
@@ -93,22 +93,26 @@ public function userLoginResult(event:ResultEvent):void
 {
 	if(event.result)
 	{
-		dpUserSession = new ArrayCollection(ArrayUtil.toArray(event.result));
-		session.data.userID = dpUserSession[0][0];
-		session.data.userPrename = dpUserSession[0][1];
-		session.data.userLastname = dpUserSession[0][2]
-		session.data.userMail = dpUserSession[0][3];
-		session.data.userGroup = dpUserSession[0][4];
-		session.data.userCompany = dpUserSession[0][5];
-		session.data.userLogin = dpUserSession[0][6];
-		session.data.userPass = dpUserSession[0][7];
-		session.flush();
-		doInit();
-		init();
-		benutzernameLogin.text = '';
-		passwortLogin.text = '';
-		changeContent('diagramContent');
-		this.currentState = 'Portfolios';
+		try{
+			dpUserSession = new ArrayCollection(ArrayUtil.toArray(event.result));
+			session.data.userID = dpUserSession[0][0];
+			session.data.userPrename = dpUserSession[0][1];
+			session.data.userLastname = dpUserSession[0][2]
+			session.data.userMail = dpUserSession[0][3];
+			session.data.userGroup = dpUserSession[0][4];
+			session.data.userCompany = dpUserSession[0][5];
+			session.data.userLogin = dpUserSession[0][6];
+			session.data.userPass = dpUserSession[0][7];
+			session.flush();
+			doInit();
+			init();
+			benutzernameLogin.text = '';
+			passwortLogin.text = '';
+			changeContent('diagramContent');
+			this.currentState = 'Portfolios';
+		}catch(error:Error){
+			loginFehler.text = 'Ihre Angaben waren fehlerhaft!';
+		}
 	}
 	else
 	{
