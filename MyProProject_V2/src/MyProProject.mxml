@@ -167,9 +167,9 @@
 				-->
 				<mx:Canvas id="diagramContent" x="4" y="42" width="870" height="463">
 					<mx:Canvas id="diagramWrapper" x="35" y="6" width="820" height="430">
-						<mx:Label id="lblYAchse" text="Y-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF" x="10" y="0"/>
+						<mx:Label id="lblYAchse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF" x="10" y="0"/>
 						<myShapes:Diagram id="dia" xmlns:myShapes="actionScript.portfolios.diagramm.*" borderThickness="0" borderColor="#000000" borderStyle="solid" cornerRadius="2"/>
-						<mx:Label id="lblXAchse" x="710" y="409" text="X-Achse" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF"/>
+						<mx:Label id="lblXAchse" x="710" y="409" fontSize="12" fontWeight="bold" fontFamily="Arial" color="#0066FF"/>
 					</mx:Canvas>
 				</mx:Canvas>
 				<!--
@@ -477,7 +477,7 @@
 								</mx:columns>
 							</mx:DataGrid>
 							
-							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten" click="preparePortfolioEditExport(gridPortfolioAttributeEdit.numChildren)"/>
+							<mx:Button x="29" y="340" label="Portfolio bearbeiten" width="148" id="btnPortfolioBearbeiten" click="preparePortfolioEditExport(gridPortfolioAttributeEdit.numChildren);"/>
 							<mx:Button x="217" y="340" label="Felder zurücksetzen" width="154" id="btnPortfolioEditAbort" click="resetEditPortfolio()"/>
 						</mx:Canvas>
 					</mx:HBox>

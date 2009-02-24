@@ -124,6 +124,12 @@ public function getUserResult(event:ResultEvent):void
 
 public function addUserResult(event:ResultEvent):void
 {
+	vornameNeu.text = '';
+	nachnameNeu.text = '';
+	benutzernameNeu.text = '';
+	emailNeu.text = '';
+	passwortNeu.text = '';
+	passwort2Neu.text = '';
 	threepv_service.getUser.send(session.data.userCompany);
 	changeContent('alleBenutzerContent');
 }
@@ -144,6 +150,7 @@ public function getMyPortfoliosResult(event:ResultEvent):ArrayCollection
 {
 	dpPortfolio = new ArrayCollection(ArrayUtil.toArray(event.result));
 	var length:int = event.result.length;
+	
 	if(length > 0)
 	{
 		dpPortfolioSelector = new ArrayCollection();
