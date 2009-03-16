@@ -78,13 +78,12 @@ function projectAttributes(attr:ArrayCollection):void{
 				var temp:ItemContainer = new ItemContainer(shape,attr[i][5],attr[i][6],attr[i][7],days,dayOfYear(heute), ringInnen,ringAussen,null,uint("0x"+attr[i][8].toString().substring(1)),uint("0x"+attr[i][9].toString().substring(1)),uint("0x"+attr[i][10].toString().substring(1)),uint("0x"+attr[i][11].toString().substring(1)));
 				temp.myId = attr[i][0];
 				temp.addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
-				//============= hier kann man noch die werte eingeben falls das objekt bewegt wurde
 				temp.addEventListener(MouseEvent.MOUSE_UP,mouseReleased);
 				
 				temp.addEventListener(MouseEvent.MOUSE_OVER,mouseOver);
 				temp.addEventListener(MouseEvent.MOUSE_OUT,mouseOut);
 				temp.doubleClickEnabled = true;
-				//============== hier mouse double click
+				
 				temp.addEventListener(MouseEvent.DOUBLE_CLICK,doubleClick);
 				temp.info = new InfoShape(25,0,0);
 				temp.put("Name", attr[i][1]);
@@ -111,12 +110,7 @@ private static function dayOfYear( date:Date ):Number {
 }
 function setAttrb(attr:ArrayCollection):void {
 	//trace("attr "+dpPortfolio.length+"-"+attr);
-	
-	//TODO: Bitte folgende Attribute in der DB hizufügen
-	// Prozetntsatz für die Erfüllung der Ringe
-	// Form als int
-	/* 
-	
+	/*
 	if(dpPortfolio != null && dpPortfolio.length > 0) {
 		for(var i = 0; i< dpPortfolio.length; i++){
 			trace(i);

@@ -12,7 +12,6 @@ public function refreshAll(portfolio:String):void
 	var portfolioID:int=getCurrentPortfolioID();
 	threepv_service.getAttributes.send(portfolioID);
 	threepv_service.getMyProjects.send(session.data.userID, portfolioID);
-	//TODO Diagramm neu laden
 	dia.removeAllChildren();
 	gridTeamNeu.dataProvider = new ArrayCollection();
 	dgSpezifischeAttribute = new ArrayCollection();
@@ -117,10 +116,6 @@ public function prepareProjectEditExport():void
 	var projektLeader:int = session.data.userID;
 	threepv_service.editProject.send(projectID, projektnameEdit.text, startdatumEdit.text, enddatumEdit.text, formEdit.text, formGroesseInt, xAchseEdit.value, yAchseEdit.value, fuellfarbeEdit.selectedColor.toString(16), rahmenfarbeEdit.selectedColor.toString(16), beschreibungEdit.text, ringfarbeInnenEdit.selectedColor.toString(16), ringfarbeAussenEdit.selectedColor.toString(16));
 	
-	/*
-	 *Benutzerspezifische Attribute erzeugen und bearbeiten
-	 *
-	 */
 	var attributid:int=0;
 	var attributwert:String='';
 	for(var i:int = 0; i < gridAttributeEdit.dataProvider.length-1; i++)
@@ -128,12 +123,9 @@ public function prepareProjectEditExport():void
  		try
  		{
    			attributid = gridAttributeEdit.dataProvider[i][0].valueOf();
-   			//dpPortfolioAttributes
    			if(gridAttributeEdit.dataProvider[i][5])
    			{
-   				//attributwert = gridAttributeEdit.dataProvider[i][5];
   				threepv_service.setProjectAttributes.send(projectID, attributid, gridAttributeEdit.dataProvider[i][5]);
-  				
    			}
    			else
    			{
@@ -142,17 +134,9 @@ public function prepareProjectEditExport():void
   		}
   		catch(e:Error)
   		{
-   			//Do Nothing :)
+   			trace(attributid);
   		}
  	}
-	
-	/*
-	 *Projektmitglieder hinzufügen und löschen
-	 *
-	 */
-	 
-	//if(gridTeamEdit.dataProvider.length>projectTeamCountFromDB) 
-	
 	
 	for (var j:int=0; j<teamEditBeforUpdate.length; j++)
 	{
