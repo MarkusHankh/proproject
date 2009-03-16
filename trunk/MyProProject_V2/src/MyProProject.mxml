@@ -185,18 +185,6 @@
 								<mx:DataGridColumn headerText="Start" dataField="2"/>
 								<mx:DataGridColumn headerText="Ende" dataField="3"/>
 								<mx:DataGridColumn headerText="Visualisiert" dataField="4"/>
-									<!-- <mx:itemRenderer>
-						                  <mx:Component>
-						                    <mx:Canvas>
-						                    	 <mx:Tree id="attributeTree"
-										               dataProvider="myProProject.dpPortfolioAttributes"
-										               showRoot="false"
-										               labelField="@label"/>
-						                    </mx:Canvas>
-						                  </mx:Component>
-						                </mx:itemRenderer>-->
-							
-						
 								<mx:DataGridColumn headerText="Optionen">
 									<mx:itemRenderer>
 										<mx:Component>

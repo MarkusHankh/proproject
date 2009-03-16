@@ -16,7 +16,6 @@ public function init():void{
 }
 
 public function standardSettings():void{
-	//Der Benutzer mit der ID 73 ist ein Dummy-Benutzer, der "zufaellig"
-	//ein Schema angelegt hat, das den Standardeinstellungen entspricht
-	threepv_service.getMySettings.send('73');
+	//Der Benutzer mit der ID 1 ist ein Dummy-Benutzer...
+	threepv_service.getMySettings.send('1');
 }
